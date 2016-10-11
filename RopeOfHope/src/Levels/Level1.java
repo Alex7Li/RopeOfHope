@@ -2,6 +2,7 @@ package Levels;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Rectangle;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,6 +11,10 @@ import javax.swing.border.EmptyBorder;
 public class Level1 extends JFrame {
 
 	private JPanel contentPane;
+	/**
+	 * @wbp.nonvisual location=70,121
+	 */
+	private final Rectangle rectangle = new Rectangle();
 
 	/**
 	 * Launch the application.
