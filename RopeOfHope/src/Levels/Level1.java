@@ -43,13 +43,15 @@ public class Level1 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		createLevel();
+		createLevel(4);
 	}
-	public void createLevel () {  
-	   Rectangle[] walls = new Rectangle[8];
-	   
+	public void createLevel (int n) {  
+		//n is blocks that are being made
+	   Rectangle[] walls = new Rectangle[n];
+	   for (int i = 0; i < walls.length; i++) {
+		
 	}
-	
+
 	public void createRectangle (Graphics g,int x,int y,int width,int height) {  
 	    Rectangle r = new Rectangle(x,y,width,height);
 	    g.fillRect(x, y, width, height);;  
