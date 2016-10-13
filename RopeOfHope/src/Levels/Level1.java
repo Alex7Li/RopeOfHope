@@ -1,6 +1,7 @@
 package Levels;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -42,10 +43,16 @@ public class Level1 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		createLevel();
 	}
-	public void paint (Graphics g) {    
-	    Rectangle r = new Rectangle(10,10,10,10);
-	    g.fillRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());  
+	public void createLevel () {  
+	   Rectangle[] walls = new Rectangle[8];
+	   
 	}
-
+	
+	public void createRectangle (Graphics g,int x,int y,int width,int height) {  
+	    Rectangle r = new Rectangle(x,y,width,height);
+	    g.fillRect(x, y, width, height);;  
+	    g.setColor(Color.BLACK);
+	}
 }
