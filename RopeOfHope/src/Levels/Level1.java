@@ -45,13 +45,25 @@ public class Level1 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		createLevel();
 	}
+<<<<<<< HEAD
 	public void paint (Graphics g) {    
 		super.paint(g);
 		g.setColor(Color.BLUE);
 		g.fillRect(100, 100, 200, 250);
 		
 	    //g.fillRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());  
+=======
+	public void createLevel () {  
+	   Rectangle[] walls = new Rectangle[8];
+	   
+>>>>>>> branch 'master' of https://github.com/Alex7Li/RopeOfHope.git
 	}
-
+	
+	public void createRectangle (Graphics g,int x,int y,int width,int height) {  
+	    Rectangle r = new Rectangle(x,y,width,height);
+	    g.fillRect(x, y, width, height);;  
+	    g.setColor(Color.BLACK);
+	}
 }
