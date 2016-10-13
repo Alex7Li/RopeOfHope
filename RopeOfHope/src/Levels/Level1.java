@@ -38,23 +38,31 @@ public class Level1 extends JFrame {
 	 */
 	public Level1() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 450);
+		setBounds(0, 0, 1000, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		createLevel(4);
-	}
-	public void createLevel (int n) {  
-		//n is blocks that are being made
-	   Rectangle[] walls = new Rectangle[n];
-	   for (int i = 0; i < walls.length; i++) {
-		
 	}
 
-	public void createRectangle (Graphics g,int x,int y,int width,int height) {  
-	    Rectangle r = new Rectangle(x,y,width,height);
-	    g.fillRect(x, y, width, height);;  
+	public void paint (Graphics g){
+		super.paint(g);		
 	    g.setColor(Color.BLACK);
+		int[] x= {100, 100};
+		int[] y= {100, 200};
+		int[] width= {100 , 50};
+		int[] height= {100, 30};
+
+		Rectangle[] walls = new Rectangle[x.length];
+		   for (int i = 0; i < x.length; i++){
+			   Rectangle r = new Rectangle(x[i], y[i], width[i], height[i]);
+			   walls[i] = r;
+			   //array with rectangles in it
+			   g.fillRect(x[i], y[i], width[i], height[i]);		   
+		   }
+	}
+	
+	public void paintcharacter (Graphics g){
+		super.paint(g);
 	}
 }
