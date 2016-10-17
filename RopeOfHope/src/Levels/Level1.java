@@ -5,11 +5,13 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+@SuppressWarnings("serial")
 public class Level1 extends JFrame {
 
 	private JPanel contentPane;
@@ -39,6 +41,7 @@ public class Level1 extends JFrame {
 	public Level1() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1000, 700);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -48,7 +51,7 @@ public class Level1 extends JFrame {
 	public void paint (Graphics g){
 		super.paint(g);		
 	    g.setColor(Color.BLACK);
-		int[] x= {100, 100};
+		int[] x= {100, 200};
 		int[] y= {100, 200};
 		int[] width= {100 , 50};
 		int[] height= {100, 30};
@@ -62,7 +65,34 @@ public class Level1 extends JFrame {
 		   }
 	}
 	
-	public void paintcharacter (Graphics g){
+	public void paintchar (Graphics g){
+	//method does nothing since it's not named "paint"
+	//can't name it paint because there's another method named paint
 		super.paint(g);
+	    g.setColor(Color.RED);
+		int x= 400;
+		int y= 400;
+		int width = 30;
+		int height = 30;
+		g.fillOval(x, y, width,height);
+		
 	}
+	public void keyPressed(KeyEvent e) {
+        int k = e.getKeyCode();
+
+        switch (k) {
+            case KeyEvent.VK_D:
+                x++;
+                break;
+            case KeyEvent.VK_A:
+                x--;
+                break;
+            case KeyEvent.VK_W:
+                y--;
+                break;
+            case KeyEvent.VK_S:
+                y++;
+                break;
+        }
+    }
 }
