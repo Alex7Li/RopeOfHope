@@ -13,7 +13,10 @@ import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
 public class Level1 extends JFrame {
-
+	public static int charx = 300;
+	public static int chary = 300;
+	public static int charsize = 30;
+	
 	private JPanel contentPane;
 	/**
 	 * @wbp.nonvisual location=70,121
@@ -65,33 +68,32 @@ public class Level1 extends JFrame {
 		   }
 	}
 	
-	public void paintchar (Graphics g){
+	public void paintComponent (Graphics g){
 	//method does nothing since it's not named "paint"
 	//can't name it paint because there's another method named paint
 		super.paint(g);
 	    g.setColor(Color.RED);
-		int x= 400;
-		int y= 400;
-		int width = 30;
-		int height = 30;
-		g.fillOval(x, y, width,height);
-		
+		g.fillOval(charx, chary, charsize, charsize);
 	}
 	public void keyPressed(KeyEvent e) {
         int k = e.getKeyCode();
 
         switch (k) {
-            case KeyEvent.VK_D:
-                x++;
+            case KeyEvent.VK_RIGHT:
+                charx++;
+                repaint();
                 break;
-            case KeyEvent.VK_A:
-                x--;
+            case KeyEvent.VK_LEFT:
+                charx--;
+                repaint();
                 break;
-            case KeyEvent.VK_W:
-                y--;
+            case KeyEvent.VK_UP:
+                chary--;
+                repaint();
                 break;
-            case KeyEvent.VK_S:
-                y++;
+            case KeyEvent.VK_DOWN:
+                chary++;
+                repaint();
                 break;
         }
     }
