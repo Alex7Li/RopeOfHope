@@ -12,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 public class Level1 extends JFrame {
 
-	Rectangle r = new Rectangle(10,10,10,10);
+	Rectangle r = new Rectangle(100,100,10,10);
 	
 	private JPanel contentPane;
 	/**
@@ -42,7 +42,7 @@ public class Level1 extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 450);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(5, 5, 20, 20));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 	}
@@ -51,7 +51,7 @@ public class Level1 extends JFrame {
 		
 		super.paint(g);
 		g.setColor(Color.BLUE);
-		g.fillRect(100, 100, 200, 250);
+		//g.fillRect(100, 100, 200, 250);
 		
 	    g.fillRect( (int)r.getX(), (int)r.getY(), (int)r.getWidth(), (int)r.getHeight());  
 	}
