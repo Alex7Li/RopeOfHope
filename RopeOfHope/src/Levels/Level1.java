@@ -5,19 +5,23 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
-public class Level1 extends JFrame {
+public class Level1 extends JPanel implements ActionListener, KeyListener{
+	private Timer t = new Timer(200, this);
 	public static int charx = 300;
 	public static int chary = 300;
 	public static int charsize = 30;
 	
-	private JPanel contentPane;
 	/**
 	 * @wbp.nonvisual location=70,121
 	 */
@@ -25,30 +29,29 @@ public class Level1 extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+	
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Level1 frame = new Level1();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		Level1 AlexCantCode = new Level1();
+		JFrame frame = new JFrame("Rope of Hope");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(700, 700);
+		frame.add(AlexCantCode);
+		frame.setVisible(true);
+		frame.repaint();
+		
 	}
 
 	/**
 	 * Create the frame.
 	 */
 	public Level1() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 1000, 700);
-		
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+		setFocusable(true);
+		addKeyListener(this);
+		setBackground(Color.WHITE);
+		setLayout(null);
+		t.start();
+		setVisible(true);
+		repaint();
 	}
 
 	public void paint (Graphics g){
@@ -67,34 +70,52 @@ public class Level1 extends JFrame {
 			   g.fillRect(x[i], y[i], width[i], height[i]);		   
 		   }
 	}
-	
+
+	//create a game loop
+
 	public void paintComponent (Graphics g){
 	//method does nothing since it's not named "paint"
 	//can't name it paint because there's another method named paint
-		super.paint(g);
+		super.paintComponent(g);
 	    g.setColor(Color.RED);
 		g.fillOval(charx, chary, charsize, charsize);
 	}
+
+
 	public void keyPressed(KeyEvent e) {
         int k = e.getKeyCode();
 
         switch (k) {
             case KeyEvent.VK_RIGHT:
-                charx++;
-                repaint();
+                charx+= 100;
                 break;
             case KeyEvent.VK_LEFT:
                 charx--;
-                repaint();
                 break;
             case KeyEvent.VK_UP:
                 chary--;
-                repaint();
                 break;
             case KeyEvent.VK_DOWN:
                 chary++;
-                repaint();
                 break;
         }
     }
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		repaint();
+		
+	}
 }
