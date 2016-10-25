@@ -16,6 +16,7 @@ import javax.swing.Timer;
 public class Level1 extends JPanel implements ActionListener, KeyListener{
 	private Timer t = new Timer(30, this);
 	Player circle = new Player(300,300);
+	Player square = new Player(200,300);
 	/**
 	 * Launch the application.
 	 */
@@ -47,10 +48,10 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 	public void paint (Graphics g){
 		super.paint(g);		
 	    g.setColor(Color.BLACK);
-		int[] x= {100, 200};
-		int[] y= {100, 200};
-		int[] width= {100 , 50};
-		int[] height= {100, 30};
+	    int[] x= {100, 200,123};
+		int[] y= {100, 200, 500};
+		int[] width= {100 , 50,32};
+		int[] height= {100, 30,10};		
 
 		Rectangle[] walls = new Rectangle[x.length];
 		   for (int i = 0; i < x.length; i++){
@@ -59,6 +60,8 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 			   //array with rectangles in it
 			   g.fillRect(x[i], y[i], width[i], height[i]);		   
 		   }
+		 //add wall physics (Just do level 1 for now)
+		 //also add a exit rectangle (Just like a blue rectangle)
 	}
 
 	//create a game loop
@@ -67,22 +70,30 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 		super.paintComponent(g);
 	    g.setColor(Color.RED);
 		g.fillOval(circle.getx(), circle.gety(), circle.getSize(), circle.getSize()); 
+		g.fillRect(square.getx(), square.gety(), square.getSize(), square.getSize());
 	}
 
 
 	public void keyPressed(KeyEvent e) {
         int k = e.getKeyCode();
 
-        switch (k) {
-            case KeyEvent.VK_RIGHT:
-                circle.moveRight();
-                break;
-            case KeyEvent.VK_LEFT:
-                circle.moveLeft();
-                break;
-            case KeyEvent.VK_UP:
-                circle.jump();
-                break;
+        if (k == KeyEvent.VK_RIGHT){
+        	circle.moveRight();
+        }
+        if (k == KeyEvent.VK_LEFT){
+        	circle.moveLeft();
+        }
+        if (k == KeyEvent.VK_UP){
+            circle.jump();
+        }
+        if (k == KeyEvent.VK_D){
+        	square.moveRight();
+        }
+        if (k == KeyEvent.VK_A){
+        	square.moveLeft();
+        }
+        if (k == KeyEvent.VK_W){
+            square.jump();
         }
     }
 
@@ -101,6 +112,7 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		circle.timePassed();
+		square.timePassed();
 		repaint();
 		
 	}
