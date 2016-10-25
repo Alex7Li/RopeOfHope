@@ -3,13 +3,13 @@ package game;
 public class Player {
 	private int charx = 300;
 	private int chary = 300;
-	private int charVy = 0;
-	private int charVx = 0;
+	private double charVy = 0;
+	private double charVx = 0;
 	private final int TOPSPEED = 5;
 	private final int CHARSIZE= 30;
-	private final int SPEED = 5;
+	private final int SPEED = 2;
 	private final int JUMP_POWER = 10;
-	private final double FRICTIONRATE = .3;
+	private final double FRICTIONRATE = .1;
 
 	public Player(int x, int y)
     {
@@ -34,6 +34,16 @@ public class Player {
 	public void timePassed(){
 		charx += charVx;
 		chary += charVy;
+		// if thing is going right, get slowed down by friction
+		if (charVx > 0){
+			charVx -= FRICTIONRATE;
+		}
+		
+		// if thing is going left, get slowed down by friction
+		if (charVx < 0){
+			charVx += FRICTIONRATE;
+		}
+			
 
 		if (charx > 650 || charx < 0){
 			//walls
