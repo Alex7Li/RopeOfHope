@@ -17,15 +17,19 @@ public class Player {
 		if (charVy < 20){
 			charVy += SPEED;
 		}
+		charVx-=1;
 	}
 	public void moveleft(){	
 	
 		if (charVy > 10){
 			charVy -= SPEED;
 		}
+		charVx-=1;
+
 	}
 	public void jump(){
-			charVy += 10;
+			charVy += 40;
 	}
+
 
 }
