@@ -17,7 +17,7 @@ import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
 public class Level1 extends JPanel implements ActionListener, KeyListener{
-	private Timer t = new Timer(10, this);
+	private Timer t = new Timer(30, this);
 	Player circle = new Player(300,300);
 	/**
 	 * Launch the application.
@@ -103,8 +103,7 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Player.charx += Player.charVx;
-		Player.chary += Player.charVy;
+		circle.timePassed();
 		repaint();
 		
 	}
