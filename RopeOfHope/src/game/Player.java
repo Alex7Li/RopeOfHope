@@ -1,40 +1,66 @@
 package game;
 
-import java.awt.event.ActionEvent;
-
 public class Player {
-	public static int charx = 300;
-	public static int chary = 300;
-	public static int charVy = 0;
-	public static int charVx = 0;
-	public static final int CHARSIZE= 30;
-	public static final int ACCELERATION = 2;
-	private static final int SPEEDLIMIT = 5;
-	
-	public Player(int x, int y)
+	private int charx = 300;
+	private int chary = 300;
+	private int charVy = 0;
+	private int charVx = 0;
+	private final int TOPSPEED = 5;
+	private final int CHARSIZE= 30;
+	private final int SPEED = 5;
+	private final int JUMP_POWER = 10;
+	private final double FRICTIONRATE = .3;
+
+	public Player(int x, int y)v
     {
 		charx = x;
 		chary = y;
     }
 	public void moveRight(){
-		
-		if (charVx < SPEEDLIMIT){
-			charVx += ACCELERATION;
+		if (charVx < TOPSPEED){
+			charVx += SPEED;
 		}
-		charVx+=1;
 	}
 	public void moveLeft(){	
-	
-		if (charVx < SPEEDLIMIT){
-			charVx -= ACCELERATION;
+		if (charVx > -TOPSPEED){
+			charVx -= SPEED;
 		}
-		charVx-=1;
-
 	}
 	public void jump(){
-			charVy += 7;
+		if (charVy == 0){
+			charVy -= JUMP_POWER;
+		}
 	}
+	public void timePassed(){
+		charx += charVx;
+		chary += charVy;
 
+		if (charx > 650 || charx < 0){
+			//walls
+			charVx = 0;
+		}
+		
+		if (chary < 600 && charVy<20){
+			//floor
+			charVy++;
+		}
+		else if (chary > 600){
+			charVy=0;
+		}
+
+	}
 	
-
+	public int getx(){
+		return charx;
+	}
+	
+	public int gety(){
+		return chary;
+	}
+	
+	public int getSize(){
+		return CHARSIZE;
+	}
+	
+	
 }
