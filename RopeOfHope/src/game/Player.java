@@ -21,7 +21,7 @@ public class Player {
 	}
 	public void moveleft(){	
 	
-		if (charVy > 10){
+		if (charVy < 10){
 			charVy -= SPEED;
 		}
 		charVx-=1;
