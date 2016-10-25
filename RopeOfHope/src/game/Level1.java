@@ -69,7 +69,7 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 	public void paintComponent (Graphics g){
 		super.paintComponent(g);
 	    g.setColor(Color.RED);
-		g.fillOval(charx, chary, charsize, charsize);
+		g.fillOval(Player.charx, Player.chary, Player.charsize, Player.charsize);
 	}
 
 
@@ -78,16 +78,13 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 
         switch (k) {
             case KeyEvent.VK_RIGHT:
-                circle.movex(1);
+                moveRight();;
                 break;
             case KeyEvent.VK_LEFT:
-                charVx-= 1;
+                moveLeft;
                 break;
             case KeyEvent.VK_UP:
-                charVy-= 1;
-                break;
-            case KeyEvent.VK_DOWN:
-                charVy+= 1;
+                jump();
                 break;
         }
     }
@@ -106,8 +103,8 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		charx +=charVx;
-		chary +=charVy;
+		Player.charx += Player.charVx;
+		Player.chary += Player.charVy;
 		repaint();
 		
 	}
