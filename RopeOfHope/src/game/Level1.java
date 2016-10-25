@@ -78,7 +78,11 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 
         switch (k) {
             case KeyEvent.VK_RIGHT:
+<<<<<<< HEAD
                 circle.moveRight();
+=======
+                circle.moveright();
+>>>>>>> branch 'master' of https://github.com/Alex7Li/RopeOfHope.git
                 break;
             case KeyEvent.VK_LEFT:
                 circle.moveLeft();
