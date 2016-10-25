@@ -69,7 +69,7 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 	public void paintComponent (Graphics g){
 		super.paintComponent(g);
 	    g.setColor(Color.RED);
-		g.fillOval(Player.charx, Player.chary, Player.charsize, Player.charsize); 
+		g.fillOval(Player.charx, Player.chary, Player.CHARSIZE, Player.CHARSIZE); 
 	}
 
 
