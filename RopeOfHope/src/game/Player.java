@@ -11,7 +11,7 @@ public class Player {
 	private final int JUMP_POWER = 10;
 	private final double FRICTIONRATE = .3;
 
-	public Player(int x, int y)v
+	public Player(int x, int y)
     {
 		charx = x;
 		chary = y;
