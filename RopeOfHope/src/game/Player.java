@@ -46,7 +46,7 @@ public class Player {
 			
 
 		if (charx > 650 || charx < 0){
-			//walls
+			//sidewalls
 			charVx = 0;
 		}
 		
