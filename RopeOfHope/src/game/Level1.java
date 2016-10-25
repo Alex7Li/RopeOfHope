@@ -69,7 +69,7 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 	public void paintComponent (Graphics g){
 		super.paintComponent(g);
 	    g.setColor(Color.RED);
-		g.fillOval(Player.charx, Player.chary, Player.charsize, Player.charsize);
+		g.fillOval(Player.charx, Player.chary, Player.charsize, Player.charsize); 
 	}
 
 
@@ -78,11 +78,7 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 
         switch (k) {
             case KeyEvent.VK_RIGHT:
-<<<<<<< HEAD
                 circle.moveRight();
-=======
-                circle.moveright();
->>>>>>> branch 'master' of https://github.com/Alex7Li/RopeOfHope.git
                 break;
             case KeyEvent.VK_LEFT:
                 circle.moveLeft();
