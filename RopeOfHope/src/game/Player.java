@@ -1,12 +1,15 @@
 package game;
 
+import java.awt.event.ActionEvent;
+
 public class Player {
 	public static int charx = 300;
 	public static int chary = 300;
 	public static int charVy = 0;
 	public static int charVx = 0;
 	public static final int CHARSIZE= 30;
-	public static final int SPEED = 2;
+	public static final int ACCELERATION = 2;
+	private static final int SPEEDLIMIT = 5;
 	
 	public Player(int x, int y)
     {
@@ -15,22 +18,23 @@ public class Player {
     }
 	public void moveRight(){
 		
-		if (charVy < 20){
-			charVy += SPEED;
+		if (charVx < SPEEDLIMIT){
+			charVx += ACCELERATION;
 		}
-		charVx-=1;
+		charVx+=1;
 	}
 	public void moveLeft(){	
 	
-		if (charVy < 10){
-			charVy -= SPEED;
+		if (charVx < SPEEDLIMIT){
+			charVx -= ACCELERATION;
 		}
 		charVx-=1;
 
 	}
 	public void jump(){
-			charVy += 40;
+			charVy += 7;
 	}
 
+	
 
 }
