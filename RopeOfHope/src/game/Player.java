@@ -54,6 +54,7 @@ public class Player {
 			//floor
 			charVy++;
 		}
+		
 		else if (chary > 600){
 			charVy=0;
 		}
