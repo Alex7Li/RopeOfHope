@@ -17,9 +17,12 @@ import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
 public class Level1 extends JPanel implements ActionListener, KeyListener{
-	private Timer t = new Timer(200, this);
+	private Timer t = new Timer(10, this);
 	public static int charx = 300;
 	public static int chary = 300;
+	public static int charVy = 0;
+	public static int charVx = 0;
+	
 	public static int charsize = 30;
 	
 	/**
@@ -87,16 +90,17 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 
         switch (k) {
             case KeyEvent.VK_RIGHT:
-                charx+= 100;
+                charVx+= 1;
                 break;
             case KeyEvent.VK_LEFT:
-                charx--;
+                charVx-= 1;
                 break;
             case KeyEvent.VK_UP:
-                chary--;
+                charVy-= 1;
                 break;
+              
             case KeyEvent.VK_DOWN:
-                chary++;
+                charVy+= 1;
                 break;
         }
     }
@@ -115,6 +119,8 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		charx +=charVx;
+		chary +=charVy;
 		repaint();
 		
 	}
