@@ -18,17 +18,7 @@ import javax.swing.border.EmptyBorder;
 @SuppressWarnings("serial")
 public class Level1 extends JPanel implements ActionListener, KeyListener{
 	private Timer t = new Timer(10, this);
-	public static int charx = 300;
-	public static int chary = 300;
-	public static int charVy = 0;
-	public static int charVx = 0;
-	
-	public static int charsize = 30;
-	
-	/**
-	 * @wbp.nonvisual location=70,121
-	 */
-
+	Player circle = new Player(300,300);
 	/**
 	 * Launch the application.
 	 */
@@ -77,8 +67,6 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 	//create a game loop
 
 	public void paintComponent (Graphics g){
-	//method does nothing since it's not named "paint"
-	//can't name it paint because there's another method named paint
 		super.paintComponent(g);
 	    g.setColor(Color.RED);
 		g.fillOval(charx, chary, charsize, charsize);
@@ -90,7 +78,7 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 
         switch (k) {
             case KeyEvent.VK_RIGHT:
-                charVx+= 1;
+                circle.movex(1);
                 break;
             case KeyEvent.VK_LEFT:
                 charVx-= 1;
@@ -98,7 +86,6 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
             case KeyEvent.VK_UP:
                 charVy-= 1;
                 break;
-              
             case KeyEvent.VK_DOWN:
                 charVy+= 1;
                 break;
