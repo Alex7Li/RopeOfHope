@@ -78,7 +78,7 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 
         switch (k) {
             case KeyEvent.VK_RIGHT:
-                circle.moveRight();;
+                circle.moveRight();
                 break;
             case KeyEvent.VK_LEFT:
                 circle.moveLeft();
