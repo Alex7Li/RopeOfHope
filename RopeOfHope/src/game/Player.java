@@ -7,6 +7,7 @@ public class Player {
 	public static int charVx = 0;
 	public static final int charsize= 30;
 	public static final int SPEED = 2;
+	public static final int JUMP_POWER = 20;
 	
 	public Player(int x, int y)
     {
@@ -21,14 +22,18 @@ public class Player {
 	}
 	public void moveleft(){	
 	
+<<<<<<< HEAD
 		if (charVy < 10){
+=======
+		if (charVy > 20){
+>>>>>>> branch 'master' of https://github.com/Alex7Li/RopeOfHope.git
 			charVy -= SPEED;
 		}
 		charVx-=1;
 
 	}
 	public void jump(){
-			charVy += 40;
+			charVy += JUMP_POWER;
 	}
 
 
