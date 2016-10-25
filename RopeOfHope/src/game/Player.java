@@ -31,6 +31,13 @@ public class Player {
 		chary += charVy;
 		charx += charVx;
 	}
-
-
+	public int getx(){
+		return charx;
+	}
+	public int gety(){
+		return chary;
+	}
+	public int getSize(){
+		return CHARSIZE;
+	}
 }

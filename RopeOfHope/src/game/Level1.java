@@ -1,8 +1,6 @@
 package game;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -13,7 +11,6 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
 public class Level1 extends JPanel implements ActionListener, KeyListener{
@@ -69,7 +66,7 @@ public class Level1 extends JPanel implements ActionListener, KeyListener{
 	public void paintComponent (Graphics g){
 		super.paintComponent(g);
 	    g.setColor(Color.RED);
-		g.fillOval(Player.charx, Player.chary, Player.CHARSIZE, Player.CHARSIZE); 
+		g.fillOval(circle.getx(), circle.gety(), circle.getSize(), circle.getSize()); 
 	}
 
 
