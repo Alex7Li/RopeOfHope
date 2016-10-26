@@ -16,21 +16,25 @@ public class Player {
 		charx = x;
 		chary = y;
     }
+	
 	public void moveRight(){
 		if (charVx < TOPSPEED){
 			charVx += SPEED;
 		}
 	}
+	
 	public void moveLeft(){	
 		if (charVx > -TOPSPEED){
 			charVx -= SPEED;
 		}
 	}
+	
 	public void jump(){
 		if (charVy == 0){
 			charVy -= JUMP_POWER;
 		}
 	}
+	
 	public void timePassed(){
 		charx += charVx;
 		chary += charVy;
