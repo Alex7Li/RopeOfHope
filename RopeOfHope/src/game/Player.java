@@ -3,11 +3,13 @@ package game;
 public class Player {
 	private int charx = 300;
 	private int chary = 300;
-	private int charVy = 0;
-	private int charVx = 0;
+	private double charVy = 0;
+	private double charVx = 0;
+	private final int TOPSPEED = 5;
 	private final int CHARSIZE= 30;
 	private final int SPEED = 50;
 	private final int JUMP_POWER = 100;
+	private final double FRICTIONRATE = .1;
 
 	public Player(int x, int y)
     {
@@ -15,12 +17,13 @@ public class Player {
 		chary = y;
     }
 	public void moveRight(){
-		if (charVx < 100){
+		if (charVx < TOPSPEED){
 			charVx += SPEED;
 		}
 	}
 	public void moveLeft(){	
-		if (charVx > -100){
+
+		if (charVx > -TOPSPEED){
 			charVx -= SPEED;
 		}
 	}
@@ -34,11 +37,22 @@ public class Player {
 		}
 	}
 	public void timePassed(){
+		//this allows for move smooth movements
 		charx += (int)charVx/5;
 		chary += (int)charVy/5;
 
+		// if thing is going right, get slowed down by friction
+		if (charVx > 0){
+			charVx -= FRICTIONRATE;
+		}
+		
+		// if thing is going left, get slowed down by friction
+		if (charVx < 0){
+			charVx += FRICTIONRATE;
+		}
+			
 		if (charx > 650 || charx < 0){
-			//walls
+			//sidewalls
 			charVx = 0;
 		}
 		
@@ -52,13 +66,18 @@ public class Player {
 		}
 
 	}
+	
 	public int getx(){
 		return charx;
 	}
+	
 	public int gety(){
 		return chary;
 	}
+	
 	public int getSize(){
 		return CHARSIZE;
 	}
+	
+	
 }
