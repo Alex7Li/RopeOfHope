@@ -42,6 +42,7 @@ public class Player {
 	
 	public void timePassed(){
 		//this allows for move smooth movements
+		//cool
 		charx += (int)charVx/5;
 		chary += (int)charVy/5;
 
