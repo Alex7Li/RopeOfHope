@@ -9,7 +9,9 @@ public class Player {
 	private final int CHARSIZE= 30;
 	private final int SPEED = 50;
 	private final int JUMP_POWER = 100;
-	private final double FRICTIONRATE = .1;
+	private final double FRICTION_RATE = .8;
+	private final double ROPE_PULL = .2;
+	private final int ROPE_LENGTH = 100; //pixels
 
 	public Player(int x, int y)
     {
@@ -28,41 +30,46 @@ public class Player {
 		}
 	}
 	public void ropePull(double force, double angle){	
-		charVx -= force*force*Math.cos(angle)/2500;
-		charVy -= force*force*Math.sin(angle)/2500;
+		charVx -= Math.max(0,force*Math.cos(angle)*ROPE_PULL-ROPE_PULL*ROPE_LENGTH);
+		charVy -= Math.max(0,force*Math.sin(angle)*ROPE_PULL-ROPE_PULL*ROPE_LENGTH);
 	}
 	public void jump(){
-		if (charVy == 0){
+		//needs a better method to test if its touching the ground
 			charVy -= JUMP_POWER;
-		}
 	}
 	public void timePassed(){
 		//this allows for move smooth movements
 		charx += (int)charVx/5;
 		chary += (int)charVy/5;
 
-		// if thing is going right, get slowed down by friction
-		if (charVx > 0){
-			charVx -= FRICTIONRATE;
-		}
-		
-		// if thing is going left, get slowed down by friction
-		if (charVx < 0){
-			charVx += FRICTIONRATE;
-		}
-			
-		if (charx > 650 || charx < 0){
-			//sidewalls
+		if (charx < 20){
+			//right wall
+			charx = 20;
 			charVx = 0;
 		}
-		
-		if (chary < 600 && charVy<150){
-			//floor
-			charVy+= 3;
+		if (charx > 650){
+			//left wall
+			charx = 650;
+			charVx = 0;
+		}
+		// if thing is going left, get slowed down by friction
+		else if (charVx < 0){
+			charVx += FRICTION_RATE;
+		}
+		// if thing is going right, get slowed down by friction
+		else if (charVx > 0){
+			charVx -= FRICTION_RATE;
 		}
 		
-		else if (chary > 600){
-			charVy=0;
+		if (chary > 600){
+			chary=600;
+			charVy = 0;
+		}
+		
+		else if (chary <= 600 && charVy<150){
+			//floor
+			//should work when touching any surface
+			charVy+= 3;
 		}
 
 	}
@@ -77,6 +84,18 @@ public class Player {
 	
 	public int getSize(){
 		return CHARSIZE;
+	}
+	public void setCharx(int charx) {
+		this.charx = charx;
+	}
+	public void setChary(int chary) {
+		this.chary = chary;
+	}
+	public void setCharVy(double charVy) {
+		this.charVy = charVy;
+	}
+	public void setCharVx(double charVx) {
+		this.charVx = charVx;
 	}
 	
 	
