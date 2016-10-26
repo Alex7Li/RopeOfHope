@@ -80,24 +80,23 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		int k = e.getKeyCode();
 
-		if (k == KeyEvent.VK_RIGHT) {
-			circle.setRightKeyPressed(true);
+		switch(k){
+		case KeyEvent.VK_RIGHT:
+			circle.setRightKeyPressed(true); break;
+		case KeyEvent.VK_LEFT:
+			circle.setLeftKeyPressed(true); break;
+		case KeyEvent.VK_UP:
+			circle.jump(); break;
 		}
-		if (k == KeyEvent.VK_LEFT) {
-			circle.setLeftKeyPressed(true);
+		switch(k){
+		case KeyEvent.VK_D:
+			square.setRightKeyPressed(true); break;
+		case KeyEvent.VK_A:
+			square.setLeftKeyPressed(true); break;
+		case KeyEvent.VK_W:
+			square.jump(); break;
 		}
-		if (k == KeyEvent.VK_UP) {
-			circle.jump();
-		}
-		if (k == KeyEvent.VK_D) {
-			square.setRightKeyPressed(true);
-		}
-		if (k == KeyEvent.VK_A) {
-			square.setLeftKeyPressed(true);
-		}
-		if (k == KeyEvent.VK_W) {
-			square.jump();
-		}
+
 	}
 
 	public void keyTyped(KeyEvent e) {
@@ -127,6 +126,5 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 		circle.timePassed();
 		square.timePassed();
 		repaint();
-
 	}
 }

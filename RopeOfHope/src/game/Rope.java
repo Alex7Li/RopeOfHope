@@ -6,6 +6,7 @@ public class Rope {
 	
 	public Rope()
     {
+		
     }
 	public void timePassed(Player one, Player two){
 		one.ropePull(length,angle);

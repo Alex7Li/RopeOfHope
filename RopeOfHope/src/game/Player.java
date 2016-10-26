@@ -7,12 +7,12 @@ public class Player {
 	private double charVx = 0;
 	private boolean rightKeyPressed;
 	private boolean leftKeyPressed;
-	private final int TOPSPEED = 5;
+	private final int TOPSPEED = 100;
 	private final int CHARSIZE= 30;
-	private final int SPEED = 50;
+	private final int SPEED = 5;
 	private final int JUMP_POWER = 90;
-	private final double FRICTION_RATE = 1.5;
-	private final double ROPE_PULL = .2;
+	private final double FRICTION_RATE = 2;
+	private final double ROPE_PULL = .1;
 	private final int ROPE_LENGTH = 100; //pixels
 
 	public Player(int x, int y)
@@ -23,16 +23,16 @@ public class Player {
 	
 	public void ropePull(double force, double angle){	
 		if(Math.PI > angle && angle>0){
-			charVy -= Math.max(0,(force*Math.sin(angle)-ROPE_LENGTH)*ROPE_PULL);
+			charVy -= Math.max(0,(force-ROPE_LENGTH)*Math.sin(angle)*ROPE_PULL);
 		}
 		else{
-			charVy += Math.max(0,(-force*Math.sin(angle)-ROPE_LENGTH)*ROPE_PULL);
+			charVy += Math.max(0,(-force+ROPE_LENGTH)*Math.sin(angle)*ROPE_PULL);
 		}
 		if ((angle > - Math.PI/2 && angle < Math.PI/2) || angle > 3*Math.PI/2){
-			charVx -= Math.max(0,(force*Math.cos(angle)-ROPE_LENGTH)*ROPE_PULL);
+			charVx -= Math.max(0,(force-ROPE_LENGTH)*Math.cos(angle)*ROPE_PULL);
 		}
 		else{
-			charVx += Math.max(0,(-force*Math.cos(angle)-ROPE_LENGTH)*ROPE_PULL);
+			charVx += Math.max(0,(-force+ROPE_LENGTH)*Math.cos(angle)*ROPE_PULL);
 		}
 	}
 	
@@ -67,6 +67,7 @@ public class Player {
 		// if thing is going left, get slowed down by friction
 		else if (charVx < 0){
 			charVx += FRICTION_RATE;
+			
 		}
 		// if thing is going right, get slowed down by friction
 		else if (charVx > 0){
