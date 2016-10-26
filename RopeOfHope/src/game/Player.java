@@ -22,8 +22,7 @@ public class Player {
     }
 	
 	public void ropePull(double force, double angle){	
-		//very broken
-		if(Math.PI>angle && angle>0 ){
+		if(Math.PI > angle && angle>0){
 			charVy -= Math.max(0,(force*Math.sin(angle)-ROPE_LENGTH)*ROPE_PULL);
 		}
 		else{

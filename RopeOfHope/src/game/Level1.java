@@ -59,9 +59,6 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 			// array with rectangles in it
 			g.fillRect(x[i], y[i], width[i], height[i]);
 		}
-		// add wall physics (Just do level 1 for now)
-		// do this in the actionPerformed Method, at the bottom
-		// also add a exit rectangle (Just like a blue rectangle)
 	}
 
 	public void paintComponent(Graphics g) {
@@ -78,7 +75,6 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 		double angle = Math.atan2(circle.gety()-square.gety(), circle.getx()-square.getx());
 		rope.setLength(length);
 		rope.setAngle(angle);
-		g.drawString(Double.toString(angle), 30, 10);
 	}
 
 	public void keyPressed(KeyEvent e) {
