@@ -18,12 +18,14 @@ public class Player {
 		charx = x;
 		chary = y;
     }
-	public void moveRight(){
+	
+	public void accelerateRight(){
 		if (charVx < TOPSPEED){
 			charVx += SPEED;
 		}
 	}
-	public void moveLeft(){	
+	
+	public void accelerateLeft(){	
 
 		if (charVx > -TOPSPEED){
 			charVx -= SPEED;
@@ -32,13 +34,18 @@ public class Player {
 	public void ropePull(double force, double angle){	
 		charVx -= Math.max(0,force*Math.cos(angle)*ROPE_PULL-ROPE_PULL*ROPE_LENGTH);
 		charVy -= Math.max(0,force*Math.sin(angle)*ROPE_PULL-ROPE_PULL*ROPE_LENGTH);
+
 	}
+	
 	public void jump(){
 		//needs a better method to test if its touching the ground
 			charVy -= JUMP_POWER;
 	}
+	
 	public void timePassed(){
 		//this allows for move smooth movements
+		
+		//make a rectangle r that is about 4 pixels to the right of the middle of the shape... if it .intersectsWith a wall then dont move right
 		charx += (int)charVx/5;
 		chary += (int)charVy/5;
 
@@ -59,8 +66,11 @@ public class Player {
 		// if thing is going right, get slowed down by friction
 		else if (charVx > 0){
 			charVx -= FRICTION_RATE;
+		}		
+		if (chary < 600 && charVy<150){
+			//floor
+			charVy += 3;
 		}
-		
 		if (chary > 600){
 			chary=600;
 			charVy = 0;
@@ -70,6 +80,9 @@ public class Player {
 			//floor
 			//should work when touching any surface
 			charVy+= 3;
+		}
+		else if (chary > 600){
+			charVy = 0;
 		}
 
 	}
