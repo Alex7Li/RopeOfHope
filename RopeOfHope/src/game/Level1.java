@@ -19,6 +19,7 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 	Player square = new Player(200, 300);
 	Rope rope = new Rope();
 
+
 	public static void main(String[] args) {
 		Level1 AlexCantCode = new Level1();
 		JFrame frame = new JFrame("Rope of Hope");
@@ -44,21 +45,24 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 		repaint();
 	}
 
+	private static 	Platform[] walls = new Platform[3];
+	//number represents number of walls, change when adding walls
+
 	public void paint(Graphics g) {
 		super.paint(g);
 		g.setColor(Color.BLACK);
-		int[] x = { 100, 200, 123 };
-		int[] y = { 100, 200, 500 };
-		int[] width = { 100, 50, 32 };
-		int[] height = { 100, 30, 10 };
+		int[] x = 	   { 0,   0,   680};
+		int[] y = 	   { 630, 0,   0};
+		int[] width =  { 700, 20,  20};
+		int[] height = { 100, 700, 700};
 
-		Rectangle[] walls = new Rectangle[x.length];
+		// create and draw an array with platforms in it
 		for (int i = 0; i < x.length; i++) {
-			Rectangle r = new Rectangle(x[i], y[i], width[i], height[i]);
+			Platform r = new Platform(x[i], y[i], width[i], height[i]);
 			walls[i] = r;
-			// array with rectangles in it
 			g.fillRect(x[i], y[i], width[i], height[i]);
 		}
+		
 		// add wall physics (Just do level 1 for now)
 		// do this in the actionPerformed Method, at the bottom
 		// also add a exit rectangle (Just like a blue rectangle)
@@ -124,8 +128,16 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 		rope.timePassed(circle, square);
 		circle.timePassed();
 		square.timePassed();
-		repaint();
-	}
-
-
+		//for (int i = 0; i < walls.length; i++) {
+			//determine which platforms are being touched
+		//	if (square.getx() + square.getSize() > walls[i].getx() && 
+		//		square.getx() + square.getSize() < walls[i].getx()+walls[i].getWidth() &&
+		//		square.gety() > walls[i].gety() + walls[i].getHeight() ||
+		//		square.gety() < walls[i].gety()){
+				//touchingPlatform[i] = true;
+		//	}
+			repaint();
+			//PLAN:
+			//http://gamedev.stackexchange.com/questions/18302/2d-platformer-collisions
+		}
 }
