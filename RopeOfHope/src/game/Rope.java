@@ -4,12 +4,12 @@ public class Rope {
 	private double length;
 	private static double angle;
 	
-	public Rope(Player one, Player two)
+	public Rope()
     {
-		
     }
-	public void timePassed(){
-
+	public void timePassed(Player one, Player two){
+		one.ropePull(length,angle);
+		two.ropePull(length,angle+Math.PI);
 	}
 	public void setLength(double l){
 		length = l;

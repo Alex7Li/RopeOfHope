@@ -7,8 +7,8 @@ public class Player {
 	private double charVx = 0;
 	private final int TOPSPEED = 5;
 	private final int CHARSIZE= 30;
-	private final int SPEED = 2;
-	private final int JUMP_POWER = 10;
+	private final int SPEED = 50;
+	private final int JUMP_POWER = 100;
 	private final double FRICTIONRATE = .1;
 
 	public Player(int x, int y)
@@ -24,9 +24,14 @@ public class Player {
 	}
 	
 	public void moveLeft(){	
+
 		if (charVx > -TOPSPEED){
 			charVx -= SPEED;
 		}
+	}
+	public void ropePull(double force, double angle){	
+		charVx -= force*force*Math.cos(angle)/2500;
+		charVy -= force*force*Math.sin(angle)/2500;
 	}
 	
 	public void jump(){
@@ -36,8 +41,10 @@ public class Player {
 	}
 	
 	public void timePassed(){
-		charx += charVx;
-		chary += charVy;
+		//this allows for move smooth movements
+		charx += (int)charVx/5;
+		chary += (int)charVy/5;
+
 		// if thing is going right, get slowed down by friction
 		if (charVx > 0){
 			charVx -= FRICTIONRATE;
@@ -48,15 +55,14 @@ public class Player {
 			charVx += FRICTIONRATE;
 		}
 			
-
 		if (charx > 650 || charx < 0){
 			//sidewalls
 			charVx = 0;
 		}
 		
-		if (chary < 600 && charVy<20){
+		if (chary < 600 && charVy<150){
 			//floor
-			charVy++;
+			charVy+= 3;
 		}
 		
 		else if (chary > 600){
