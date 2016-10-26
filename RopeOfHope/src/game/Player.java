@@ -1,6 +1,6 @@
 package game;
 
-public class Player {
+public class Player extends Physics{
 	private int charx = 300;
 	private int chary = 300;
 	private double charVy = 0;
@@ -11,7 +11,7 @@ public class Player {
 	private final int CHARSIZE= 30;
 	private final int SPEED = 50;
 	private final int JUMP_POWER = 90;
-	private final double FRICTION_RATE = 1.5;
+	private final double FRICTION_RATE = .5;
 	private final double ROPE_PULL = .2;
 	private final int ROPE_LENGTH = 100; //pixels
 
@@ -51,6 +51,8 @@ public class Player {
 		if (leftKeyPressed && charVx > -TOPSPEED){
 			charVx -= SPEED;
 		}
+		
+		if (isAbleMoveRight( )) //help i can't figure out how to pass the things i need to pass 
 		charx += (int)charVx/5;
 		chary += (int)charVy/5;
 

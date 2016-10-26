@@ -19,7 +19,7 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 	Player circle = new Player(300, 300);
 	Player square = new Player(200, 300);
 	Rope rope = new Rope();
-	public Rectangle[] walls;
+	public static Rectangle[] walls;
 	
 	public static void main(String[] args) {
 		Level1 AlexCantCode = new Level1();
@@ -73,8 +73,10 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 		
 		g.drawLine(circle.getx() + square.getSize() / 2, circle.gety() + square.getSize() / 2,
 		square.getx() + square.getSize() / 2, square.gety() + square.getSize() / 2);
+		
 		double length = Math.hypot(circle.getx()-square.getx(), circle.gety()-square.gety());
 		double angle = Math.atan2(circle.gety()-square.gety(), circle.getx()-square.getx());
+		
 		rope.setLength(length);
 		rope.setAngle(angle);
 	}
