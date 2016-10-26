@@ -6,8 +6,8 @@ public class Player {
 	private int charVy = 0;
 	private int charVx = 0;
 	private final int CHARSIZE= 30;
-	private final int SPEED = 5;
-	private final int JUMP_POWER = 20;
+	private final int SPEED = 50;
+	private final int JUMP_POWER = 100;
 
 	public Player(int x, int y)
     {
@@ -15,14 +15,18 @@ public class Player {
 		chary = y;
     }
 	public void moveRight(){
-		if (charVx < 20){
+		if (charVx < 100){
 			charVx += SPEED;
 		}
 	}
 	public void moveLeft(){	
-		if (charVx > -20){
+		if (charVx > -100){
 			charVx -= SPEED;
 		}
+	}
+	public void ropePull(double force, double angle){	
+		charVx -= force*force*Math.cos(angle)/2500;
+		charVy -= force*force*Math.sin(angle)/2500;
 	}
 	public void jump(){
 		if (charVy == 0){
@@ -30,17 +34,17 @@ public class Player {
 		}
 	}
 	public void timePassed(){
-		charx += charVx;
-		chary += charVy;
+		charx += (int)charVx/5;
+		chary += (int)charVy/5;
 
 		if (charx > 650 || charx < 0){
 			//walls
 			charVx = 0;
 		}
 		
-		if (chary < 600 && charVy<20){
+		if (chary < 600 && charVy<150){
 			//floor
-			charVy++;
+			charVy+= 3;
 		}
 		
 		else if (chary > 600){
