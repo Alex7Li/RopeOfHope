@@ -17,13 +17,13 @@ public class Player {
 		chary = y;
     }
 	
-	public void moveRight(){
+	public void accelerateRight(){
 		if (charVx < TOPSPEED){
 			charVx += SPEED;
 		}
 	}
 	
-	public void moveLeft(){	
+	public void accelerateLeft(){	
 
 		if (charVx > -TOPSPEED){
 			charVx -= SPEED;
@@ -32,6 +32,7 @@ public class Player {
 	public void ropePull(double force, double angle){	
 		charVx -= force*force*Math.cos(angle)/2500;
 		charVy -= force*force*Math.sin(angle)/2500;
+		// damn son
 	}
 	
 	public void jump(){
@@ -42,7 +43,8 @@ public class Player {
 	
 	public void timePassed(){
 		//this allows for move smooth movements
-		//cool
+		
+		//make a rectangle r that is about 4 pixels to the right of the middle of the shape... if it .intersectsWith a wall then dont move right
 		charx += (int)charVx/5;
 		chary += (int)charVy/5;
 

@@ -84,19 +84,19 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 		int k = e.getKeyCode();
 
 		if (k == KeyEvent.VK_RIGHT) {
-			circle.moveRight();
+			circle.accelerateRight();
 		}
 		if (k == KeyEvent.VK_LEFT) {
-			circle.moveLeft();
+			circle.accelerateLeft();
 		}
 		if (k == KeyEvent.VK_UP) {
 			circle.jump();
 		}
 		if (k == KeyEvent.VK_D) {
-			square.moveRight();
+			square.accelerateRight();
 		}
 		if (k == KeyEvent.VK_A) {
-			square.moveLeft();
+			square.accelerateLeft();
 		}
 		if (k == KeyEvent.VK_W) {
 			square.jump();
