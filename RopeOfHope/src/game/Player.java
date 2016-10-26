@@ -22,18 +22,18 @@ public class Player {
     }
 	
 	public void ropePull(double force, double angle){	
-		if(angle>0){
+		//very broken
+		if(Math.PI>angle && angle>0 ){
 			charVy -= Math.max(0,(force*Math.sin(angle)-ROPE_LENGTH)*ROPE_PULL);
 		}
 		else{
 			charVy += Math.max(0,(-force*Math.sin(angle)-ROPE_LENGTH)*ROPE_PULL);
 		}
-		if (angle > - Math.PI/2 && angle < Math.PI/2){
-			charVx -= Math.max(0,(-force*Math.cos(angle)-ROPE_LENGTH)*ROPE_PULL);
+		if ((angle > - Math.PI/2 && angle < Math.PI/2) || angle > 3*Math.PI/2){
+			charVx -= Math.max(0,(force*Math.cos(angle)-ROPE_LENGTH)*ROPE_PULL);
 		}
 		else{
-			charVx -= Math.max(0,(force*Math.cos(angle)-ROPE_LENGTH)*ROPE_PULL);
-
+			charVx += Math.max(0,(-force*Math.cos(angle)-ROPE_LENGTH)*ROPE_PULL);
 		}
 	}
 	
