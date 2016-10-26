@@ -32,9 +32,8 @@ public class Player {
 		}
 	}
 	public void ropePull(double force, double angle){	
-		charVx -= Math.max(0,force*Math.cos(angle)*ROPE_PULL-ROPE_PULL*ROPE_LENGTH);
-		charVy -= Math.max(0,force*Math.sin(angle)*ROPE_PULL-ROPE_PULL*ROPE_LENGTH);
-
+		charVx -= force*Math.cos(angle)*ROPE_PULL;
+		charVy -= force*Math.sin(angle)*ROPE_PULL;
 	}
 	
 	public void jump(){
