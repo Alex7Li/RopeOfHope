@@ -85,19 +85,19 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 		int k = e.getKeyCode();
 
 		if (k == KeyEvent.VK_RIGHT) {
-			circle.accelerateRight();
+			circle.setRightKeyPressed(true);
 		}
 		if (k == KeyEvent.VK_LEFT) {
-			circle.accelerateLeft();
+			circle.setLeftKeyPressed(true);
 		}
 		if (k == KeyEvent.VK_UP) {
 			circle.jump();
 		}
 		if (k == KeyEvent.VK_D) {
-			square.accelerateRight();
+			square.setRightKeyPressed(true);
 		}
 		if (k == KeyEvent.VK_A) {
-			square.accelerateLeft();
+			square.setLeftKeyPressed(true);
 		}
 		if (k == KeyEvent.VK_W) {
 			square.jump();
@@ -110,15 +110,26 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 	}
 
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+		int k = e.getKeyCode();
 
+		if (k == KeyEvent.VK_RIGHT) {
+			circle.setRightKeyPressed(false);
+		}
+		if (k == KeyEvent.VK_LEFT) {
+			circle.setLeftKeyPressed(false);
+		}
+		if (k == KeyEvent.VK_D) {
+			square.setRightKeyPressed(false);
+		}
+		if (k == KeyEvent.VK_A) {
+			square.setLeftKeyPressed(false);
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		rope.timePassed(circle, square);
 		circle.timePassed();
 		square.timePassed();
-		
 		repaint();
 
 	}
