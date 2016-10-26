@@ -12,13 +12,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+
 @SuppressWarnings("serial")
 public class Level1 extends JPanel implements ActionListener, KeyListener {
 	private Timer t = new Timer(30, this);
 	Player circle = new Player(300, 300);
 	Player square = new Player(200, 300);
 	Rope rope = new Rope();
-
+	public Rectangle[] walls;
+	
 	public static void main(String[] args) {
 		Level1 AlexCantCode = new Level1();
 		JFrame frame = new JFrame("Rope of Hope");
@@ -52,7 +54,7 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 		int[] width = { 100, 50, 32 };
 		int[] height = { 100, 30, 10 };
 
-		Rectangle[] walls = new Rectangle[x.length];
+		walls = new Rectangle[x.length];
 		for (int i = 0; i < x.length; i++) {
 			Rectangle r = new Rectangle(x[i], y[i], width[i], height[i]);
 			walls[i] = r;
