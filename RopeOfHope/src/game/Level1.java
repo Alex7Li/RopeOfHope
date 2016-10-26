@@ -61,9 +61,6 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 			// array with rectangles in it
 			g.fillRect(x[i], y[i], width[i], height[i]);
 		}
-		// add wall physics (Just do level 1 for now)
-		// do this in the actionPerformed Method, at the bottom
-		// also add a exit rectangle (Just like a blue rectangle)
 	}
 
 	public void paintComponent(Graphics g) {
@@ -80,26 +77,25 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 		double angle = Math.atan2(circle.gety()-square.gety(), circle.getx()-square.getx());
 		rope.setLength(length);
 		rope.setAngle(angle);
-		g.drawString(Double.toString(angle), 30, 10);
 	}
 
 	public void keyPressed(KeyEvent e) {
 		int k = e.getKeyCode();
 
 		if (k == KeyEvent.VK_RIGHT) {
-			circle.accelerateRight();
+			circle.setRightKeyPressed(true);
 		}
 		if (k == KeyEvent.VK_LEFT) {
-			circle.accelerateLeft();
+			circle.setLeftKeyPressed(true);
 		}
 		if (k == KeyEvent.VK_UP) {
 			circle.jump();
 		}
 		if (k == KeyEvent.VK_D) {
-			square.accelerateRight();
+			square.setRightKeyPressed(true);
 		}
 		if (k == KeyEvent.VK_A) {
-			square.accelerateLeft();
+			square.setLeftKeyPressed(true);
 		}
 		if (k == KeyEvent.VK_W) {
 			square.jump();
@@ -112,15 +108,26 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 	}
 
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+		int k = e.getKeyCode();
 
+		if (k == KeyEvent.VK_RIGHT) {
+			circle.setRightKeyPressed(false);
+		}
+		if (k == KeyEvent.VK_LEFT) {
+			circle.setLeftKeyPressed(false);
+		}
+		if (k == KeyEvent.VK_D) {
+			square.setRightKeyPressed(false);
+		}
+		if (k == KeyEvent.VK_A) {
+			square.setLeftKeyPressed(false);
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		rope.timePassed(circle, square);
 		circle.timePassed();
 		square.timePassed();
-		
 		repaint();
 
 	}

@@ -9,7 +9,7 @@ public class Rope {
     }
 	public void timePassed(Player one, Player two){
 		one.ropePull(length,angle);
-		two.ropePull(length,(angle+Math.PI));
+		two.ropePull(length,angle+Math.PI);
 	}
 	public void setLength(double l){
 		length = l;

@@ -5,11 +5,13 @@ public class Player {
 	private int chary = 300;
 	private double charVy = 0;
 	private double charVx = 0;
+	private boolean rightKeyPressed;
+	private boolean leftKeyPressed;
 	private final int TOPSPEED = 5;
 	private final int CHARSIZE= 30;
 	private final int SPEED = 50;
 	private final int JUMP_POWER = 90;
-	private final double FRICTION_RATE = .8;
+	private final double FRICTION_RATE = 1.5;
 	private final double ROPE_PULL = .2;
 	private final int ROPE_LENGTH = 100; //pixels
 
@@ -19,21 +21,19 @@ public class Player {
 		chary = y;
     }
 	
-	public void accelerateRight(){
-		if (charVx < TOPSPEED){
-			charVx += SPEED;
-		}
-	}
-	
-	public void accelerateLeft(){	
-
-		if (charVx > -TOPSPEED){
-			charVx -= SPEED;
-		}
-	}
 	public void ropePull(double force, double angle){	
-		charVx -= force*Math.cos(angle)*ROPE_PULL;
-		charVy -= force*Math.sin(angle)*ROPE_PULL;
+		if(Math.PI > angle && angle>0){
+			charVy -= Math.max(0,(force*Math.sin(angle)-ROPE_LENGTH)*ROPE_PULL);
+		}
+		else{
+			charVy += Math.max(0,(-force*Math.sin(angle)-ROPE_LENGTH)*ROPE_PULL);
+		}
+		if ((angle > - Math.PI/2 && angle < Math.PI/2) || angle > 3*Math.PI/2){
+			charVx -= Math.max(0,(force*Math.cos(angle)-ROPE_LENGTH)*ROPE_PULL);
+		}
+		else{
+			charVx += Math.max(0,(-force*Math.cos(angle)-ROPE_LENGTH)*ROPE_PULL);
+		}
 	}
 	
 	public void jump(){
@@ -45,6 +45,12 @@ public class Player {
 		//this allows for move smooth movements
 		
 		//make a rectangle r that is about 4 pixels to the right of the middle of the shape... if it .intersectsWith a wall then dont move right
+		if (rightKeyPressed && charVx < TOPSPEED){
+			charVx += SPEED;
+		}
+		if (leftKeyPressed && charVx > -TOPSPEED){
+			charVx -= SPEED;
+		}
 		charx += (int)charVx/5;
 		chary += (int)charVy/5;
 
@@ -108,6 +114,14 @@ public class Player {
 	}
 	public void setCharVx(double charVx) {
 		this.charVx = charVx;
+	}
+
+	public void setRightKeyPressed(boolean rightKeyPressed) {
+		this.rightKeyPressed = rightKeyPressed;
+	}
+
+	public void setLeftKeyPressed(boolean leftKeyPressed) {
+		this.leftKeyPressed = leftKeyPressed;
 	}
 	
 	
