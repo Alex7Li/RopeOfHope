@@ -63,11 +63,11 @@ public class Player {
 		
 		if (chary < 600 && charVy<150){
 			//floor
-			charVy+= 3;
+			charVy += 3;
 		}
 		
 		else if (chary > 600){
-			charVy=0;
+			charVy = 0;
 		}
 
 	}
