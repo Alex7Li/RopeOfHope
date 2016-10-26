@@ -13,7 +13,7 @@ public class Player {
 	private final int JUMP_POWER = 90;
 	private final double FRICTION_RATE = 1.5;
 	private final double ROPE_PULL = .2;
-	//private final int ROPE_LENGTH = 100; //pixels
+	private final int ROPE_LENGTH = 100; //pixels
 
 	public Player(int x, int y)
     {
@@ -22,8 +22,19 @@ public class Player {
     }
 	
 	public void ropePull(double force, double angle){	
-		charVx -= force*Math.cos(angle)*ROPE_PULL;
-		charVy -= force*Math.sin(angle)*ROPE_PULL;
+		if(angle>0){
+			charVy -= Math.max(0,(force*Math.sin(angle)-ROPE_LENGTH)*ROPE_PULL);
+		}
+		else{
+			charVy += Math.max(0,(-force*Math.sin(angle)-ROPE_LENGTH)*ROPE_PULL);
+		}
+		if (angle > - Math.PI/2 && angle < Math.PI/2){
+			charVx -= Math.max(0,(-force*Math.cos(angle)-ROPE_LENGTH)*ROPE_PULL);
+		}
+		else{
+			charVx -= Math.max(0,(force*Math.cos(angle)-ROPE_LENGTH)*ROPE_PULL);
+
+		}
 	}
 	
 	public void jump(){
