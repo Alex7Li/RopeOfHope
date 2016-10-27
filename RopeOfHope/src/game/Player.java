@@ -4,6 +4,7 @@ public class Player extends Physics{
 	
 	public int maxJumps = 1;
 	
+	private boolean isLandSoundValid = true;
 	private int currentJumps; 
 	private int charx = 300;
 	private int chary = 300;
@@ -60,28 +61,22 @@ public class Player extends Physics{
 		    charx += (int)charVx/5;
 		}
 		else {
-			charVx = 0;
+			charVx = 0; 
 		}
 		
 		if (isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
 		    chary += (int)charVy/5;
+		    if (isTheLandingSoundValid(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
+		    	isLandSoundValid = true;
+		    }
 		}
 		else {
 			charVy = 0;
 		}
 		    
-		if (charx < 20){
-			//right wall
-			charx = 20;
-			charVx = 0;
-		}
-		if (charx > 650){
-			//left wall
-			charx = 650;
-			charVx = 0;
-		}
+		
 		// if thing is going left, get slowed down by friction
-		else if (charVx < 0){
+		if (charVx < 0){
 			charVx += FRICTION_RATE;
 			
 		}
@@ -95,8 +90,11 @@ public class Player extends Physics{
 		}
 
 		if (!isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
+			if (isLandSoundValid){
+			    Audio.doAudioJunk("thud");
+			    isLandSoundValid = false;
+			}
 			currentJumps = 0;
-			Audio.doAudioJunk("thud");
 		}
 
 
