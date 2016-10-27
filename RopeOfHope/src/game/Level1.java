@@ -19,13 +19,16 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 	Player circle = new Player(300, 300);
 	Player square = new Player(200, 300);
 	Rope rope = new Rope();
-	Physics physics = new Physics();
-	 static int wallNum = 6;
-	 int[] x = new int[wallNum];
-	 int[] y = new int[wallNum];
-	 int[] width = new int[wallNum];
-	 int[] height = new int[wallNum];
-	 public static Rectangle[]  walls = new Rectangle[wallNum];
+    Physics physics = new Physics();
+    
+	//this is the array declaration you gotta change
+    static int wallNum = 6;
+	int[] x = new int[wallNum];
+	int[] y = new int[wallNum];
+	int[] width = new int[wallNum];
+	int[] height = new int[wallNum];
+	public static Rectangle[]  walls = new Rectangle[wallNum];
+	
 	
 	
 	public static void main(String[] args) {

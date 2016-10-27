@@ -1,11 +1,9 @@
 package game;
 
 import java.io.File;
-import java.io.InputStream;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
 
 public class Audio {
 	
@@ -38,3 +36,5 @@ public class Audio {
 	}
 	
 }
+
+
