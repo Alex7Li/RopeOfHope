@@ -43,19 +43,22 @@ public class Player extends Physics{
 	}
 	
 	public void timePassed(){
-		//this allows for move smooth movements
 		
-		//make a rectangle r that is about 4 pixels to the right of the middle of the shape... if it .intersectsWith a wall then dont move right
+		
 		if (rightKeyPressed && charVx < TOPSPEED){
 			charVx += SPEED;
 		}
 		if (leftKeyPressed && charVx > -TOPSPEED){
 			charVx -= SPEED;
 		}
+		if (isAbleMoveRight(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
+		    charx += (int)charVx/5;
+		}
 		
-		charx += (int)charVx/5;
-		chary += (int)charVy/5;
-
+		if(isAbleMoveRight(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
+		    chary += (int)charVy/5;
+		}
+		    
 		if (charx < 20){
 			//right wall
 			charx = 20;
@@ -106,6 +109,15 @@ public class Player extends Physics{
 	public int getSize(){
 		return CHARSIZE;
 	}
+	
+	public double getXSpeed(){	
+		return charVx;
+	}
+	
+	public double getYSpeed(){	
+		return charVy;
+	}
+	
 	public void setCharx(int charx) {
 		this.charx = charx;
 	}

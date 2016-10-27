@@ -20,7 +20,13 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 	Player square = new Player(200, 300);
 	Rope rope = new Rope();
 	Physics physics = new Physics();
-	public static Rectangle[] walls;
+	
+	 int[] x = new int[3];
+	 int[] y = new int[3];
+	 int[] width = new int[3];
+	 int[] height = new int[3];
+	public static Rectangle[] walls = new Rectangle[3];
+	
 	
 	
 	public static void main(String[] args) {
@@ -42,6 +48,22 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 		setFocusable(true);
 		addKeyListener(this);
 		setBackground(Color.WHITE);
+		
+		int[] x = { 100, 200, 123 };
+		int[] y = { 100, 200, 500 };
+		int[] width = { 100, 50, 32 };
+		int[] height = { 100, 30, 10 };
+		
+		this.x = x;
+		this.y = y; 
+		this.width = width;
+		this.height = height;
+		
+		for (int i = 0; i < x.length; i++) {
+			Rectangle r = new Rectangle(x[i], y[i], width[i], height[i]);
+			walls[i] = r;
+		}
+		
 		setLayout(null);
 		t.start();
 		setVisible(true);
@@ -51,16 +73,8 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 	public void paint(Graphics g) {
 		super.paint(g);
 		g.setColor(Color.BLACK);
-		int[] x = { 100, 200, 123 };
-		int[] y = { 100, 200, 500 };
-		int[] width = { 100, 50, 32 };
-		int[] height = { 100, 30, 10 };
-
-		walls = new Rectangle[x.length];
+		
 		for (int i = 0; i < x.length; i++) {
-			Rectangle r = new Rectangle(x[i], y[i], width[i], height[i]);
-			walls[i] = r;
-			// array with rectangles in it
 			g.fillRect(x[i], y[i], width[i], height[i]);
 		}
 	}
@@ -96,18 +110,20 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 		}
 		switch(k){
 		case KeyEvent.VK_D:
-			square.setRightKeyPressed(true); break;
+			square.setRightKeyPressed(true); 
+			break;
 		case KeyEvent.VK_A:
-			square.setLeftKeyPressed(true); break;
+			square.setLeftKeyPressed(true); 
+			break;
 		case KeyEvent.VK_W:
-			square.jump(); break;
+			square.jump(); 
+			break;
 		}
 
 	}
 
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -128,10 +144,7 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		for (int i = 0; i <= Level1.walls.length; i++){
-
-			physics.isAbleToMoveRight(circle.getx(),circle.gety(),circle.getSize(),circle.getSize(),walls[i].x,walls[i].y,walls[i].width,walls[i].width);
-		}
+		
 		rope.timePassed(circle, square);
 		circle.timePassed();
 		square.timePassed();
