@@ -28,7 +28,6 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 	 public static Rectangle[]  walls = new Rectangle[wallNum];
 	
 	
-	
 	public static void main(String[] args) {
 		Level1 AlexCantCode = new Level1();
 		JFrame frame = new JFrame("Rope of Hope");

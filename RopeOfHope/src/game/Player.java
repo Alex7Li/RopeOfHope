@@ -1,13 +1,16 @@
 package game;
 
 public class Player extends Physics{
+	
+	public int maxJumps = 1;
+	
+	private int currentJumps; 
 	private int charx = 300;
 	private int chary = 300;
 	private double charVy = 0;
 	private double charVx = 0;
 	private boolean rightKeyPressed;
 	private boolean leftKeyPressed;
-	private boolean hasJumped = false;
 	private final int TOPSPEED = 100;
 	private final int CHARSIZE= 30;
 	private final int SPEED = 4;
@@ -38,9 +41,9 @@ public class Player extends Physics{
 	}
 	
 	public void jump (){
-		if (!hasJumped){
+		if (currentJumps < maxJumps){
 		    charVy -= JUMP_POWER;
-		    hasJumped = !hasJumped;
+		    currentJumps++;
 		}
 	}
 	
@@ -92,7 +95,7 @@ public class Player extends Physics{
 		}
 
 		if (!isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
-			hasJumped = false;
+			currentJumps = 0;
 		}
 
 
