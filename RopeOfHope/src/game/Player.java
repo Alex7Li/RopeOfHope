@@ -43,8 +43,6 @@ public class Player extends Physics{
 	}
 	
 	public void timePassed(){
-		
-		
 		if (rightKeyPressed && charVx < TOPSPEED){
 			charVx += SPEED;
 		}
@@ -56,8 +54,11 @@ public class Player extends Physics{
 		if (isAbleMoveRight(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
 		    charx += (int)charVx/5;
 		}
+		else {
+			charVx = 0;
+		}
 		
-		if(isAbleMoveRight(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
+		if (isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
 		    chary += (int)charVy/5;
 		}
 		else {
@@ -88,7 +89,7 @@ public class Player extends Physics{
 			charVy += 3;
 		}
 		if (chary > 600){
-			chary=600;
+			chary = 600;
 			charVy = 0;
 		}
 		
