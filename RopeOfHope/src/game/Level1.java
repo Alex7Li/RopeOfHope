@@ -40,9 +40,6 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Level1() {
 		setFocusable(true);
 		addKeyListener(this);

@@ -96,6 +96,7 @@ public class Player extends Physics{
 
 		if (!isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
 			currentJumps = 0;
+			Audio.doAudioJunk("thud");
 		}
 
 
