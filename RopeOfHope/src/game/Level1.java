@@ -19,7 +19,9 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 	Player circle = new Player(300, 300);
 	Player square = new Player(200, 300);
 	Rope rope = new Rope();
+	Physics physics = new Physics();
 	public static Rectangle[] walls;
+	
 	
 	public static void main(String[] args) {
 		Level1 AlexCantCode = new Level1();
@@ -126,6 +128,10 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		for (int i = 0; i <= Level1.walls.length; i++){
+
+			physics.isAbleToMoveRight(circle.getx(),circle.gety(),circle.getSize(),circle.getSize(),walls[i].x,walls[i].y,walls[i].width,walls[i].width);
+		}
 		rope.timePassed(circle, square);
 		circle.timePassed();
 		square.timePassed();

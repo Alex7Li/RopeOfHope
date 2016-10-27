@@ -11,13 +11,9 @@ public class Player extends Physics{
 	private final int CHARSIZE= 30;
 	private final int SPEED = 5;
 	private final int JUMP_POWER = 90;
-<<<<<<< HEAD
 	private final double FRICTION_RATE = 2;
 	private final double ROPE_PULL = .1;
-=======
-	private final double FRICTION_RATE = .5;
-	private final double ROPE_PULL = .2;
->>>>>>> branch 'master' of https://github.com/Alex7Li/RopeOfHope.git
+
 	private final int ROPE_LENGTH = 100; //pixels
 
 	public Player(int x, int y)
@@ -57,7 +53,6 @@ public class Player extends Physics{
 			charVx -= SPEED;
 		}
 		
-		if (isAbleMoveRight( )) //help i can't figure out how to pass the things i need to pass 
 		charx += (int)charVx/5;
 		chary += (int)charVy/5;
 
