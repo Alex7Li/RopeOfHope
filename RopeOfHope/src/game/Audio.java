@@ -19,6 +19,9 @@ public class Audio {
 		if (s == "thud"){
 		    clip = new File("thudForRope.wav");
 		}
+		else if (s == "jump"){
+			clip = new File("jumpGameRope.wav");
+		}
 		
 		PlaySound(clip);
 	}

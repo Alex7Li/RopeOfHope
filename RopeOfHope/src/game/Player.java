@@ -45,6 +45,7 @@ public class Player extends Physics{
 		if (currentJumps < maxJumps){
 		    charVy -= JUMP_POWER;
 		    currentJumps++;
+		    Audio.doAudioJunk("jump");
 		}
 	}
 	
