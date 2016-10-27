@@ -51,12 +51,17 @@ public class Player extends Physics{
 		if (leftKeyPressed && charVx > -TOPSPEED){
 			charVx -= SPEED;
 		}
+		
+		//Movement
 		if (isAbleMoveRight(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
 		    charx += (int)charVx/5;
 		}
 		
 		if(isAbleMoveRight(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
 		    chary += (int)charVy/5;
+		}
+		else {
+			charVy = 0;
 		}
 		    
 		if (charx < 20){
