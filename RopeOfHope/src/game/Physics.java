@@ -1,19 +1,29 @@
 package game;
 
+import java.awt.Rectangle;
+
 public class Physics {
 	
-	
-	public Physics(){
+public Physics(){
 		
 	}
-	//even if you use ints it still won't work well because you can go deep enough into thin walls within one frame, 
-	//the player could get stuck in the middle of a wall with the collisions all saying "not touching anything" because the
-	//edges aren't but the center is
-	//much better to treat it as one object
-	//you also need to consider how many pixels this thing can move in one frame, quite a lot because players could potentially
-	//use the string to cataput themselves
+
 	public Boolean isAbleMoveRight(int x1, int y1, int width1, int height1, int x2, int y2, int width2, int height2){
+		return false;
+	}
+	public Boolean isAbleMoveRight(int x1, int y1, int width1, int height1, int speed1,int x2, int y2, int width2, int height2, int speed2){
+		// takes where the other rec will be and where this one will be to determine if they can move.
+		Rectangle right1 = new Rectangle(x1 + width1 + speed1, y1,1,height1 );
+		Rectangle right2 = new Rectangle(x2 + speed2, y2, width2, height2);
 		
+		for (int i = 0; i <= Level1.walls.length; i++){
+		    if (right1.intersects(Level1.walls[i])){
+			    return false;
+		    }
+		    else if (right1.intersects(right2)){
+		    	return false;
+		    }
+		}
 		return true;
 	}
 	
@@ -29,4 +39,3 @@ public class Physics {
     	return true;
     }
 }
-  
