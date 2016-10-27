@@ -9,7 +9,7 @@ public class Player extends Physics{
 	private boolean leftKeyPressed;
 	private final int TOPSPEED = 100;
 	private final int CHARSIZE= 30;
-	private final int SPEED = 5;
+	private final int SPEED = 4;
 	private final int JUMP_POWER = 90;
 	private final double FRICTION_RATE = 2;
 	private final double ROPE_PULL = .1;
@@ -84,23 +84,12 @@ public class Player extends Physics{
 		else if (charVx > 0){
 			charVx -= FRICTION_RATE;
 		}		
-		if (chary < 600 && charVy<150){
+		if (charVy<150){
 			//floor
 			charVy += 3;
 		}
-		if (chary > 600){
-			chary = 600;
-			charVy = 0;
-		}
-		
-		else if (chary <= 600){
-			//floor
-			//should work when touching any surface
-			charVy+= 3;
-		}
-		else if (chary > 600){
-			charVy = 0;
-		}
+
+
 
 	}
 	
