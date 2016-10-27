@@ -20,7 +20,7 @@ public class Audio {
 		    clip = new File("thudForRope.wav");
 		}
 		else if (s == "jump"){
-			clip = new File("jumpGameRope.wav");
+			clip = new File("JokeJumpSound.wav");
 		}
 		
 		PlaySound(clip);
