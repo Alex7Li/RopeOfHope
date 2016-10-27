@@ -7,6 +7,7 @@ public class Player extends Physics{
 	private double charVx = 0;
 	private boolean rightKeyPressed;
 	private boolean leftKeyPressed;
+	private boolean hasJumped = false;
 	private final int TOPSPEED = 100;
 	private final int CHARSIZE= 30;
 	private final int SPEED = 4;
@@ -37,9 +38,11 @@ public class Player extends Physics{
 		}
 	}
 	
-	public void jump(){
-		//needs a better method to test if its touching the ground
-			charVy -= JUMP_POWER;
+	public void jump (){
+		if (!hasJumped){
+		    charVy -= JUMP_POWER;
+		    hasJumped = !hasJumped;
+		}
 	}
 	
 	public void timePassed(){
@@ -89,6 +92,9 @@ public class Player extends Physics{
 			charVy += 3;
 		}
 
+		if (!isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
+			hasJumped = false;
+		}
 
 
 	}
