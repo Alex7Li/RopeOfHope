@@ -20,12 +20,12 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 	Player square = new Player(200, 300);
 	Rope rope = new Rope();
 	Physics physics = new Physics();
-	
-	 int[] x = new int[3];
-	 int[] y = new int[3];
-	 int[] width = new int[3];
-	 int[] height = new int[3];
-	public static Rectangle[] walls = new Rectangle[3];
+	 static int wallNum = 4;
+	 int[] x = new int[wallNum];
+	 int[] y = new int[wallNum];
+	 int[] width = new int[wallNum];
+	 int[] height = new int[wallNum];
+	 public static Rectangle[]  walls = new Rectangle[wallNum];
 	
 	
 	
@@ -49,11 +49,11 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 		addKeyListener(this);
 		setBackground(Color.WHITE);
 		
-		int[] x = { 100, 200, 123 };
-		int[] y = { 100, 200, 500 };
-		int[] width = { 100, 50, 32 };
-		int[] height = { 100, 30, 10 };
-		
+		int[] x =      { 100, 200, 123, 0 };
+		int[] y =      { 100, 200, 500, 650};
+		int[] width =  { 100, 50 , 32,  700};
+		int[] height = { 100, 30 , 10,  40};
+		//this will break, change the length of the array declaration on top
 		this.x = x;
 		this.y = y; 
 		this.width = width;
