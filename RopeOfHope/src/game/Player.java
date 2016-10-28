@@ -1,6 +1,11 @@
 package game;
 
 public class Player extends Physics{
+	
+	public int maxJumps = 1;
+	
+	private boolean isLandSoundValid = true;
+	private int currentJumps; 
 	private int charx = 300;
 	private int chary = 300;
 	private double charVy = 0;
@@ -13,7 +18,6 @@ public class Player extends Physics{
 	private final int JUMP_POWER = 90;
 	private final double FRICTION_RATE = 2;
 	private final double ROPE_PULL = .1;
-
 	private final int ROPE_LENGTH = 100; //pixels
 
 	public Player(int x, int y)
@@ -37,9 +41,12 @@ public class Player extends Physics{
 		}
 	}
 	
-	public void jump(){
-		//needs a better method to test if its touching the ground
-			charVy -= JUMP_POWER;
+	public void jump (){
+		if (currentJumps < maxJumps){
+		    charVy -= JUMP_POWER;
+		    currentJumps++;
+		    Audio.doAudioJunk("jump");
+		}
 	}
 	
 	public void timePassed(){
@@ -55,28 +62,22 @@ public class Player extends Physics{
 		    charx += (int)charVx/5;
 		}
 		else {
-			charVx = 0;
+			charVx = 0; 
 		}
 		
 		if (isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
 		    chary += (int)charVy/5;
+		    if (isTheLandingSoundValid(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
+		    	isLandSoundValid = true;
+		    }
 		}
 		else {
 			charVy = 0;
 		}
 		    
-		if (charx < 20){
-			//right wall
-			charx = 20;
-			charVx = 0;
-		}
-		if (charx > 650){
-			//left wall
-			charx = 650;
-			charVx = 0;
-		}
+		
 		// if thing is going left, get slowed down by friction
-		else if (charVx < 0){
+		if (charVx < 0){
 			charVx += FRICTION_RATE;
 			
 		}
@@ -84,11 +85,18 @@ public class Player extends Physics{
 		else if (charVx > 0){
 			charVx -= FRICTION_RATE;
 		}		
-		if (charVy<150){
-			//floor
+		
+		if (charVy < TOPSPEED){
 			charVy += 3;
 		}
 
+		if (!isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
+			if (isLandSoundValid){
+			    Audio.doAudioJunk("thud");
+			    isLandSoundValid = false;
+			}
+			currentJumps = 0;
+		}
 
 
 	}
