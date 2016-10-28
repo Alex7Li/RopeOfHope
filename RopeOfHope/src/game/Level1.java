@@ -14,10 +14,10 @@ import javax.swing.Timer;
 
 
 @SuppressWarnings("serial")
-public class Level extends JPanel implements ActionListener, KeyListener {
+public class Level1 extends JPanel implements ActionListener, KeyListener {
 	private Timer t = new Timer(30, this);
 	Player circle = new Player(300, 300);
-	Player square = new Player(100, 300);
+	Player square = new Player(200, 300);
 	Rope rope = new Rope();
     Physics physics = new Physics();
     
@@ -30,13 +30,14 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	public static Rectangle[]  walls = new Rectangle[wallNum];
 	
 	
-	public Level() {
+
+	public Level1() {
 		setFocusable(true);
 		addKeyListener(this);
 		setBackground(Color.WHITE);
 		
-		int[] x =      { 0};
-		int[] y =      { 450};
+		int[] x =      { 0,};
+		int[] y =      { 250};
 		int[] width =  { 900};
 		int[] height = { 50};
 		//this will break, change the length of the array declaration on top

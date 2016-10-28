@@ -63,7 +63,7 @@ public class MainMenu extends JFrame {
 	}
 	private void startGame(){
 		JFrame frame = new JFrame("Hello");
-		frame.setBounds(100, 100, 700, 700);
+		frame.setBounds(100, 100, 900, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
