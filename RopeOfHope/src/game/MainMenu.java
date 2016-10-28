@@ -4,8 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -47,6 +49,7 @@ public class MainMenu extends JFrame {
 		JButton btnLevelSelection = new JButton("Level Selection");
 		btnLevelSelection.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				startGame();
 			}
 		});
 		contentPane.add(btnLevelSelection, BorderLayout.WEST);
@@ -54,5 +57,8 @@ public class MainMenu extends JFrame {
 		JButton btnCredits = new JButton("Credits");
 		contentPane.add(btnCredits, BorderLayout.EAST);
 	}
-
+	private void startGame(){
+		Level level1 = new Level();
+		
+	}
 }
