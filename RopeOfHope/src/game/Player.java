@@ -15,7 +15,7 @@ public class Player extends Physics{
 	private double frictionRate = 3;
 	private final int TOPSPEED = 100;
 	private final int GRAVITY = 4;
-	private final int CHARSIZE= 30;
+	private final int CHARSIZE = 50;
 	private final int SPEED = 4;
 	private final int JUMP_POWER = 90;
 	private final double ROPE_PULL = .1;
@@ -72,6 +72,7 @@ public class Player extends Physics{
 		    	isLandSoundValid = true;
 		    }
 		}
+		
 		else {
 			charVy = 0;
 		}
