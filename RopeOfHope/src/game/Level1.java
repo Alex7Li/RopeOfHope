@@ -67,6 +67,8 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 		t.start();
 		setVisible(true);
 		repaint();
+		Audio.doAudioJunk("bg1");
+		
 	}
 
 	public void paint(Graphics g) {

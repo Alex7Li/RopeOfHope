@@ -85,8 +85,8 @@ public class Player extends Physics{
 		else if (charVx > 0){
 			charVx -= FRICTION_RATE;
 		}		
-		if (charVy<150){
-			//floor
+		
+		if (charVy < TOPSPEED){
 			charVy += 3;
 		}
 

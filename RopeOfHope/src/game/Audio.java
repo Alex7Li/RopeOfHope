@@ -20,6 +20,8 @@ public class Audio {
 		else if (s == "jump"){
 			clip = new File("JokeJumpSound.wav");
 		}
+		else if (s == "bg1")
+			clip = new File("Bg1.wav");
 		
 		PlaySound(clip);
 	}
