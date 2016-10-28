@@ -14,7 +14,7 @@ import javax.swing.Timer;
 
 
 @SuppressWarnings("serial")
-public class Level1 extends JPanel implements ActionListener, KeyListener {
+public class Level extends JPanel implements ActionListener, KeyListener {
 	private Timer t = new Timer(30, this);
 	Player circle = new Player(300, 300);
 	Player square = new Player(200, 300);
@@ -30,7 +30,7 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 	
 	
 	public static void main(String[] args) {
-		Level1 AlexCantCode = new Level1();
+		Level AlexCantCode = new Level();
 		JFrame frame = new JFrame("Rope of Hope");
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,7 +44,7 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 	/**
 	 * Create the frame.
 	 */
-	public Level1() {
+	public Level() {
 		setFocusable(true);
 		addKeyListener(this);
 		setBackground(Color.WHITE);
