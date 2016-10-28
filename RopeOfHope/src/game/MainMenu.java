@@ -45,11 +45,15 @@ public class MainMenu extends JFrame {
 		
 		JButton btnStartGame = new JButton("Start Game");
 		contentPane.add(btnStartGame, BorderLayout.SOUTH);
+		btnStartGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				startGame();
+			}
+		});
 		
 		JButton btnLevelSelection = new JButton("Level Selection");
 		btnLevelSelection.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				startGame();
 			}
 		});
 		contentPane.add(btnLevelSelection, BorderLayout.WEST);
@@ -59,6 +63,6 @@ public class MainMenu extends JFrame {
 	}
 	private void startGame(){
 		Level level1 = new Level();
-		
+	
 	}
 }

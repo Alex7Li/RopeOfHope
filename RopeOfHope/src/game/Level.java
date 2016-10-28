@@ -17,7 +17,7 @@ import javax.swing.Timer;
 public class Level extends JPanel implements ActionListener, KeyListener {
 	private Timer t = new Timer(30, this);
 	Player circle = new Player(300, 300);
-	Player square = new Player(200, 300);
+	Player square = new Player(100, 300);
 	Rope rope = new Rope();
     Physics physics = new Physics();
     
@@ -48,10 +48,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		addKeyListener(this);
 		setBackground(Color.WHITE);
 		
-		int[] x =      { 100, 200, 123, 0,   650, 0 };
-		int[] y =      { 100, 200, 500, 0,   0,   650};
-		int[] width =  { 100, 50 , 32,  40,  50,  700};
-		int[] height = { 100, 30 , 10,  700, 700, 40};
+		int[] x =      { 0,   650, 0,   150, 40, 253};
+		int[] y =      { 0,   0,   650, 280, 150, 500};
+		int[] width =  { 40,  50,  700, 100, 50 , 32};
+		int[] height = { 700, 700, 40,  100, 30 , 10,};
 		//this will break, change the length of the array declaration on top
 		this.x = x;
 		this.y = y; 

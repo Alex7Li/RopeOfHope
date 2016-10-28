@@ -12,11 +12,12 @@ public class Player extends Physics{
 	private double charVx = 0;
 	private boolean rightKeyPressed;
 	private boolean leftKeyPressed;
+	private double frictionRate = 3;
 	private final int TOPSPEED = 100;
+	private final int GRAVITY = 4;
 	private final int CHARSIZE= 30;
 	private final int SPEED = 4;
 	private final int JUMP_POWER = 90;
-	private final double FRICTION_RATE = 2;
 	private final double ROPE_PULL = .1;
 	private final int ROPE_LENGTH = 100; //pixels
 
@@ -76,19 +77,26 @@ public class Player extends Physics{
 		}
 		    
 		
+		//increase Friction if on the ground
+		if(!isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
+			frictionRate = 5;
+		}
+		else{
+			frictionRate = 1;
+		}
+		
 		// if thing is going left, get slowed down by friction
 		if (charVx < 0){
-			charVx += FRICTION_RATE;
-			
+			charVx += frictionRate;		
 		}
-		// if thing is going right, get slowed down by friction
+			// if thing is going right, get slowed down by friction
 		else if (charVx > 0){
-			charVx -= FRICTION_RATE;
+			charVx -= frictionRate;
 		}		
 		
 		if (charVy < TOPSPEED){
-			charVy += 3;
-		}
+			charVy += GRAVITY;
+		}	
 
 		if (!isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
 			if (isLandSoundValid){
@@ -97,7 +105,6 @@ public class Player extends Physics{
 			}
 			currentJumps = 0;
 		}
-
 
 	}
 	
