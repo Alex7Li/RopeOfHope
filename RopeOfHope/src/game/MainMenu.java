@@ -62,7 +62,13 @@ public class MainMenu extends JFrame {
 		contentPane.add(btnCredits, BorderLayout.EAST);
 	}
 	private void startGame(){
+		JFrame frame = new JFrame("Hello");
+		frame.setBounds(100, 100, 700, 700);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		
 		Level level1 = new Level();
+		frame.add(level1);
 	
 	}
 }
