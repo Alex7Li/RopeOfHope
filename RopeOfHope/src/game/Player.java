@@ -79,10 +79,10 @@ public class Player extends Physics{
 		    
 		
 		//increase Friction if on the ground
-		if(!isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
+		if (!isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
 			frictionRate = 5;
 		}
-		else{
+		else {
 			frictionRate = 1;
 		}
 		
