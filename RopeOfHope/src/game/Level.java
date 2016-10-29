@@ -15,53 +15,75 @@ import javax.swing.Timer;
 @SuppressWarnings("serial")
 public class Level extends JPanel implements ActionListener, KeyListener {
 	private Timer t = new Timer(30, this);
-	Player circle = new Player(MainMenu.getCirclex(), MainMenu.getCircley());
-	Player square = new Player(MainMenu.getSquarex(), MainMenu.getSquarey());
+	Player circle = new Player(MainMenu.getCirclex(level-1), MainMenu.getCircley(level-1));
+	Player square = new Player(MainMenu.getSquarex(level-1), MainMenu.getSquarey(level-1));
 	Rope rope = new Rope();
     Physics physics = new Physics();
-    
+    static int level = MainMenu.getLevels();
+	static int[] wallNums = {6,6};
+	//wallNums = number of walls in level corresponding to array position.
+	
+	static int[][] xarrs = {
+		{ 0,   650, 0,   150, 40, 253},
+		{ 100, 200, 123, 0,   650, 0 }
+	};
+	//each 1-D array level is a level's x-block positions.
+	static int[][] yarrs = {     
+		{ 0,   0,   650, 280, 150, 500},
+		{ 100, 200, 500, 0,   0,   650}
+	};
+	static int[][] widtharrs = {
+		{ 40,  50,  700, 100, 50 , 32},
+		{ 100, 50 , 32,  40,  50,  700}
+	};
+	static int[][] heightarrs = {
+		{ 700, 700, 40,  100, 30 , 10},
+		{ 100, 30 , 10,  700, 700, 40}
+	};
 	//this is the array declaration you gotta change
-    static int wallNum = 1;
-	int[] x = new int[wallNum];
-	int[] y = new int[wallNum];
-	int[] width = new int[wallNum];
-	int[] height = new int[wallNum];
-	public static Rectangle[]  walls = new Rectangle[wallNum];
+
+	public static Rectangle[]  walls = new Rectangle[wallNums[level-1]];
+	
 	public Level() {
 		setFocusable(true);
 		addKeyListener(this);
-		setBackground(Color.WHITE);		
-	}
-	public void setWallNum(int wallNum) {
-		Level.wallNum = wallNum;
-	}
-	
-	public void createLevel(int[]x ,int[] y, int[] width, int[] height){
+		setBackground(Color.WHITE);	
+		int[] x = new int[wallNums[level-1]];
+		for (int i=0; i<x.length; i++) {
+	           x[i]=xarrs[level-1][i];
+		}
+		int[] y = new int[wallNums[level-1]];   
+		for (int i=0; i<y.length; i++) {
+	           y[i]=yarrs[level-1][i];
+		}
+		int[] width =  new int[wallNums[level-1]];   
+		for (int i=0; i<width.length; i++) {
+	           width[i]=widtharrs[level-1][i];
+		}
 
-		setBackground(Color.WHITE);
-		this.x = x;
-		this.y = y; 
-		this.width = width;
-		this.height = height;
-		
+		int[] height = new int[wallNums[level-1]];   
+		for (int i=0; i<height.length; i++) {
+	           height[i]=heightarrs[level-1][i];
+		}
 		for (int i = 0; i < x.length; i++) {
 			Rectangle r = new Rectangle(x[i], y[i], width[i], height[i]);
 			walls[i] = r;
 		}
+		setBackground(Color.WHITE);
 		
 		setLayout(null);
 		t.start();
 		setVisible(true);
 		repaint();
-		Audio.doAudioJunk("bg1");		
+		Audio.doAudioJunk("bg1");	
 	}
-
+	
 	public void paint(Graphics g) {
 		super.paint(g);
 		g.setColor(Color.BLACK);
 		
-		for (int i = 0; i < x.length; i++) {
-			g.fillRect(x[i], y[i], width[i], height[i]);
+		for (int i = 0; i < xarrs[level-1].length; i++) {
+			g.fillRect(xarrs[level-1][i], yarrs[level-1][i], widtharrs[level-1][i], heightarrs[level-1][i]);
 		}
 	}
 
@@ -93,19 +115,21 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			circle.setLeftKeyPressed(true); break;
 		case KeyEvent.VK_UP:
 			circle.jump(); break;
+		case KeyEvent.VK_DOWN:
+			circle.setDownKeyPressed(true); break;
+		case KeyEvent.VK_0:
+			MainMenu.incrementLevel(); break;
 		}
 		switch(k){
 		case KeyEvent.VK_D:
-			square.setRightKeyPressed(true); 
-			break;
+			square.setRightKeyPressed(true); break;
 		case KeyEvent.VK_A:
-			square.setLeftKeyPressed(true); 
-			break;
+			square.setLeftKeyPressed(true); break;
 		case KeyEvent.VK_W:
-			square.jump(); 
-			break;
+			square.jump(); break;
+		case KeyEvent.VK_S:
+			square.setDownKeyPressed(true); break;
 		}
-
 	}
 
 	public void keyTyped(KeyEvent e) {
@@ -115,18 +139,26 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	public void keyReleased(KeyEvent e) {
 		int k = e.getKeyCode();
 
-		if (k == KeyEvent.VK_RIGHT) {
-			circle.setRightKeyPressed(false);
+		switch(k){
+		case KeyEvent.VK_RIGHT:
+			circle.setRightKeyPressed(false); break;
+		case KeyEvent.VK_LEFT:
+			circle.setLeftKeyPressed(false); break;
+		case KeyEvent.VK_UP:
+			circle.jump(); break;
+		case KeyEvent.VK_DOWN:
+			circle.setDownKeyPressed(false); break;
 		}
-		if (k == KeyEvent.VK_LEFT) {
-			circle.setLeftKeyPressed(false);
+		switch(k){
+			case KeyEvent.VK_D:
+				square.setRightKeyPressed(false); break;
+			case KeyEvent.VK_A:
+				square.setLeftKeyPressed(false); break;
+			case KeyEvent.VK_S:
+				square.setDownKeyPressed(false); break;
 		}
-		if (k == KeyEvent.VK_D) {
-			square.setRightKeyPressed(false);
-		}
-		if (k == KeyEvent.VK_A) {
-			square.setLeftKeyPressed(false);
-		}
+
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {

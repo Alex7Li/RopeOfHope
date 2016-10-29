@@ -12,9 +12,10 @@ public class Player extends Physics{
 	private double charVx = 0;
 	private boolean rightKeyPressed;
 	private boolean leftKeyPressed;
+	private boolean downKeyPressed;
 	private double frictionRate = 3;
-	private final int TOPSPEED = 100;
-	private final int GRAVITY = 4;
+	private int gravity = 4;
+	private final int TOPSPEED = 150;
 	private final int CHARSIZE = 30;
 	private final int SPEED = 4;
 	private final int JUMP_POWER = 90;
@@ -42,7 +43,7 @@ public class Player extends Physics{
 		}
 	}
 	
-	public void jump (){
+	public void jump(){
 		if (currentJumps < maxJumps){
 		    charVy -= JUMP_POWER;
 		    currentJumps++;
@@ -51,6 +52,24 @@ public class Player extends Physics{
 	}
 	
 	public void timePassed(){
+		//increase Friction if on the ground
+		if(!isAbleMoveDown(charx, chary+10, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
+			if(downKeyPressed){
+				frictionRate = 8;
+				gravity = 20;
+			}
+			else{
+				frictionRate = 3;
+				gravity = 4;
+
+			}
+		}
+		else{
+			frictionRate = 1;
+			gravity = 4;
+
+		}
+		
 		if (rightKeyPressed && charVx < TOPSPEED){
 			charVx += SPEED;
 		}
@@ -78,25 +97,17 @@ public class Player extends Physics{
 		}
 		    
 		
-		//increase Friction if on the ground
-		if(!isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
-			frictionRate = 10;
-		}
-		else{
-			frictionRate = 1;
-		}
-		
 		// if thing is going left, get slowed down by friction
 		if (charVx < 0){
-			charVx += frictionRate;		
+				charVx += frictionRate;	
 		}
 			// if thing is going right, get slowed down by friction
 		else if (charVx > 0){
-			charVx -= frictionRate;
+				charVx -= frictionRate;	
 		}		
 		
 		if (charVy < TOPSPEED){
-			charVy += GRAVITY;
+			charVy += gravity;
 		}	
 
 		if (!isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
@@ -148,6 +159,10 @@ public class Player extends Physics{
 
 	public void setLeftKeyPressed(boolean leftKeyPressed) {
 		this.leftKeyPressed = leftKeyPressed;
+	}
+
+	public void setDownKeyPressed(boolean downKeyPressed) {
+		this.downKeyPressed = downKeyPressed;
 	}
 	
 	
