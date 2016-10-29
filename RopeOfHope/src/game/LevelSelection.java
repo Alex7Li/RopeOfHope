@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class LevelSelection extends JFrame {
 
 	private JPanel contentPane;
@@ -44,9 +45,7 @@ public class LevelSelection extends JFrame {
 		JButton btnlevel1 = new JButton("Level1");
 		btnlevel1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for(int i = 0; i<1; i++){
-					MainMenu.incrementLevel();
-				}
+					MainMenu.startGame();
 			}
 		});
 		contentPane.add(btnlevel1);
@@ -54,7 +53,7 @@ public class LevelSelection extends JFrame {
 		JButton btnlevel2 = new JButton("Level2");
 		btnlevel2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for(int i = 0; i<2; i++){
+				for(int i = 0; i<1; i++){
 					MainMenu.incrementLevel();
 				}
 			}
