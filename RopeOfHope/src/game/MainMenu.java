@@ -73,7 +73,7 @@ public class MainMenu extends JFrame {
 	}
 	private static void startGame(){
 		JFrame frame = new JFrame("Level 1");
-		frame.setBounds(100, 100, 700, 900);
+		frame.setBounds(100, 100, 900, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		//iterate through a level of the 2-D arrays to get the x, y, width, and height

@@ -97,22 +97,12 @@ public class Player extends Physics{
 		}
 		    
 		
-		//increase Friction if on the ground
-		if (!isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
-			frictionRate = 5;
-		}
-		else {
-			frictionRate = 1;
-		}
 		
-		// if thing is going left, get slowed down by friction
-		if (charVx < 0){
-				charVx *= frictionRate;	
-		}
-			// if thing is going right, get slowed down by friction
-		else if (charVx > 0){
-				charVx *= frictionRate;	
-		}		
+		// if thing is going, get slowed down by friction
+
+		charVx = frictionRate * charVx;	
+		
+			
 		
 		if (charVy < TOPSPEED){
 			charVy += gravity;

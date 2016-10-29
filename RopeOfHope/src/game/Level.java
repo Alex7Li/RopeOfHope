@@ -29,8 +29,8 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	};
 	//each 1-D array level is a level's x-block positions.
 	static int[][] yarrs = {     
-		{ 0,   0,   650, 280, 150, 500},
-		{ 100, 200, 500, 0,   0,   650}
+		{ 0,   0,   550, 280, 150, 500},
+		{ 100, 200, 500, 0,   0,   550}
 	};
 	static int[][] widtharrs = {
 		{ 40,  50,  700, 100, 50 , 32},
