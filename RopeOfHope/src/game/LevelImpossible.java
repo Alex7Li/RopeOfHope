@@ -8,37 +8,39 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
 @SuppressWarnings("serial")
-public class Level extends JPanel implements ActionListener, KeyListener {
+public class LevelImpossible extends JPanel implements ActionListener, KeyListener {
 	private Timer t = new Timer(30, this);
-	Player circle = new Player(MainMenu.getCirclex(), MainMenu.getCircley());
-	Player square = new Player(MainMenu.getSquarex(), MainMenu.getSquarey());
+	Player circle = new Player(300, 300);
+	Player square = new Player(200, 300);
 	Rope rope = new Rope();
     Physics physics = new Physics();
     
 	//this is the array declaration you gotta change
-    static int wallNum = 1;
+    static int wallNum = 6;
 	int[] x = new int[wallNum];
 	int[] y = new int[wallNum];
 	int[] width = new int[wallNum];
 	int[] height = new int[wallNum];
 	public static Rectangle[]  walls = new Rectangle[wallNum];
-	public Level() {
+	
+	
+
+	public LevelImpossible() {
 		setFocusable(true);
 		addKeyListener(this);
-		setBackground(Color.WHITE);		
-	}
-	public void setWallNum(int wallNum) {
-		Level.wallNum = wallNum;
-	}
-	
-	public void createLevel(int[]x ,int[] y, int[] width, int[] height){
-
 		setBackground(Color.WHITE);
+		
+		int[] x =      { 100, 200, 123, 0,   650, 0 };
+		int[] y =      { 100, 200, 500, 0,   0,   650};
+		int[] width =  { 100, 50 , 32,  40,  50,  700};
+		int[] height = { 100, 30 , 10,  700, 700, 40};
+		//this will break, change the length of the array declaration on top
 		this.x = x;
 		this.y = y; 
 		this.width = width;
@@ -53,7 +55,8 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		t.start();
 		setVisible(true);
 		repaint();
-		Audio.doAudioJunk("bg1");		
+		Audio.doAudioJunk("bg1");
+		
 	}
 
 	public void paint(Graphics g) {
@@ -136,5 +139,4 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		square.timePassed();
 		repaint();
 	}
-
 }

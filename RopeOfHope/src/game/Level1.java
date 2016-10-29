@@ -22,7 +22,7 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
     Physics physics = new Physics();
     
 	//this is the array declaration you gotta change
-    static int wallNum = 6;
+    static int wallNum = 1;
 	int[] x = new int[wallNum];
 	int[] y = new int[wallNum];
 	int[] width = new int[wallNum];
@@ -30,28 +30,16 @@ public class Level1 extends JPanel implements ActionListener, KeyListener {
 	public static Rectangle[]  walls = new Rectangle[wallNum];
 	
 	
-	
-	public static void main(String[] args) {
-		Level1 AlexCantCode = new Level1();
-		JFrame frame = new JFrame("Rope of Hope");
-		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(700, 700);
-		frame.add(AlexCantCode);
-		frame.setVisible(true);
-		frame.repaint();
-
-	}
 
 	public Level1() {
 		setFocusable(true);
 		addKeyListener(this);
 		setBackground(Color.WHITE);
 		
-		int[] x =      { 100, 200, 123, 0,   650, 0 };
-		int[] y =      { 100, 200, 500, 0,   0,   650};
-		int[] width =  { 100, 50 , 32,  40,  50,  700};
-		int[] height = { 100, 30 , 10,  700, 700, 40};
+		int[] x =      { 0,};
+		int[] y =      { 250};
+		int[] width =  { 900};
+		int[] height = { 50};
 		//this will break, change the length of the array declaration on top
 		this.x = x;
 		this.y = y; 
