@@ -171,5 +171,4 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		square.timePassed();
 		repaint();
 	}
-
 }
