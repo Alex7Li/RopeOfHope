@@ -27,22 +27,24 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	
 	static int[][] xarrs = {
 		{ 0,   850, 0, 150, 40, 253},
-		{ 0,   850, 0, 100, 300, 123}
+		{ 0,   650, 0,   150, 40, 253}
 	};
 	//each 1-D array level is a level's x-block positions.
 	static int[][] yarrs = {     
 		{ 0,   0,   550, 280, 150, 500},
-		{ 0,   0,   550, 100, 200, 20}
+		{ 0,   0,   550, 280, 150, 500}
+		
 	};
 	
 	static int[][] widtharrs = {
 		{ 40,  50,  700, 100, 50 , 32},
-		{ 40,  50,  700, 70, 10 , 32}
+		{ 40,  50,  700, 100, 50 , 32}
 	};
 	
 	static int[][] heightarrs = {
 		{ 700, 700, 40, 100, 30 , 10},
 		{ 700, 700, 40, 340, 30 , 330}
+
 	};
 
 	public static Rectangle[]  walls = new Rectangle[wallNums[level-1]];
@@ -53,7 +55,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		setBackground(Color.WHITE);	
 	    level = MainMenu.getLevel();    
 		int[] x = new int[wallNums[level-1]];
-		for (int i=0; i<x.length; i++) {
+		for (int i=0; i < x.length; i++) {
 	           x[i]=xarrs[level-1][i];
 		}
 		int[] y = new int[wallNums[level-1]];   
