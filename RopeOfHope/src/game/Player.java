@@ -13,7 +13,7 @@ public class Player extends Physics{
 	private boolean rightKeyPressed;
 	private boolean leftKeyPressed;
 	private boolean downKeyPressed;
-	private double frictionRate = 3;
+	private double frictionRate;
 	private int gravity = 4;
 	private final int TOPSPEED = 150;
 	private final int CHARSIZE = 30;
@@ -55,17 +55,17 @@ public class Player extends Physics{
 		//increase Friction if on the ground
 		if(!isAbleMoveDown(charx, chary+10, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
 			if(downKeyPressed){
-				frictionRate = 8;
+				frictionRate = .2;
 				gravity = 20;
 			}
 			else{
-				frictionRate = 3;
+				frictionRate = .9;
 				gravity = 4;
 
 			}
 		}
 		else{
-			frictionRate = 1;
+			frictionRate = .98;
 			gravity = 4;
 
 		}
@@ -99,11 +99,11 @@ public class Player extends Physics{
 		
 		// if thing is going left, get slowed down by friction
 		if (charVx < 0){
-				charVx += frictionRate;	
+				charVx *= frictionRate;	
 		}
 			// if thing is going right, get slowed down by friction
 		else if (charVx > 0){
-				charVx -= frictionRate;	
+				charVx *= frictionRate;	
 		}		
 		
 		if (charVy < TOPSPEED){
