@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -16,8 +15,8 @@ import javax.swing.Timer;
 @SuppressWarnings("serial")
 public class Level extends JPanel implements ActionListener, KeyListener {
 	private Timer t = new Timer(30, this);
-	Player circle = new Player(300, 300);
-	Player square = new Player(100, 300);
+	Player circle = new Player(MainMenu.getCirclex(), MainMenu.getCircley());
+	Player square = new Player(MainMenu.getSquarex(), MainMenu.getSquarey());
 	Rope rope = new Rope();
     Physics physics = new Physics();
     
@@ -28,30 +27,18 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	int[] width = new int[wallNum];
 	int[] height = new int[wallNum];
 	public static Rectangle[]  walls = new Rectangle[wallNum];
-	
-	
-	
-	public static void main(String[] args) {
-		Level AlexCantCode = new Level();
-		JFrame frame = new JFrame("Rope of Hope");
-		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(700, 700);
-		frame.add(AlexCantCode);
-		frame.setVisible(true);
-		frame.repaint();
-
-	}
 
 	public Level() {
 		setFocusable(true);
 		addKeyListener(this);
-		setBackground(Color.WHITE);
-		
-		int[] x =      { 0,   650, 0,   150, 40, 253};
-		int[] y =      { 0,   0,   650, 280, 150, 500};
-		int[] width =  { 40,  50,  700, 100, 50 , 32};
-		int[] height = { 700, 700, 40,  100, 30 , 10,};
+		setBackground(Color.WHITE);		
+	}
+	public void setWallNum(int wallNum) {
+		Level.wallNum = wallNum;
+	}
+	
+	public void createLevel(int[]x ,int[] y, int[] width, int[] height){
+
 		//this will break, change the length of the array declaration on top
 		this.x = x;
 		this.y = y; 
@@ -67,8 +54,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		t.start();
 		setVisible(true);
 		repaint();
-		Audio.doAudioJunk("bg1");
-		
+		Audio.doAudioJunk("bg1");		
 	}
 
 	public void paint(Graphics g) {
@@ -151,4 +137,5 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		square.timePassed();
 		repaint();
 	}
+
 }

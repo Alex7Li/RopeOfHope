@@ -15,7 +15,7 @@ public class Player extends Physics{
 	private double frictionRate = 3;
 	private final int TOPSPEED = 100;
 	private final int GRAVITY = 4;
-	private final int CHARSIZE = 50;
+	private final int CHARSIZE = 30;
 	private final int SPEED = 4;
 	private final int JUMP_POWER = 90;
 	private final double ROPE_PULL = .1;
@@ -80,7 +80,7 @@ public class Player extends Physics{
 		
 		//increase Friction if on the ground
 		if(!isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
-			frictionRate = 5;
+			frictionRate = 10;
 		}
 		else{
 			frictionRate = 1;
