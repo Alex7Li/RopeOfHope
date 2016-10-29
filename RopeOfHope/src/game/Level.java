@@ -21,7 +21,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
     static int level = 1;   
 	Player circle = new Player(MainMenu.getCirclex(level), MainMenu.getCircley(level));
 	Player square = new Player(MainMenu.getSquarex(level), MainMenu.getSquarey(level));
-	
+	Exit exit = new Exit(MainMenu.getExitx(level), MainMenu.getExity(level));
 	static int[] wallNums = {6,6};
 	//wallNums = number of walls in level corresponding to array position.
 	
@@ -81,6 +81,12 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		repaint();
 	}
 	
+	public void nextLevel(){
+		setVisible(false);
+		MainMenu.incrementLevel();
+		MainMenu.startGame();
+		
+	}
 	public void paint(Graphics g) {
 		super.paint(g);
 		g.setColor(Color.BLACK);
@@ -88,6 +94,9 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		for (int i = 0; i < xarrs[level-1].length; i++) {
 			g.fillRect(xarrs[level-1][i], yarrs[level-1][i], widtharrs[level-1][i], heightarrs[level-1][i]);
 		}
+		g.setColor(Color.GREEN);
+
+		g.fillRect(exit.x, exit.y, 50, 50);
 	}
 
 	public void paintComponent(Graphics g) {
@@ -121,7 +130,11 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		case KeyEvent.VK_DOWN:
 			circle.setDownKeyPressed(true); break;
 		case KeyEvent.VK_0:
-			MainMenu.incrementLevel(); break;
+			nextLevel(); break;
+		case KeyEvent.VK_M:
+	        this.setVisible(false);
+	        MainMenu.setLevel(1);
+	        new MainMenu().setVisible(true); break;
 		}
 		switch(k){
 		case KeyEvent.VK_D:

@@ -1,7 +1,5 @@
 package game;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -16,22 +14,6 @@ public class LevelSelection extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LevelSelection frame = new LevelSelection();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public LevelSelection() {
@@ -43,23 +25,32 @@ public class LevelSelection extends JFrame {
 		contentPane.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JButton btnlevel1 = new JButton("Level1");
-		btnlevel1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-					MainMenu.startGame();
-			}
-		});
-		contentPane.add(btnlevel1);
+		addLevel(btnlevel1,1);
+
 
 		JButton btnlevel2 = new JButton("Level2");
-		btnlevel2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				for(int i = 0; i<1; i++){
-					MainMenu.incrementLevel();
-				}
-			}
-		});
-		contentPane.add(btnlevel2);
-
+		addLevel(btnlevel2,2);
+		
+		JButton btnlevel3 = new JButton("Level 3");
+		addLevel(btnlevel3,3);
+		
 	}
 
+	public void addLevel(JButton btnName, int level){
+		if (level <= MainMenu.getHighestLevelReached()){
+		
+			btnName.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					for(int i = 0; i<level-1; i++){
+						MainMenu.incrementLevel();
+					}
+					MainMenu.startGame();
+				}
+			});
+		}
+		else{
+			btnName.setText("Level " + level + " (locked)");
+		}
+		contentPane.add(btnName);
+	}
 }

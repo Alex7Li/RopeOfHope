@@ -21,8 +21,9 @@ public class MainMenu extends JFrame {
 	static int circley[] = {200,200};
 	static int squarex[] = {200,200};
 	static int squarey[] = {200,200};
-	
-	
+	static int exitx[] = {150, 50};
+	static int exity[] = {200, 350};
+
 	
 	private JPanel contentPane;
 
@@ -57,6 +58,7 @@ public class MainMenu extends JFrame {
 		contentPane.add(btnStartGame, BorderLayout.SOUTH);
 		btnStartGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+		        setVisible(false);
 				startGame();
 				Audio.doAudioJunk("bg1");	
 			}
@@ -73,6 +75,7 @@ public class MainMenu extends JFrame {
 		JButton btnCredits = new JButton("Credits");
 		contentPane.add(btnCredits, BorderLayout.EAST);
 	}
+	
 	static void startGame(){
 		JFrame frame = new JFrame("Level " + (level));
 		frame.setBounds(100, 100, 900, 600);
@@ -84,8 +87,7 @@ public class MainMenu extends JFrame {
 	
 	private void openLevelSelect(){
 	        this.setVisible(false);
-	        new LevelSelection().setVisible(true);;
-		
+	        new LevelSelection().setVisible(true);
 	}
 	
 	public static void incrementLevel(){
@@ -93,9 +95,10 @@ public class MainMenu extends JFrame {
 		if (highestLevelReached<level){
 			highestLevelReached=level;
 		}
-		startGame();
 	}
-	
+	public static int getHighestLevelReached(){
+		return highestLevelReached;
+	}
 	public static int getCirclex(int level) {
 		return circlex[level-1];
 	}
@@ -108,8 +111,17 @@ public class MainMenu extends JFrame {
 	public static int getSquarey(int level) {
 		return squarey[level-1];
 	}
+	public static int getExitx(int level) {
+		return exitx[level-1];
+	}
+	public static int getExity(int level) {
+		return exity[level-1];
+	}
 	public static int getLevel() {
 		return level;
+	}
+	public static void setLevel(int l) {
+		level = l;
 	}
 
 }
