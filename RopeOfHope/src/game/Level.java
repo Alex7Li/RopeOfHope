@@ -20,25 +20,27 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	Rope rope = new Rope();
     Physics physics = new Physics();
     static int level = MainMenu.getLevels();
-	static int[] wallNums = {6,6};
+	static int[] wallNums = {1,6};
 	//wallNums = number of walls in level corresponding to array position.
 	
 	static int[][] xarrs = {
-		{ 0,   650, 0,   150, 40, 253},
-		{ 100, 200, 123, 0,   650, 0 }
+		{ 0 },    //level 1
+		{ 0,   650, 0,   150, 40, 253}
 	};
 	//each 1-D array level is a level's x-block positions.
 	static int[][] yarrs = {     
-		{ 0,   0,   550, 280, 150, 500},
-		{ 100, 200, 500, 0,   0,   550}
+		{250},   //level 1
+		{ 0,   0,   550, 280, 150, 500}
+		
 	};
 	static int[][] widtharrs = {
-		{ 40,  50,  700, 100, 50 , 32},
-		{ 100, 50 , 32,  40,  50,  700}
+
+		{ 900},   //level 1
+		{ 40,  50,  700, 100, 50 , 32}
 	};
 	static int[][] heightarrs = {
-		{ 700, 700, 40,  100, 30 , 10},
-		{ 100, 30 , 10,  700, 700, 40}
+		{ 50},   //level 1
+		{ 700, 700, 40,  100, 30 , 10}
 	};
 	//this is the array declaration you gotta change
 
@@ -49,7 +51,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		addKeyListener(this);
 		setBackground(Color.WHITE);	
 		int[] x = new int[wallNums[level-1]];
-		for (int i=0; i<x.length; i++) {
+		for (int i=0; i < x.length; i++) {
 	           x[i]=xarrs[level-1][i];
 		}
 		int[] y = new int[wallNums[level-1]];   
