@@ -7,7 +7,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -21,6 +24,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	Player circle = new Player(MainMenu.getCirclex(level), MainMenu.getCircley(level));
 	Player square = new Player(MainMenu.getSquarex(level), MainMenu.getSquarey(level));
 	Exit exit = new Exit(MainMenu.getExitx(level), MainMenu.getExity(level));
+
+	private BufferedImage bg1;
+	
+	
 	static int[] wallNums = { 6, 6 };
 	// wallNums = number of walls in level corresponding to array position.
 
@@ -86,20 +93,25 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	public void paint(Graphics g) {
 		// paints the initial elements
 		super.paint(g);
+
 		g.setColor(Color.BLACK);
 
 		for (int i = 0; i < xarrs[level - 1].length; i++) {
 			g.fillRect(xarrs[level - 1][i], yarrs[level - 1][i], widtharrs[level - 1][i], heightarrs[level - 1][i]);
 		}
-		g.setColor(Color.GREEN);
+		g.setColor(Color.PINK);
 
 		g.fillRect(exit.x, exit.y, 50, 50);
+		
+		//draws background
+		
 	}
 
 	public void paintComponent(Graphics g) {
 		// elements that are repainted each frame
 		super.paintComponent(g);
 		// characters
+		g.drawImage(Background.getImage(level), 0, 0, null);
 		g.setColor(Color.BLUE);
 		g.fillRect(square.getx(), square.gety(), square.getSize(), square.getSize());
 		g.setColor(Color.RED);

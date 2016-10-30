@@ -25,7 +25,7 @@ public class MainMenu extends JFrame {
 	static int exitx[] = { 150, 50 };
 	static int exity[] = { 200, 350 };
 
-	private JPanel contentPane;
+	static JPanel contentPane;
 
 	/**
 	 * Launch the application.
