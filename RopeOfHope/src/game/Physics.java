@@ -65,7 +65,6 @@ public class Physics {
 		Rectangle exit = new Rectangle(MainMenu.getExitx(MainMenu.getLevel()), MainMenu.getExity(MainMenu.getLevel()), 50, 50);
 		
 		if (shape.intersects(exit)){
-			MainMenu.exitx[MainMenu.getLevel() - 1] = 9000;
 			return true;
 		}
 		else {
