@@ -22,7 +22,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	Player square = new Player(MainMenu.getSquarex(level), MainMenu.getSquarey(level));
 	Exit exit = new Exit(MainMenu.getExitx(level), MainMenu.getExity(level));
 
-	static int[] wallNums = { 4, 6 };
+	static int[] wallNums = { 6, 6 };
 	// wallNums = number of walls in level corresponding to array position.
 
 	static int[][] xarrs = { 
