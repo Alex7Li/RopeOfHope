@@ -99,10 +99,7 @@ public class Player extends Physics{
 		    
 
 		if (isTouchingExit(charx, chary, CHARSIZE, CHARSIZE)){
-			//Level.nextLevel();
-			// the set visible method is non-static, and this is making a static reference to it indirectly via the nextLevel method
-			// I have got no idea how to fix this
-
+			Level.nextLevel();
 		}
 		
 		// if thing is going, get slowed down by friction
