@@ -14,7 +14,6 @@ public class Background {
 		
 	}
 
-	
 	public static BufferedImage getImage(int level){
 		File imageFile;
 		
@@ -22,6 +21,12 @@ public class Background {
 			imageFile = new File("RopeOfHopeBg.jpg");
 		else if (level == 2)
 			imageFile = new File("RopeOfHopeBg2.jpg");
+		else if (level == 3)
+			imageFile = new File("Bg3.jpg");
+		else if (level == 4)
+			imageFile = new File("Bg4.jpg");
+		else if (level == 5)
+			imageFile = new File("Bg5.jpg");
 		else 
 			imageFile = new File("RopeOfHopeBg.jpg");
 		//default
@@ -31,9 +36,6 @@ public class Background {
 		} catch(IOException e){
 			e.printStackTrace();
 		}
-		
-		
-		
 		
 		return image;
 		
