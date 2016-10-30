@@ -75,10 +75,13 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 
 	public void nextLevel() {
 		// closes this level and starts the next one
-		setVisible(false);
 		MainMenu.incrementLevel();
 		MainMenu.startGame();
+		setVisible(false);
 	}
+	
+
+	
 
 	public void paint(Graphics g) {
 		// paints the initial elements

@@ -1,5 +1,8 @@
 package game;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 public class Player extends Physics{
 	
 	public int maxJumps = 1;
@@ -90,13 +93,15 @@ public class Player extends Physics{
 		    if (isTheLandingSoundValid(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){
 		    	isLandSoundValid = true;
 		    }
-		}
-		
-		else {
+		} else {
 			charVy = 0;
 		}
 		    
-		
+
+		if (isTouchingExit(charx, chary, CHARSIZE, CHARSIZE)){
+			Level.nextLevel();
+
+		}
 		
 		// if thing is going, get slowed down by friction
 
