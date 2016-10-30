@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -14,11 +13,10 @@ import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class MainMenu extends JFrame {
-	static final int LEVELS = 1;
-	static int level = 1; // change this when adding levels
-
-	static int highestLevelReached = 1;
-	static int circlex[] = { 300, 300 };
+	static final int LEVELS = 2;// change this when adding levels
+	static int level = 1;
+	static int highestLevelReached = 1;//change this for level selection to work
+	static int circlex[] = { 300, 300 }; 
 	static int circley[] = { 200, 200 };
 	static int squarex[] = { 200, 200 };
 	static int squarey[] = { 200, 200 };

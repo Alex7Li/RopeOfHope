@@ -80,11 +80,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		repaint();
 	}
 
-	public void nextLevel() {
+	public static void nextLevel() {
 		// closes this level and starts the next one
 		MainMenu.incrementLevel();
 		MainMenu.startGame();
-		setVisible(false);
 	}
 	
 
@@ -101,7 +100,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		}
 		g.setColor(Color.PINK);
 
-		g.fillRect(exit.x, exit.y, 50, 50);
+		g.fillRect(MainMenu.getExitx(level), MainMenu.getExity(level), 50, 50);
 		
 		//draws background
 		
@@ -145,6 +144,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			circle.setDownKeyPressed(true);
 			break;
 		case KeyEvent.VK_0:
+			setVisible(false);
 			nextLevel();
 			break;
 		case KeyEvent.VK_M:
