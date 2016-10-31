@@ -162,6 +162,7 @@ public class Player extends Physics{
 	public void setDownKeyPressed(boolean downKeyPressed) {
 		this.downKeyPressed = downKeyPressed;
 	}
+
 	
 	
 }

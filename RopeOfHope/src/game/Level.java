@@ -18,13 +18,19 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	Rope rope = new Rope();
 	Physics physics = new Physics();
 	static int level = MainMenu.getLevel();
-	Player circle = new Player(MainMenu.getCirclex(level), MainMenu.getCircley(level));
-	Player square = new Player(MainMenu.getSquarex(level), MainMenu.getSquarey(level));
-	Exit exit = new Exit(MainMenu.getExitx(level), MainMenu.getExity(level));
+	static int circlex[] = { 0, 0, 100, 300, 300}; 
+	static int circley[] = { 100, 100, 100, 300, 300 };
+	static int squarex[] = { 100, 100, 200, 400, 400 };
+	static int squarey[] = { 100, 100, 100, 300, 300};
+	static int exitx[] = { 700, 750, 50, 100, 800 };
+	static int exity[] = { 200, 450, 305, 0, 500  };
+	
+	static Player circle = new Player(circlex[level], circley[level]);
+	static Player square = new Player(squarex[level], squarey[level]);
+	Exit exit = new Exit(exitx[level], exity[level]);
 
 	static int[] wallNums = { 4, 2, 3, 3, 6 };
 	// wallNums = number of walls in level corresponding to array position.
-
 
 	static int[][] xarrs = { 
 			{ 0, 200, 300,  400}, 
@@ -43,7 +49,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 450, 100, 250, 100, 100, 450}
 			};
 
-	static int[][] widtharrs = { { 900, 50, 50, 50 }, { 400, 50 }, { 400, 50, 50 }, { 350, 50, 50 },
+	static int[][] widtharrs = { { 900, 50, 50, 50 },
+			{ 400, 50 }, 
+			{ 400, 50, 50 }, 
+			{ 350, 50, 50 },
 			{ 350, 50, 50, 600, 50, 250 } };
 
 
@@ -94,7 +103,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 
 	public static void nextLevel() {
 		// closes this level and starts the next one
-		MainMenu.setLevel(level + 1);
+		circle.setCharx(circlex[level]);
+		circle.setChary(circley[level]);
+		square.setCharx(squarex[level]);
+		square.setChary(squarey[level]);
 		MainMenu.incrementLevel();
 		MainMenu.startGame();
 	}
@@ -110,7 +122,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		}
 		g.setColor(Color.PINK);
 
-		g.fillRect(MainMenu.getExitx(level), MainMenu.getExity(level), 50, 50);
+		g.fillRect(exitx[level-1], exity[level-1], 50, 50);
 
 		// draws background
 
@@ -200,7 +212,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			circle.setDownKeyPressed(false);
 			break;
 		case KeyEvent.VK_R:
-			setVisible(false);
+			
 			MainMenu.startGame();
 			break;
 		}
@@ -224,5 +236,16 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		circle.timePassed();
 		square.timePassed();
 		repaint();
+	}
+	public static void setLevel(int i) {
+		level = i;
+	}
+	
+	public static int getExitx(int i) {
+		return exitx[i];
+	}
+
+	public static int getExity(int i) {
+		return exity[i];
 	}
 }

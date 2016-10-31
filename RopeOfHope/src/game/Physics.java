@@ -43,7 +43,7 @@ public class Physics {
 	
 	public Boolean isTheLandingSoundValid(int x1, int y1, int width1, int height1, int speedX, int speedY) {
 
-		Rectangle down1 = new Rectangle(x1, y1 + 20 + speedY / 5, width1, height1);
+		Rectangle down1 = new Rectangle(x1, y1 + 10 + speedY / 5, width1, height1);
 
 		for (int i = 0; i < Level.walls.length; i++) {
 			if (down1.intersects(Level.walls[i])) {
@@ -60,7 +60,7 @@ public class Physics {
 	public static boolean isTouchingExit(int x, int y, int width, int height){
 		Rectangle shape = new Rectangle(x, y, width, height);
 		//gets the level parameter to put into the get exit methods to get the exit's x and y
-		Rectangle exit = new Rectangle(MainMenu.getExitx(MainMenu.getLevel()), MainMenu.getExity(MainMenu.getLevel()), 50, 50);
+		Rectangle exit = new Rectangle(Level.getExitx(MainMenu.getLevel()-1), Level.getExity(MainMenu.getLevel()-1), 50, 50);
 		
 		if (shape.intersects(exit)){
 			return true;

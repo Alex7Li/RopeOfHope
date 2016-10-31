@@ -15,21 +15,15 @@ import java.awt.event.ActionEvent;
 public class MainMenu extends JFrame {
 
 	static boolean hasGenerated = false;
-	static JFrame currentFrame; 
-	static JFrame frame = new JFrame("Level ");
+	static JFrame currentFrame = new JFrame("Rope of Hope"); 
 
 	static final int LEVELS = 5;// change this when adding levels
 	static int level = 1; //keep at 1
 
 	static int highestLevelReached = 5; //change this for levels to be unlocked
 
-	static int circlex[] = { 0, 0, 100, 300, 300}; 
-	static int circley[] = { 100, 100, 100, 300, 300 };
-	static int squarex[] = { 100, 100, 200, 400, 400 };
-	static int squarey[] = { 100, 100, 100, 300, 300};
-	static int exitx[] = { 700, 750, 50, 100, 800 };
-	static int exity[] = { 200, 450, 305, 0, 500  };
 	static JPanel contentPane;
+
 
 	/**
 	 * Launch the application.
@@ -82,18 +76,17 @@ public class MainMenu extends JFrame {
 	}
 
    
-
 	static void startGame() {
 
 		if (!hasGenerated){
-			currentFrame = new JFrame("Level " + (level));
+			currentFrame.setBounds(100, 100, 900, 600);
+			currentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			currentFrame.setVisible(true);
 		    hasGenerated = true; 
 		}
-		
+	
 		currentFrame.setTitle("Level " + (level));
-		currentFrame.setBounds(100, 100, 900, 600);
-		currentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		currentFrame.setVisible(true);
+
 		Level level = new Level();
 		currentFrame.add(level);
 	}
@@ -105,6 +98,7 @@ public class MainMenu extends JFrame {
 
 	public static void incrementLevel() {
 		level++;
+		Level.setLevel(level);
 		if (highestLevelReached < level) {
 			highestLevelReached = level;
 		}
@@ -112,30 +106,6 @@ public class MainMenu extends JFrame {
 
 	public static int getHighestLevelReached() {
 		return highestLevelReached;
-	}
-
-	public static int getCirclex(int level) {
-		return circlex[level - 1];
-	}
-
-	public static int getCircley(int level) {
-		return circley[level - 1];
-	}
-
-	public static int getSquarex(int level) {
-		return squarex[level - 1];
-	}
-
-	public static int getSquarey(int level) {
-		return squarey[level - 1];
-	}
-
-	public static int getExitx(int level) {
-		return exitx[level - 1];
-	}
-
-	public static int getExity(int level) {
-		return exity[level - 1];
 	}
 
 	public static int getLevel() {
