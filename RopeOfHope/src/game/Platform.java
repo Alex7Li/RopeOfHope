@@ -7,10 +7,10 @@ public class Platform {
 	private int height = 300;
 	public Platform(int x, int y, int width, int height)
     {
-		this.x=x;
-		this.y=y;
-		this.width=width;
-		this.height=height;
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
     }
 	public int getx() {
 		return x;
