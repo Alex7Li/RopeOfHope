@@ -83,10 +83,10 @@ public class MainMenu extends JFrame {
 	static void restartLevel(int level){
 		Level current = new Level();
 		currentFrame.add(current);
-		Level.circle.setCharx(Level.circlex[level]);
-		Level.circle.setChary(Level.circley[level]);
-		Level.square.setCharx(Level.squarex[level]);
-		Level.square.setChary(Level.squarey[level]);
+		Level.circle.setCharx(Level.circlex[level - 1]);
+		Level.circle.setChary(Level.circley[level - 1]);
+		Level.square.setCharx(Level.squarex[level - 1]);
+		Level.square.setChary(Level.squarey[level - 1]);
 	}
    
 	static void startGame() {
