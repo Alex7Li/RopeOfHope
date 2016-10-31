@@ -27,7 +27,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	
 	static Player circle = new Player(circlex[level], circley[level]);
 	static Player square = new Player(squarex[level], squarey[level]);
-	Exit exit = new Exit(exitx[level], exity[level]);
+	Exit exit = new Exit(exitx[level - 1], exity[level - 1]);
 
 	static int[] wallNums = { 4, 2, 3, 3, 6 };
 	// wallNums = number of walls in level corresponding to array position.

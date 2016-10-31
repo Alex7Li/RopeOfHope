@@ -103,6 +103,8 @@ public class MainMenu extends JFrame {
 			highestLevelReached = level;
 		}
 	}
+	
+	
 
 	public static int getHighestLevelReached() {
 		return highestLevelReached;
