@@ -25,21 +25,35 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	static int[] wallNums = { 4, 2, 3, 3, 6 };
 	// wallNums = number of walls in level corresponding to array position.
 
-	static int[][] xarrs = { { 0, 200, 300, 400 }, { 0, 350 }, { 0, 350, -50 }, { 50, 100, 50 },
-			{ 50, 100, 50, 100, 650, 650 }
 
-	};
+	static int[][] xarrs = { 
+			{ 0, 200, 300,  400}, 
+			{ 0, 350 },
+			{ 0, 350, -50},
+			{ 50, 100, 50},
+			{ 50, 100, 50, 100, 650, 650}
+			};
 	// each 1-D array level is a level's x-block positions.
-	static int[][] yarrs = { { 350, 250, 150, 250 }, { 250, 150 }, { 250, 150, 0 }, { 450, 100, 250 },
-			{ 450, 100, 250, 100, 100, 450 } };
+
+	static int[][] yarrs = { 
+			{ 350, 250, 150, 250 }, 
+			{ 250, 150 },
+			{ 250, 150, 0},
+			{ 450, 100, 250},
+			{ 450, 100, 250, 100, 100, 450}
+			};
 
 	static int[][] widtharrs = { { 900, 50, 50, 50 }, { 400, 50 }, { 400, 50, 50 }, { 350, 50, 50 },
 			{ 350, 50, 50, 600, 50, 250 } };
 
-	static int[][] heightarrs = { { 50, 100, 200, 100 }, { 50, 100 }, { 50, 100, 300 }, { 50, 400, 50 },
-			{ 50, 400, 50, 50, 400, 50 }
 
-	};
+	static int[][] heightarrs = { 
+			{ 50, 100, 200, 100 },
+			{ 50, 100},
+			{ 50, 100, 300},
+			{ 50, 400, 50},
+			{ 50, 400, 50, 50, 400, 50}
+			};
 
 	public static Rectangle[] walls = new Rectangle[wallNums[level - 1]];
 
