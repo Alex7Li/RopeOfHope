@@ -16,7 +16,7 @@ public class Physics {
 
 		Rectangle right1 = new Rectangle(x1 + speedX / 5, y1, width1, height1);
 
-		for (int i = 0; i < Level.walls.length; i++) {
+		for (int i = 0; i < Level.xarrs[Level.level - 1].length; i++) {
 			if (right1.intersects(Level.walls[i])) {
 				return false;
 			}
@@ -28,7 +28,7 @@ public class Physics {
 
 		Rectangle down1 = new Rectangle(x1, y1 + speedY / 5, width1, height1);
 
-		for (int i = 0; i < Level.walls.length; i++) {
+		for (int i = 0; i < Level.xarrs[Level.level - 1].length; i++) {
 			if (down1.intersects(Level.walls[i])) {
 				return false;
 			}
@@ -45,7 +45,7 @@ public class Physics {
 
 		Rectangle down1 = new Rectangle(x1, y1 + 10 + speedY / 5, width1, height1);
 
-		for (int i = 0; i < Level.walls.length; i++) {
+		for (int i = 0; i < Level.xarrs[Level.level - 1].length; i++) {
 			if (down1.intersects(Level.walls[i])) {
 				return false;
 			}
