@@ -74,7 +74,11 @@ public class MainMenu extends JFrame {
 		JButton btnCredits = new JButton("Credits");
 		contentPane.add(btnCredits, BorderLayout.EAST);
 	}
-
+	
+	static void restartLevel(int level){
+		Level current = new Level();
+		currentFrame.add(current);
+	}
    
 	static void startGame() {
 

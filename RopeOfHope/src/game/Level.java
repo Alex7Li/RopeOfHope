@@ -14,16 +14,19 @@ import javax.swing.Timer;
 @SuppressWarnings("serial")
 public class Level extends JPanel implements ActionListener, KeyListener {
 
-	private Timer t = new Timer(30, this);
+	private Timer t; 
 	Rope rope = new Rope();
 	Physics physics = new Physics();
 	static int level = MainMenu.getLevel();
 	static int circlex[] = { 0, 0, 100, 300, 300}; 
-	static int circley[] = { 100, 100, 100, 300, 300 };
+	static int circley[] = { 100, 100, 100, 400, 300 };
 	static int squarex[] = { 100, 100, 200, 400, 400 };
 	static int squarey[] = { 100, 100, 100, 300, 300};
 	static int exitx[] = { 700, 750, 50, 100, 800 };
 	static int exity[] = { 200, 450, 305, 0, 500  };
+	
+	private boolean hasTimerGenerated = false;
+	private boolean hasTimerStarted = false; 
 	
 	static Player circle = new Player(circlex[level], circley[level]);
 	static Player square = new Player(squarex[level], squarey[level]);
@@ -64,13 +67,20 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 50, 400, 50, 50, 400, 50}
 			};
 
-	public static Rectangle[] walls = new Rectangle[wallNums[level - 1]];
+	public static Rectangle[] walls;
 
 	public Level() {
+		if (!hasTimerGenerated){
+			t = new Timer(30, this);
+			hasTimerGenerated = true;
+		}
+		
+		level = MainMenu.getLevel();
+		walls = new Rectangle[wallNums[level - 1]];
 		setFocusable(true);
 		addKeyListener(this);
 		setBackground(Color.WHITE);
-		level = MainMenu.getLevel();
+
 		// creates arrays that hold the rectangles from the main class array.
 		// I couldn't find a better way to do this because of the way arrays are
 		// declared.
@@ -96,7 +106,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			walls[i] = r;
 		}
 		setLayout(null);
-		t.start();
+		if (!hasTimerStarted){
+		    t.start();
+		    hasTimerStarted = true;
+		}
 		setVisible(true);
 		repaint();
 	}
@@ -167,6 +180,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			break;
 		case KeyEvent.VK_0:
 			nextLevel();
+			break;
+		case KeyEvent.VK_R:
+			level = MainMenu.getLevel();
+			MainMenu.restartLevel(level);
 			break;
 		case KeyEvent.VK_M:
 			this.setVisible(false);
