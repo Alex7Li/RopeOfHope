@@ -82,13 +82,11 @@ public class MainMenu extends JFrame {
 
 	static void startGame() {
 		if (!hasGenerated){
-			JFrame frame = new JFrame("Level " + (level));
+			currentFrame = new JFrame("Level " + (level));
 		    hasGenerated = true; 
 		}
-		else {
-			currentFrame = frame 
-		}
-		currentFrame = ("Level " + (level));
+		
+		currentFrame.setTitle("Level " + (level));
 		currentFrame.setBounds(100, 100, 900, 600);
 		currentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		currentFrame.setVisible(true);
