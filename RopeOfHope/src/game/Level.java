@@ -7,10 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 
-import javax.imageio.ImageIO;
+
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -163,11 +161,12 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		case KeyEvent.VK_DOWN:
 			circle.setDownKeyPressed(true);
 			break;
-		case KeyEvent.VK_R:
+		case KeyEvent.VK_0:
 			setVisible(false);
-			MainMenu.startGame();
+			nextLevel();
 			break;
 		case KeyEvent.VK_M:
+			this.setVisible(false);
 			MainMenu.setLevel(1);
 			new MainMenu().setVisible(true);
 			break;
@@ -208,6 +207,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			break;
 		case KeyEvent.VK_DOWN:
 			circle.setDownKeyPressed(false);
+			break;
+		case KeyEvent.VK_R:
+			setVisible(false);
+			MainMenu.startGame();
 			break;
 		}
 		switch (k) {

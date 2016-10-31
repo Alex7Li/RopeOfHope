@@ -24,16 +24,17 @@ public class LevelSelection extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		JButton btnlevel1 = new JButton("Level1");
+		JButton btnlevel1 = new JButton("Level 1");
 		addLevel(btnlevel1,1);
 
-
-		JButton btnlevel2 = new JButton("Level2");
+		JButton btnlevel2 = new JButton("Level 2");
 		addLevel(btnlevel2,2);
 		
 		JButton btnlevel3 = new JButton("Level 3");
 		addLevel(btnlevel3,3);
 		
+		JButton btnlevel4 = new JButton("Level 4");
+		addLevel(btnlevel4,4);
 	}
 
 	public void addLevel(JButton btnName, int level){

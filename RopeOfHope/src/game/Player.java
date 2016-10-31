@@ -1,8 +1,5 @@
 package game;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
 public class Player extends Physics{
 	
 	public int maxJumps = 1;
