@@ -21,7 +21,7 @@ public class Audio {
 			clip = new File("jumpGameRope.wav");
 		}
 		else if (s == "bg1")
-			clip = new File("Bg1.wav");
+			clip = new File("BGM1.wav");
 		
 		PlaySound(clip);
 	}
