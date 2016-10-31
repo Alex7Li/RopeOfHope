@@ -33,8 +33,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 0, 350, -50},
 			{ 50, 100, 50},
 			{ 50, 100, 50, 100, 650, 650}
-			
-	};
+			};
 	// each 1-D array level is a level's x-block positions.
 	static int[][] yarrs = { 
 			{ 350, 250, 150, 250 }, 
@@ -42,7 +41,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 250, 150, 0},
 			{ 450, 100, 250},
 			{ 450, 100, 250, 100, 100, 450}
-	};
+			};
 
 	static int[][] widtharrs = { 
 			{ 900, 50, 50, 50 }, 
@@ -58,8 +57,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 50, 100, 300},
 			{ 50, 400, 50},
 			{ 50, 400, 50, 50, 400, 50}
-			
-	};
+			};
 
 	public static Rectangle[] walls = new Rectangle[wallNums[level - 1]];
 
