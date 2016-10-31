@@ -13,15 +13,16 @@ import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class MainMenu extends JFrame {
-	static final int LEVELS = 2;// change this when adding levels
-	static int level = 1;
-	static int highestLevelReached = 1;//change this for level selection to work
-	static int circlex[] = { 300, 300 }; 
-	static int circley[] = { 200, 200 };
-	static int squarex[] = { 200, 200 };
-	static int squarey[] = { 200, 200 };
-	static int exitx[] = { 150, 50 };
-	static int exity[] = { 200, 350 };
+	static final int LEVELS = 5;// change this when adding levels
+	static int level = 5;
+	static int highestLevelReached = 5;//change this for level selection to work
+	
+	static int circlex[] = { 0, 0, 100, 300, 300}; 
+	static int circley[] = { 100, 100, 100, 300, 300 };
+	static int squarex[] = { 100, 100, 200, 400, 400 };
+	static int squarey[] = { 100, 100, 100, 300, 300};
+	static int exitx[] = { 700, 750, 50, 100, 800 };
+	static int exity[] = { 200, 450, 305, 0, 500  };
 
 	static JPanel contentPane;
 

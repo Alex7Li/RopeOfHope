@@ -25,22 +25,42 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	Player square = new Player(MainMenu.getSquarex(level), MainMenu.getSquarey(level));
 	Exit exit = new Exit(MainMenu.getExitx(level), MainMenu.getExity(level));
 
-	private BufferedImage bg1;
 	
-	
-	static int[] wallNums = { 6, 6 };
+	static int[] wallNums = { 4, 2, 3, 3, 6 };
 	// wallNums = number of walls in level corresponding to array position.
 
-	static int[][] xarrs = { { 0, 850, 0, 150, 40, 253 }, { 0, 650, 0, 150, 40, 253 } };
+	static int[][] xarrs = { 
+			{ 0, 200, 300,  400}, 
+			{ 0, 350 },
+			{ 0, 350, -50},
+			{ 50, 100, 50},
+			{ 50, 100, 50, 100, 650, 650}
+			
+	};
 	// each 1-D array level is a level's x-block positions.
-	static int[][] yarrs = { { 0, 0, 550, 280, 150, 500 }, { 0, 0, 550, 280, 150, 500 }
-
+	static int[][] yarrs = { 
+			{ 350, 250, 150, 250 }, 
+			{ 250, 150 },
+			{ 250, 150, 0},
+			{ 450, 100, 250},
+			{ 450, 100, 250, 100, 100, 450}
 	};
 
-	static int[][] widtharrs = { { 40, 50, 700, 100, 50, 32 }, { 40, 50, 700, 100, 50, 32 } };
+	static int[][] widtharrs = { 
+			{ 900, 50, 50, 50 }, 
+			{ 400, 50},
+			{ 400, 50, 50},
+			{ 350, 50, 50},
+			{ 350, 50, 50, 600, 50, 250}
+			};
 
-	static int[][] heightarrs = { { 700, 700, 40, 100, 30, 10 }, { 700, 700, 40, 340, 30, 330 }
-
+	static int[][] heightarrs = { 
+			{ 50, 100, 200, 100 },
+			{ 50, 100},
+			{ 50, 100, 300},
+			{ 50, 400, 50},
+			{ 50, 400, 50, 50, 400, 50}
+			
 	};
 
 	public static Rectangle[] walls = new Rectangle[wallNums[level - 1]];
