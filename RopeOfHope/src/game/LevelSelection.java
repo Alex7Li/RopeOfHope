@@ -46,7 +46,7 @@ public class LevelSelection extends JFrame {
 			btnName.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					for(int i = 0; i<level-1; i++){
-						MainMenu.incrementLevel();
+						MainMenu.setLevel(level);
 					}
 					MainMenu.startGame();
 				}
