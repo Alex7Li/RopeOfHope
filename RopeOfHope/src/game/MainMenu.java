@@ -79,7 +79,11 @@ public class MainMenu extends JFrame {
 		});
 		contentPane.add(btnCredits, BorderLayout.EAST);
 	}
-
+	
+	static void restartLevel(int level){
+		Level current = new Level();
+		currentFrame.add(current);
+	}
    
 	static void startGame() {
 
