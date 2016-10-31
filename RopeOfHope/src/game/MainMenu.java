@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("serial")
 public class MainMenu extends JFrame {
 	static final int LEVELS = 5;// change this when adding levels
-	static int level = 5;
+	static int level = 1;
 	static int highestLevelReached = 5;//change this for level selection to work
 	
 	static int circlex[] = { 0, 0, 100, 300, 300}; 
