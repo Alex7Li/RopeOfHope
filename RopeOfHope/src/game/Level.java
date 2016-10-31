@@ -25,8 +25,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	static int exitx[] = { 700, 750, 50, 100, 800 };
 	static int exity[] = { 200, 450, 305, 0, 500  };
 	
-	private boolean hasTimerGenerated = false;
-	private boolean hasTimerStarted = false; 
+	
 
 	static Player circle = new Player(circlex[level], circley[level]);
 	static Player square = new Player(squarex[level], squarey[level]);
@@ -69,16 +68,20 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 50, 400, 50, 50, 400, 50}
 			};
 
+	private boolean hasKeyListenerAdded = false;
 	public Level() {
-		if (!hasTimerGenerated){
-			t = new Timer(30, this);
-			hasTimerGenerated = true;
+		
+		
+		if (!hasKeyListenerAdded){
+		    addKeyListener(this);
+		    hasKeyListenerAdded = !hasKeyListenerAdded;
 		}
+		t = new Timer(30, this);
 		
 		level = MainMenu.getLevel();
 		walls = new Rectangle[wallNums[level - 1]];
 		setFocusable(true);
-		addKeyListener(this);
+	
 		setBackground(Color.WHITE);
 
 		// creates arrays that hold the rectangles from the main class array.
@@ -110,10 +113,8 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		}
 
 		setLayout(null);
-		if (!hasTimerStarted){
-		    t.start();
-		    hasTimerStarted = true;
-		}
+        t.start();
+		 
 		setVisible(true);
 		repaint();
 	}
