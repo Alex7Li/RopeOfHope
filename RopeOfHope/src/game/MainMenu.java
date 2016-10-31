@@ -20,7 +20,7 @@ public class MainMenu extends JFrame {
 	static int circley[] = { 200, 200 };
 	static int squarex[] = { 200, 200 };
 	static int squarey[] = { 200, 200 };
-	static int exitx[] = { 150, 50 };
+	static int exitx[] = { 150, 450 };
 	static int exity[] = { 200, 350 };
 
 	static JPanel contentPane;
@@ -57,8 +57,8 @@ public class MainMenu extends JFrame {
 		btnStartGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				startGame();
 				Audio.doAudioJunk("bg1");
+				startGame();
 			}
 		});
 

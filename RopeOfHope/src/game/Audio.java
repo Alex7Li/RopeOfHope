@@ -18,10 +18,10 @@ public class Audio {
 		    clip = new File("thudForRope.wav");
 		}
 		else if (s == "jump"){
-			clip = new File("jumpGameRope.wav");
+			clip = new File("JumpingSound.wav");
 		}
 		else if (s == "bg1")
-			clip = new File("Bg1.wav");
+			clip = new File("Dungeon Theme.mp3");
 		
 		PlaySound(clip);
 	}
