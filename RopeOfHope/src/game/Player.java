@@ -13,7 +13,7 @@ public class Player extends Physics{
 	private boolean rightKeyPressed;
 	private boolean leftKeyPressed;
 	private boolean downKeyPressed;
-	private double frictionRate;
+	private double frictionRate= .98;
 	private int gravity = 4;
 	private final int TOPSPEED = 150;
 	private final int CHARSIZE = 30;
@@ -67,7 +67,6 @@ public class Player extends Physics{
 		else{
 			frictionRate = .98;
 			gravity = 4;
-
 		}
 		
 		if (rightKeyPressed && charVx < TOPSPEED){

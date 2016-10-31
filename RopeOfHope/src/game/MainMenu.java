@@ -17,6 +17,7 @@ public class MainMenu extends JFrame {
 	static final int LEVELS = 5;// change this when adding levels
 	static int level = 1; //keep at 1
 	static int highestLevelReached = 2; //change this for levels to be unlocked
+
 	static int circlex[] = { 0, 0, 100, 300, 300}; 
 	static int circley[] = { 100, 100, 100, 300, 300 };
 	static int squarex[] = { 100, 100, 200, 400, 400 };
