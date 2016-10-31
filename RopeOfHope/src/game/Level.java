@@ -163,12 +163,11 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		case KeyEvent.VK_DOWN:
 			circle.setDownKeyPressed(true);
 			break;
-		case KeyEvent.VK_0:
+		case KeyEvent.VK_R:
 			setVisible(false);
-			nextLevel();
+			MainMenu.startGame();
 			break;
 		case KeyEvent.VK_M:
-			this.setVisible(false);
 			MainMenu.setLevel(1);
 			new MainMenu().setVisible(true);
 			break;

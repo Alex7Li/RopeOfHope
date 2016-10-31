@@ -19,9 +19,10 @@ public class Audio {
 		}
 		else if (s == "jump"){
 			clip = new File("JokeJumpSound.wav");
+			clip = new File("JumpingSound.wav");
 		}
 		else if (s == "bg1")
-			clip = new File("Bg1.wav");
+			clip = new File("Dungeon Theme.mp3");
 		
 		PlaySound(clip);
 	}

@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class MainMenu extends JFrame {
+
 	static final int LEVELS = 5;// change this when adding levels
 	static int level = 1;
 	static int highestLevelReached = 5;//change this for level selection to work
@@ -23,7 +24,6 @@ public class MainMenu extends JFrame {
 	static int squarey[] = { 100, 100, 100, 300, 300};
 	static int exitx[] = { 700, 750, 50, 100, 800 };
 	static int exity[] = { 200, 450, 305, 0, 500  };
-
 	static JPanel contentPane;
 
 	/**
@@ -58,8 +58,8 @@ public class MainMenu extends JFrame {
 		btnStartGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				startGame();
 				Audio.doAudioJunk("bg1");
+				startGame();
 			}
 		});
 
