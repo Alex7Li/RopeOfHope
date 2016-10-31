@@ -14,7 +14,7 @@ import javax.swing.Timer;
 @SuppressWarnings("serial")
 public class Level extends JPanel implements ActionListener, KeyListener {
 
-	private Timer t; 
+	private Timer t = new Timer(30, this);
 	Rope rope = new Rope();
 	Physics physics = new Physics();
 	static int level = MainMenu.getLevel();
@@ -76,7 +76,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		    addKeyListener(this);
 		    hasKeyListenerAdded = !hasKeyListenerAdded;
 		}
-		t = new Timer(30, this);
+		
 		
 		level = MainMenu.getLevel();
 		walls = new Rectangle[wallNums[level - 1]];
