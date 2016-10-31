@@ -2,7 +2,6 @@ package game;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.Frame;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,6 +16,8 @@ public class MainMenu extends JFrame {
 
 	static boolean hasGenerated = false;
 	static JFrame currentFrame; 
+	static JFrame frame = new JFrame("Level ");
+
 	static final int LEVELS = 5;// change this when adding levels
 	static int level = 1; //keep at 1
 	static int highestLevelReached = 4; //change this for levels to be unlocked
@@ -82,14 +83,9 @@ public class MainMenu extends JFrame {
    
 
 	static void startGame() {
-		if (!hasGenerated){
-			JFrame frame = new JFrame("Level " + (level));
-		    hasGenerated = true; 
-		}
-		else {
-			currentFrame = frame 
-		}
-		currentFrame = ("Level " + (level));
+
+		currentFrame = frame;
+		currentFrame.setName("Level " + (level));
 		currentFrame.setBounds(100, 100, 900, 600);
 		currentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		currentFrame.setVisible(true);
