@@ -189,12 +189,13 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		case KeyEvent.VK_R:
 			level = MainMenu.getLevel();
 			MainMenu.restartLevel(level);
-			break;
+			break;			
 		case KeyEvent.VK_M:
 			this.setVisible(false);
 			MainMenu.setLevel(1);
 			new MainMenu().setVisible(true);
 			break;
+
 		}
 
 		switch (k) {
@@ -232,9 +233,6 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			break;
 		case KeyEvent.VK_DOWN:
 			circle.setDownKeyPressed(false);
-			break;
-		case KeyEvent.VK_R:
-			MainMenu.startGame();
 			break;
 		}
 		switch (k) {

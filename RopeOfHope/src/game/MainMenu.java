@@ -54,7 +54,7 @@ public class MainMenu extends JFrame {
 		setContentPane(contentPane);
 
 		JButton btnStartGame = new JButton("Start Game");
-		contentPane.add(btnStartGame, BorderLayout.SOUTH);
+		contentPane.add(btnStartGame, BorderLayout.CENTER);
 		btnStartGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -72,6 +72,11 @@ public class MainMenu extends JFrame {
 		contentPane.add(btnLevelSelection, BorderLayout.WEST);
 
 		JButton btnCredits = new JButton("Credits");
+		btnCredits.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				openCredits();
+			}
+		});
 		contentPane.add(btnCredits, BorderLayout.EAST);
 	}
 	
@@ -95,12 +100,16 @@ public class MainMenu extends JFrame {
 	
 		currentFrame.setTitle("Level " + (level));
 		Level level = new Level();
-		currentFrame.add(level);
+		currentFrame.getContentPane().add(level);
 	}
 
 	private void openLevelSelect() {
 		this.setVisible(false);
 		new LevelSelection().setVisible(true);
+	}
+	private void openCredits() {
+		this.setVisible(false);
+		new Credits().setVisible(true);
 	}
 
 	public static void incrementLevel() {
@@ -110,8 +119,6 @@ public class MainMenu extends JFrame {
 			highestLevelReached = level;
 		}
 	}
-	
-	
 
 	public static int getHighestLevelReached() {
 		return highestLevelReached;
