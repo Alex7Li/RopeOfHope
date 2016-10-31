@@ -14,11 +14,11 @@ public class Player extends Physics{
 	private boolean leftKeyPressed;
 	private boolean downKeyPressed;
 	private double frictionRate= .98;
-	private int gravity = 4;
+	private int gravity = 5;
 	private final int TOPSPEED = 150;
 	private final int CHARSIZE = 30;
 	private final int SPEED = 4;
-	private final int JUMP_POWER = 90;
+	private final int JUMP_POWER = 110;
 	private final double ROPE_PULL = .1;
 	private final int ROPE_LENGTH = 100; //pixels
 

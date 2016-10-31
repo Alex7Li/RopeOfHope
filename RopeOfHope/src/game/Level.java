@@ -24,14 +24,15 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	static int squarey[] = { 100, 100, 100, 300, 300};
 	static int exitx[] = { 700, 750, 50, 100, 800 };
 	static int exity[] = { 200, 450, 305, 0, 500  };
-	
+
 	static Player circle = new Player(circlex[level], circley[level]);
 	static Player square = new Player(squarex[level], squarey[level]);
-	Exit exit = new Exit(exitx[level], exity[level]);
+	static Exit exit = new Exit(exitx[level], exity[level]);
 
 	static int[] wallNums = { 4, 2, 3, 3, 6 };
 	// wallNums = number of walls in level corresponding to array position.
-
+	public static Rectangle[] walls = new Rectangle[6];
+	//change to maximum value of wallNums.
 	static int[][] xarrs = { 
 			{ 0, 200, 300,  400}, 
 			{ 0, 350 },
@@ -49,7 +50,8 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 450, 100, 250, 100, 100, 450}
 			};
 
-	static int[][] widtharrs = { { 900, 50, 50, 50 },
+	static int[][] widtharrs = { 
+			{ 900, 50, 50, 50 },
 			{ 400, 50 }, 
 			{ 400, 50, 50 }, 
 			{ 350, 50, 50 },
@@ -64,7 +66,6 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 50, 400, 50, 50, 400, 50}
 			};
 
-	public static Rectangle[] walls = new Rectangle[wallNums[level - 1]];
 
 	public Level() {
 		setFocusable(true);
@@ -95,6 +96,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			Rectangle r = new Rectangle(x[i], y[i], width[i], height[i]);
 			walls[i] = r;
 		}
+		for (int i = x.length; i < walls.length; i++) {
+			walls[i] = null;
+		}
+
 		setLayout(null);
 		t.start();
 		setVisible(true);
@@ -212,7 +217,6 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			circle.setDownKeyPressed(false);
 			break;
 		case KeyEvent.VK_R:
-			
 			MainMenu.startGame();
 			break;
 		}
@@ -227,7 +231,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			square.setDownKeyPressed(false);
 			break;
 		}
-
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
