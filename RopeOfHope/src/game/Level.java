@@ -15,6 +15,7 @@ import javax.swing.Timer;
 public class Level extends JPanel implements ActionListener, KeyListener {
 	
 	private Timer t; 
+
 	Rope rope = new Rope();
 	Physics physics = new Physics();
 	static int level = MainMenu.getLevel();
@@ -24,6 +25,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	static int squarey[] = { 100, 100, 100, 300, 300};
 	static int exitx[] = { 700, 750, 50, 100, 800 };
 	static int exity[] = { 200, 450, 305, 0, 500  };
+
 
 	static Player circle = new Player(circlex[level], circley[level]);
 	static Player square = new Player(squarex[level], squarey[level]);
@@ -66,16 +68,23 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 50, 400, 50, 50, 400, 50}
 			};
 
+	private boolean hasKeyListenerAdded = false;
 	public Level() {
 		if (!MainMenu.isHasTimerGenerated()){
 			t = new Timer(30, this);
 			MainMenu.setHasTimerGenerated(true);
 		}
 		
+		if (!hasKeyListenerAdded){
+		    addKeyListener(this);
+		    hasKeyListenerAdded = !hasKeyListenerAdded;
+		}
+		
+		
 		level = MainMenu.getLevel();
 		walls = new Rectangle[wallNums[level - 1]];
 		setFocusable(true);
-		addKeyListener(this);
+	
 		setBackground(Color.WHITE);
 
 		// creates arrays that hold the rectangles from the main class array.
@@ -112,8 +121,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		    t.start();
 		    MainMenu.setHasTimerStarted(true);
 		}
+
 		setVisible(true);
 		repaint();
+		
 	}
 
 	public static void nextLevel() {
