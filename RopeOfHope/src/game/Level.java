@@ -19,9 +19,9 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	Rope rope = new Rope();
 	Physics physics = new Physics();
 	static int level = MainMenu.getLevel();
-	static int circlex[] = { 0, 0, 100, 300, 300}; 
+	static int circlex[] = { 0, 0, 100, 300, 200}; 
 	static int circley[] = { 100, 100, 100, 400, 300 };
-	static int squarex[] = { 100, 100, 200, 400, 400 };
+	static int squarex[] = { 100, 100, 200, 400, 300 };
 	static int squarey[] = { 100, 100, 100, 400, 300};
 	static int exitx[] = { 700, 750, 50, 100, 800 };
 	static int exity[] = { 200, 450, 305, 0, 500 };

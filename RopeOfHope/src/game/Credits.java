@@ -43,7 +43,7 @@ public class Credits extends JFrame {
 					"Hope you're glad you came! \n" +
 				    "Now you're a hero! \n" +
 				    "Didn't even need to burn a rope! \n"+ 
-				    "*instert other meaningful message here*" +
+				    "*instert another meaningful message here* \n" +
 				    "You are no zero \n" +
 				    "You're success gives us all hope!"
 				);
