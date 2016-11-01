@@ -82,6 +82,7 @@ public class Player extends Physics{
 		}
 		else {
 			charVx = 0; 
+			charVy *= .9;
 		}
 		
 		if (isAbleMoveDown(charx, chary, CHARSIZE, CHARSIZE,(int)charVx, (int)charVy)){

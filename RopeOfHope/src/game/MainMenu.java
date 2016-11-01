@@ -14,13 +14,16 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("serial")
 public class MainMenu extends JFrame {
 
+	static boolean hasWon = false;
 	static boolean hasGenerated = false;
-	static JFrame currentFrame = new JFrame("Rope of Hope"); 
+	static JFrame currentFrame = new JFrame("Rope of Hope");
+	private static boolean hasTimerGenerated = false;
+	private static boolean hasTimerStarted = false; 
 
 	static final int LEVELS = 5;// change this when adding levels
 	static int level = 1; //keep at 1
 
-	static int highestLevelReached = 5; //change this for levels to be unlocked
+	static int highestLevelReached = 4; //change this for levels to be unlocked
 
 	static JPanel contentPane;
 
@@ -95,9 +98,16 @@ public class MainMenu extends JFrame {
 		}
 	
 		currentFrame.setTitle("Level " + (level));
-
+		if (highestLevelReached > LEVELS){
+			level--;
+			hasWon = true;
+			Credits credits = new Credits();
+			currentFrame.getContentPane().add(credits);
+		}
+		else{
 		Level level = new Level();
 		currentFrame.getContentPane().add(level);
+		}
 	}
 
 	private void openLevelSelect() {
@@ -127,6 +137,22 @@ public class MainMenu extends JFrame {
 
 	public static void setLevel(int l) {
 		level = l;
+	}
+
+	public static boolean isHasTimerGenerated() {
+		return hasTimerGenerated;
+	}
+
+	public static boolean isHasTimerStarted() {
+		return hasTimerStarted;
+	}
+
+	public static void setHasTimerGenerated(boolean TimerGenerated) {
+		hasTimerGenerated = TimerGenerated;
+	}
+
+	public static void setHasTimerStarted(boolean TimerStarted) {
+		hasTimerStarted = TimerStarted;
 	}
 
 }
