@@ -42,7 +42,8 @@ public class Credits extends JFrame {
 				    "Had fun sensations? \n" +
 					"Hope you're glad you came! \n" +
 				    "Now you're a hero! \n" +
-				    "Didn't even need to burn a rope! \n" +
+				    "Didn't even need to burn a rope! \n"+ 
+				    "*instert other meaningful message here*" +
 				    "You are no zero \n" +
 				    "You're success gives us all hope!"
 				);
@@ -63,5 +64,6 @@ public class Credits extends JFrame {
 		new MainMenu().setVisible(true);
 	}
 	//pretty sure this is horrible design
+	//nah we good it's alright.
 
 }
