@@ -18,9 +18,9 @@ public class Player extends Physics{
 	private final int TOPSPEED = 200;
 	private final int CHARSIZE = 30;
 	private final int SPEED = 4;
-	private final int JUMP_POWER = 110;
-	private final double ROPE_PULL = .1;
-	private final int ROPE_LENGTH = 100; //pixels
+	private final int JUMP_POWER = 80;
+	private final double ROPE_PULL = .15;
+	private final int ROPE_LENGTH = 150; //pixels
 
 	public Player(int x, int y)
     {

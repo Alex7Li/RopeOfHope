@@ -31,7 +31,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	static Player square = new Player(squarex[level-1], squarey[level-1]);
 	static Exit exit = new Exit(exitx[level-1], exity[level-1]);
 
-	static int[] wallNums = { 4, 2, 3, 4, 6 };
+	static int[] wallNums = { 4, 2, 3, 5, 9 };
 	// wallNums = number of walls in level corresponding to array position.
 	public static Rectangle[] walls = new Rectangle[6];
 	//change to maximum value of wallNums.
@@ -39,8 +39,8 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 0, 200, 300,  400}, 
 			{ 0, 350 },
 			{ 0, 350, -50},
-			{ 50, 100, 50, 50},
-			{ 50, 100, 50, 100, 650, 650}
+			{ 50, 100, 50, 50, 50},
+			{ 50, 100, 50, 100, 650, 650, 50, 50, 50}
 			};
 	// each 1-D array level is a level's x-block positions.
 
@@ -48,24 +48,24 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 350, 250, 150, 250 }, 
 			{ 250, 150 },
 			{ 250, 150, 0},
-			{ 450, 100, 300, 180},
-			{ 450, 100, 250, 100, 100, 450}
+			{ 450, 100, 350, 250, 150},
+			{ 450, 100, 250, 100, 100, 450, 350, 250, 150}
 			};
 
 	static int[][] widtharrs = { 
 			{ 900, 50, 50, 50 },
 			{ 400, 50 }, 
 			{ 400, 50, 50 }, 
-			{ 350, 50, 50, 50 },
-			{ 350, 50, 50, 600, 50, 250 } };
+			{ 350, 50, 150, 50, 50 },
+			{ 350, 50, 50, 600, 50, 250, 50, 50, 50} };
 
 
 	static int[][] heightarrs = { 
 			{ 50, 100, 200, 100 },
 			{ 50, 100},
 			{ 50, 100, 300},
-			{ 50, 400, 50, 20},
-			{ 50, 400, 50, 50, 400, 50}
+			{ 20, 400, 20, 20, 20},
+			{ 30, 400, 30, 50, 400, 50, 30, 30, 30}
 			};
 
 	
@@ -204,9 +204,9 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			circle.setDownKeyPressed(true);
 			break;
 			//TAKE THIS OUT IN FINAL VERSION
-//		case KeyEvent.VK_0:
-			//nextLevel();
-			//break;
+	//	case KeyEvent.VK_0:
+	//		nextLevel();
+	//		break;
 		case KeyEvent.VK_R:
 			level = MainMenu.getLevel();
 			MainMenu.restartLevel(level);
