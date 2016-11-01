@@ -22,16 +22,16 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	static int circlex[] = { 0, 0, 100, 300, 300}; 
 	static int circley[] = { 100, 100, 100, 400, 300 };
 	static int squarex[] = { 100, 100, 200, 400, 400 };
-	static int squarey[] = { 100, 100, 100, 300, 300};
+	static int squarey[] = { 100, 100, 100, 400, 300};
 	static int exitx[] = { 700, 750, 50, 100, 800 };
-	static int exity[] = { 200, 450, 305, 0, 500  };
+	static int exity[] = { 200, 450, 305, 0, 500 };
 
 
-	static Player circle = new Player(circlex[level], circley[level]);
-	static Player square = new Player(squarex[level], squarey[level]);
+	static Player circle = new Player(circlex[level-1], circley[level-1]);
+	static Player square = new Player(squarex[level-1], squarey[level-1]);
 	static Exit exit = new Exit(exitx[level-1], exity[level-1]);
 
-	static int[] wallNums = { 4, 2, 3, 3, 6 };
+	static int[] wallNums = { 4, 2, 3, 4, 6 };
 	// wallNums = number of walls in level corresponding to array position.
 	public static Rectangle[] walls = new Rectangle[6];
 	//change to maximum value of wallNums.
@@ -39,7 +39,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 0, 200, 300,  400}, 
 			{ 0, 350 },
 			{ 0, 350, -50},
-			{ 50, 100, 50},
+			{ 50, 100, 50, 50},
 			{ 50, 100, 50, 100, 650, 650}
 			};
 	// each 1-D array level is a level's x-block positions.
@@ -48,7 +48,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 350, 250, 150, 250 }, 
 			{ 250, 150 },
 			{ 250, 150, 0},
-			{ 450, 100, 250},
+			{ 450, 100, 300, 180},
 			{ 450, 100, 250, 100, 100, 450}
 			};
 
@@ -56,7 +56,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 900, 50, 50, 50 },
 			{ 400, 50 }, 
 			{ 400, 50, 50 }, 
-			{ 350, 50, 50 },
+			{ 350, 50, 50, 50 },
 			{ 350, 50, 50, 600, 50, 250 } };
 
 
@@ -64,12 +64,20 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 50, 100, 200, 100 },
 			{ 50, 100},
 			{ 50, 100, 300},
-			{ 50, 400, 50},
+			{ 50, 400, 50, 20},
 			{ 50, 400, 50, 50, 400, 50}
 			};
 
 	
 	public Level() {
+		Level.circle.setCharx(Level.circlex[level - 1]);
+		Level.circle.setChary(Level.circley[level - 1]);
+		Level.square.setCharx(Level.squarex[level - 1]);
+		Level.square.setChary(Level.squarey[level - 1]);
+		Level.circle.setCharVx(0);
+		Level.circle.setCharVy(0);
+		Level.square.setCharVx(0);
+		Level.square.setCharVy(0);
 		if (!MainMenu.isHasTimerGenerated()){
 			t = new Timer(30, this);
 			MainMenu.setHasTimerGenerated(true);
@@ -130,6 +138,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		circle.setChary(circley[level-1]);
 		square.setCharx(squarex[level-1]);
 		square.setChary(squarey[level-1]);
+		circle.setCharVx(0);
+		circle.setCharVy(0);
+		square.setCharVx(0);
+		square.setCharVy(0);
 		MainMenu.incrementLevel();
 		MainMenu.startGame();
 	}
@@ -191,9 +203,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		case KeyEvent.VK_DOWN:
 			circle.setDownKeyPressed(true);
 			break;
-//		case KeyEvent.VK_0:
-//			nextLevel();
-//			break;
+			//TAKE THIS OUT IN FINAL VERSION
+		case KeyEvent.VK_0:
+			nextLevel();
+			break;
 		case KeyEvent.VK_R:
 			level = MainMenu.getLevel();
 			MainMenu.restartLevel(level);

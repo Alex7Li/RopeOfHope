@@ -21,7 +21,7 @@ public class Audio {
 			clip = new File("JumpingSound.wav");
 		}
 		else if (s == "bg1")
-			clip = new File("Dungeon Theme.mp3");
+			clip = new File("BGM1.wav");
 		
 		PlaySound(clip);
 	}

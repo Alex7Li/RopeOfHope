@@ -90,6 +90,10 @@ public class MainMenu extends JFrame {
 		Level.circle.setChary(Level.circley[level - 1]);
 		Level.square.setCharx(Level.squarex[level - 1]);
 		Level.square.setChary(Level.squarey[level - 1]);
+		Level.circle.setCharVx(0);
+		Level.circle.setCharVy(0);
+		Level.square.setCharVx(0);
+		Level.square.setCharVy(0);
 	}
    
 	static void startGame() {

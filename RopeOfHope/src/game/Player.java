@@ -15,7 +15,7 @@ public class Player extends Physics{
 	private boolean downKeyPressed;
 	private double frictionRate= .98;
 	private int gravity = 5;
-	private final int TOPSPEED = 150;
+	private final int TOPSPEED = 200;
 	private final int CHARSIZE = 30;
 	private final int SPEED = 4;
 	private final int JUMP_POWER = 110;
