@@ -23,7 +23,7 @@ public class MainMenu extends JFrame {
 	static final int LEVELS = 6;// change this when adding levels
 	static int level = 1; //keep at 1
 
-	static int highestLevelReached = 5; //change this for levels to be unlocked
+	static int highestLevelReached = 1; //change this for levels to be unlocked
 
 	static JPanel contentPane;
 
