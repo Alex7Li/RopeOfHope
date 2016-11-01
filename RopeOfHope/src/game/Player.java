@@ -96,7 +96,8 @@ public class Player extends Physics{
 		    
 
 		if (isTouchingExit(charx, chary, CHARSIZE, CHARSIZE)){
-			Level.nextLevel();
+			if (MainMenu.getLevel() < 5)
+			    Level.nextLevel();
 		}
 		
 		// if thing is going, get slowed down by friction
