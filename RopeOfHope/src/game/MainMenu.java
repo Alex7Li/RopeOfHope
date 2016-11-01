@@ -109,6 +109,7 @@ public class MainMenu extends JFrame {
 		if (level == LEVELS){
 			level = 1;
 			hasWon = true;
+			currentFrame.invalidate();
 			currentFrame.setVisible(false);
 			new Credits().setVisible(true);
 		}
