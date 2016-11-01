@@ -13,8 +13,9 @@ import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class Level extends JPanel implements ActionListener, KeyListener {
+	
+	private Timer t; 
 
-	private Timer t = new Timer(30, this);
 	Rope rope = new Rope();
 	Physics physics = new Physics();
 	static int level = MainMenu.getLevel();
@@ -24,8 +25,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	static int squarey[] = { 100, 100, 100, 300, 300};
 	static int exitx[] = { 700, 750, 50, 100, 800 };
 	static int exity[] = { 200, 450, 305, 0, 500  };
-	
-	
+
 
 	static Player circle = new Player(circlex[level], circley[level]);
 	static Player square = new Player(squarex[level], squarey[level]);
@@ -70,6 +70,11 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 
 	
 	public Level() {
+		if (!MainMenu.isHasTimerGenerated()){
+			t = new Timer(30, this);
+			MainMenu.setHasTimerGenerated(true);
+		}
+
 		addKeyListener(this);
 		
 		
@@ -106,12 +111,17 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		for (int i = x.length; i < walls.length; i++) {
 			walls[i] = null;
 		}
+//instructions
 
 		setLayout(null);
-        t.start();
-		 
+		if (!MainMenu.isHasTimerStarted()){
+		    t.start();
+		    MainMenu.setHasTimerStarted(true);
+		}
+
 		setVisible(true);
 		repaint();
+		
 	}
 
 	public static void nextLevel() {
@@ -160,6 +170,9 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 
 		rope.setLength(length);
 		rope.setAngle(angle);
+		if (level == 1){
+			g.drawString("Arrow Keys to move the circle, WASD to move the square.", 20, 20);
+		}
 	}
 
 	public void keyPressed(KeyEvent e) {

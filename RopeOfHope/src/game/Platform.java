@@ -1,10 +1,10 @@
 package game;
 
 public class Platform {
-	private int x = 300;
-	private int y = 300;
-	private int width = 300;
-	private int height = 300;
+	private int x;
+	private int y;
+	private int width;
+	private int height;
 	public Platform(int x, int y, int width, int height)
     {
 		this.x = x;

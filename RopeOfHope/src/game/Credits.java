@@ -1,14 +1,12 @@
 package game;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 
@@ -16,22 +14,6 @@ import javax.swing.JButton;
 public class Credits extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Credits frame = new Credits();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -45,14 +27,29 @@ public class Credits extends JFrame {
 		setContentPane(contentPane);
 		
 		JTextArea textArea = new JTextArea(
+
 			    "Alex Li: coder, did physics, made things work in general \n\n" +
 			    "Cameron Byrne: coder, did art and sound, did level design \n\n" +
-			    "Made for the Congressional App Challenge 2016 for Congressman Dave Joyce."
+			    "Made for the 2016 Congressional App Challenge for Congressman Dave Joyce."
 			);
 			textArea.setLineWrap(true);
 			textArea.setWrapStyleWord(true);
 		contentPane.add(textArea, BorderLayout.CENTER);
-		
+		if (MainMenu.hasWon == true){
+			JTextArea textArea2 = new JTextArea(
+				    "Congratulations! \n" +
+					"You beat the game! \n" +
+				    "Had fun sensations? \n" +
+					"I hope you're glad you came! \n" +
+				    "Now you're a hero! \n" +
+				    "Didn't even need to burn a rope! \n" +
+				    "You are no zero \n" +
+				    "You're success gives us all hope!"
+				);
+				textArea.setLineWrap(true);
+				textArea.setWrapStyleWord(true);
+			contentPane.add(textArea2, BorderLayout.SOUTH);
+		}
 		JButton btnReturnToMain = new JButton("Return to Main Menu");
 		btnReturnToMain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
