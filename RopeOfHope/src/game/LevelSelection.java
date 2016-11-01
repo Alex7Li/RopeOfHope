@@ -38,6 +38,9 @@ public class LevelSelection extends JFrame {
 		
 		JButton btnlevel5 = new JButton("Level 5");
 		addLevel(btnlevel5,5);
+		
+		JButton btnlevel6 = new JButton("Level 5");
+		addLevel(btnlevel6,6);
 	}
 
 	public void addLevel(JButton btnName, int level){

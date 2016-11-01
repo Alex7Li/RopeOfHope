@@ -20,10 +20,10 @@ public class MainMenu extends JFrame {
 	private static boolean hasTimerGenerated = false;
 	private static boolean hasTimerStarted = false; 
 
-	static final int LEVELS = 5;// change this when adding levels
+	static final int LEVELS = 6;// change this when adding levels
 	static int level = 1; //keep at 1
 
-	static int highestLevelReached = 4; //change this for levels to be unlocked
+	static int highestLevelReached = 5; //change this for levels to be unlocked
 
 	static JPanel contentPane;
 
@@ -102,11 +102,11 @@ public class MainMenu extends JFrame {
 		}
 	
 		currentFrame.setTitle("Level " + (level));
-		if (highestLevelReached > LEVELS){
-			level--;
+		if (level == LEVELS){
+			level = 1;
 			hasWon = true;
-			Credits credits = new Credits();
-			currentFrame.getContentPane().add(credits);
+			currentFrame.setVisible(false);
+			new Credits().setVisible(true);
 		}
 		else{
 

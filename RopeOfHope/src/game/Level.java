@@ -29,7 +29,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 
 	static Player circle = new Player(circlex[level], circley[level]);
 	static Player square = new Player(squarex[level], squarey[level]);
-	static Exit exit = new Exit(exitx[level], exity[level]);
+	static Exit exit = new Exit(exitx[level-1], exity[level-1]);
 
 	static int[] wallNums = { 4, 2, 3, 3, 6 };
 	// wallNums = number of walls in level corresponding to array position.
@@ -126,10 +126,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 
 	public static void nextLevel() {
 		// closes this level and starts the next one
-		circle.setCharx(circlex[level]);
-		circle.setChary(circley[level]);
-		square.setCharx(squarex[level]);
-		square.setChary(squarey[level]);
+		circle.setCharx(circlex[level-1]);
+		circle.setChary(circley[level-1]);
+		square.setCharx(squarex[level-1]);
+		square.setChary(squarey[level-1]);
 		MainMenu.incrementLevel();
 		MainMenu.startGame();
 	}
@@ -171,7 +171,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		rope.setLength(length);
 		rope.setAngle(angle);
 		if (level == 1){
-			g.drawString("Arrow Keys to move the circle, WASD to move the square.", 20, 20);
+			g.drawString("Arrow Keys to move the circle, WASD to move the square. \nPress R to restart if you get stuck.", 20, 20);
 		}
 	}
 
