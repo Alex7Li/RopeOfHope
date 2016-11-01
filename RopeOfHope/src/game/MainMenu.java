@@ -20,10 +20,10 @@ public class MainMenu extends JFrame {
 	private static boolean hasTimerGenerated = false;
 	private static boolean hasTimerStarted = false; 
 
-	static final int LEVELS = 5;// change this when adding levels
+	static final int LEVELS = 6;// change this when adding levels
 	static int level = 1; //keep at 1
 
-	static int highestLevelReached = 4; //change this for levels to be unlocked
+	static int highestLevelReached = 1; //change this for levels to be unlocked
 
 	static JPanel contentPane;
 
@@ -90,6 +90,10 @@ public class MainMenu extends JFrame {
 		Level.circle.setChary(Level.circley[level - 1]);
 		Level.square.setCharx(Level.squarex[level - 1]);
 		Level.square.setChary(Level.squarey[level - 1]);
+		Level.circle.setCharVx(0);
+		Level.circle.setCharVy(0);
+		Level.square.setCharVx(0);
+		Level.square.setCharVy(0);
 	}
    
 	static void startGame() {
@@ -102,11 +106,12 @@ public class MainMenu extends JFrame {
 		}
 	
 		currentFrame.setTitle("Level " + (level));
-		if (highestLevelReached > LEVELS){
-			level--;
+		if (level == LEVELS){
+			level = 1;
 			hasWon = true;
-			Credits credits = new Credits();
-			currentFrame.getContentPane().add(credits);
+			currentFrame.invalidate();
+			currentFrame.setVisible(false);
+			new Credits().setVisible(true);
 		}
 		else{
 

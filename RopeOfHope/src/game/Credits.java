@@ -40,7 +40,7 @@ public class Credits extends JFrame {
 				    "Congratulations! \n" +
 					"You beat the game! \n" +
 				    "Had fun sensations? \n" +
-					"I hope you're glad you came! \n" +
+					"Hope you're glad you came! \n" +
 				    "Now you're a hero! \n" +
 				    "Didn't even need to burn a rope! \n" +
 				    "You are no zero \n" +

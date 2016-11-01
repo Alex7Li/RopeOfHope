@@ -22,16 +22,16 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	static int circlex[] = { 0, 0, 100, 300, 300}; 
 	static int circley[] = { 100, 100, 100, 400, 300 };
 	static int squarex[] = { 100, 100, 200, 400, 400 };
-	static int squarey[] = { 100, 100, 100, 300, 300};
+	static int squarey[] = { 100, 100, 100, 400, 300};
 	static int exitx[] = { 700, 750, 50, 100, 800 };
-	static int exity[] = { 200, 450, 305, 0, 500  };
+	static int exity[] = { 200, 450, 305, 0, 500 };
 
 
-	static Player circle = new Player(circlex[level], circley[level]);
-	static Player square = new Player(squarex[level], squarey[level]);
-	static Exit exit = new Exit(exitx[level], exity[level]);
+	static Player circle = new Player(circlex[level-1], circley[level-1]);
+	static Player square = new Player(squarex[level-1], squarey[level-1]);
+	static Exit exit = new Exit(exitx[level-1], exity[level-1]);
 
-	static int[] wallNums = { 4, 2, 3, 3, 6 };
+	static int[] wallNums = { 4, 2, 3, 5, 9 };
 	// wallNums = number of walls in level corresponding to array position.
 	public static Rectangle[] walls = new Rectangle[6];
 	//change to maximum value of wallNums.
@@ -39,8 +39,8 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 0, 200, 300,  400}, 
 			{ 0, 350 },
 			{ 0, 350, -50},
-			{ 50, 100, 50},
-			{ 50, 100, 50, 100, 650, 650}
+			{ 50, 100, 50, 50, 50},
+			{ 50, 100, 50, 100, 650, 650, 50, 50, 50}
 			};
 	// each 1-D array level is a level's x-block positions.
 
@@ -48,28 +48,36 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 350, 250, 150, 250 }, 
 			{ 250, 150 },
 			{ 250, 150, 0},
-			{ 450, 100, 250},
-			{ 450, 100, 250, 100, 100, 450}
+			{ 450, 100, 350, 250, 150},
+			{ 450, 100, 250, 100, 100, 450, 350, 250, 150}
 			};
 
 	static int[][] widtharrs = { 
 			{ 900, 50, 50, 50 },
 			{ 400, 50 }, 
 			{ 400, 50, 50 }, 
-			{ 350, 50, 50 },
-			{ 350, 50, 50, 600, 50, 250 } };
+			{ 350, 50, 150, 50, 50 },
+			{ 350, 50, 50, 600, 50, 250, 50, 50, 50} };
 
 
 	static int[][] heightarrs = { 
 			{ 50, 100, 200, 100 },
 			{ 50, 100},
 			{ 50, 100, 300},
-			{ 50, 400, 50},
-			{ 50, 400, 50, 50, 400, 50}
+			{ 20, 400, 20, 20, 20},
+			{ 30, 400, 30, 50, 400, 50, 30, 30, 30}
 			};
 
 	
 	public Level() {
+		Level.circle.setCharx(Level.circlex[level - 1]);
+		Level.circle.setChary(Level.circley[level - 1]);
+		Level.square.setCharx(Level.squarex[level - 1]);
+		Level.square.setChary(Level.squarey[level - 1]);
+		Level.circle.setCharVx(0);
+		Level.circle.setCharVy(0);
+		Level.square.setCharVx(0);
+		Level.square.setCharVy(0);
 		if (!MainMenu.isHasTimerGenerated()){
 			t = new Timer(30, this);
 			MainMenu.setHasTimerGenerated(true);
@@ -126,10 +134,14 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 
 	public static void nextLevel() {
 		// closes this level and starts the next one
-		circle.setCharx(circlex[level]);
-		circle.setChary(circley[level]);
-		square.setCharx(squarex[level]);
-		square.setChary(squarey[level]);
+		circle.setCharx(circlex[level-1]);
+		circle.setChary(circley[level-1]);
+		square.setCharx(squarex[level-1]);
+		square.setChary(squarey[level-1]);
+		circle.setCharVx(0);
+		circle.setCharVy(0);
+		square.setCharVx(0);
+		square.setCharVy(0);
 		MainMenu.incrementLevel();
 		MainMenu.startGame();
 	}
@@ -171,7 +183,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		rope.setLength(length);
 		rope.setAngle(angle);
 		if (level == 1){
-			g.drawString("Arrow Keys to move the circle, WASD to move the square.", 20, 20);
+			g.drawString("Arrow Keys to move the circle, WASD to move the square. \nPress R to restart if you get stuck.", 20, 20);
 		}
 	}
 
@@ -191,14 +203,16 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		case KeyEvent.VK_DOWN:
 			circle.setDownKeyPressed(true);
 			break;
-		case KeyEvent.VK_0:
-			nextLevel();
-			break;
+			//TAKE THIS OUT IN FINAL VERSION
+	//	case KeyEvent.VK_0:
+	//		nextLevel();
+	//		break;
 		case KeyEvent.VK_R:
 			level = MainMenu.getLevel();
 			MainMenu.restartLevel(level);
 			break;			
 		case KeyEvent.VK_M:
+			this.invalidate();
 			this.setVisible(false);
 			MainMenu.setLevel(1);
 			new MainMenu().setVisible(true);
