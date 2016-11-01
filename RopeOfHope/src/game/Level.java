@@ -68,14 +68,9 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 50, 400, 50, 50, 400, 50}
 			};
 
-	private boolean hasKeyListenerAdded = false;
+	
 	public Level() {
-		
-		
-		if (!hasKeyListenerAdded){
-		    addKeyListener(this);
-		    hasKeyListenerAdded = !hasKeyListenerAdded;
-		}
+		addKeyListener(this);
 		
 		
 		level = MainMenu.getLevel();
