@@ -165,4 +165,8 @@ public class MainMenu extends JFrame {
 		hasTimerStarted = TimerStarted;
 	}
 
+	public static int getLevels() {
+		return LEVELS;
+	}
+
 }

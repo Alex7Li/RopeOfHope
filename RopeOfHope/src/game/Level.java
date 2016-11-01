@@ -57,7 +57,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 400, 50 }, 
 			{ 400, 50, 50 }, 
 			{ 350, 50, 150, 50, 50 },
-			{ 350, 50, 50, 600, 50, 250, 50, 50, 50} };
+			{ 350, 50, 50, 600, 50, 250, 150, 50, 50} };
 
 
 	static int[][] heightarrs = { 

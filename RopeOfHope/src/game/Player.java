@@ -96,7 +96,7 @@ public class Player extends Physics{
 		    
 
 		if (isTouchingExit(charx, chary, CHARSIZE, CHARSIZE)){
-			if (MainMenu.getLevel() < 5)
+			if (MainMenu.getLevel() < MainMenu.getLevels()+1)
 			    Level.nextLevel();
 		}
 		
