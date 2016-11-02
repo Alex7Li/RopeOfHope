@@ -34,7 +34,6 @@ public class Credits extends JFrame {
 			);
 			textArea.setLineWrap(true);
 			textArea.setWrapStyleWord(true);
-		contentPane.add(textArea, BorderLayout.CENTER);
 		if (MainMenu.hasWon == true){
 			JTextArea textArea2 = new JTextArea(
 				    "Congratulations! \n" +
@@ -51,6 +50,8 @@ public class Credits extends JFrame {
 				textArea.setWrapStyleWord(true);
 			contentPane.add(textArea2, BorderLayout.SOUTH);
 		}
+		contentPane.add(textArea, BorderLayout.CENTER);
+
 		JButton btnReturnToMain = new JButton("Return to Main Menu");
 		btnReturnToMain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
