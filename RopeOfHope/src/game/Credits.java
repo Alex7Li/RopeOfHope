@@ -30,7 +30,7 @@ public class Credits extends JFrame {
 
 			    "Alex Li: coder, did physics, made things work in general \n\n" +
 			    "Cameron Byrne: coder, did art and sound, did level design \n\n" +
-			    "Made for the 2016 Congressional App Challenge."
+			    "Made for the 2016 Congressional App Challenge.\n"
 			);
 			textArea.setLineWrap(true);
 			textArea.setWrapStyleWord(true);
@@ -42,6 +42,7 @@ public class Credits extends JFrame {
 					"Hope you're glad you came! \n" +
 				    "Now you're a hero! \n" +
 				    "Didn't even need to burn a rope! \n"+ 
+				    "*instert another meaningful message here* \n" +
 				    "You are no zero \n" +
 				    "You're success gives us all hope!"
 				);
