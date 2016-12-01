@@ -17,13 +17,14 @@ public class MainMenu extends JFrame {
 	static boolean hasWon = false;
 	static boolean hasGenerated = false;
 	static JFrame currentFrame = new JFrame("Rope of Hope");
-	private static boolean hasTimerGenerated = false;
 	private static boolean hasTimerStarted = false; 
+	private static boolean hasTimerGenerated = false;
 
-	static final int LEVELS = 6;// change this when adding levels
+
+	static final int LEVELS = 8;// change this when adding levels
 	static int level = 1; //keep at 1
 
-	static int highestLevelReached = 6; //change this for levels to be unlocked
+	static int highestLevelReached = 1; //change this for levels to be unlocked
 
 	static JPanel contentPane;
 

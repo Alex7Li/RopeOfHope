@@ -28,7 +28,7 @@ public class Background {
 		else if (level == 5)
 			imageFile = new File("Bg5.jpg");
 		else 
-			imageFile = new File("RopeOfHopeBg.jpg");
+			imageFile = new File("Error.png");
 		//default
 		
 		try {
