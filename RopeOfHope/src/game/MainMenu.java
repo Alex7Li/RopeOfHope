@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("serial")
 public class MainMenu extends JFrame {
 
+	public static final int BALLOON_SIZE = 50;
 	static boolean hasWon = false;
 	static boolean hasGenerated = false;
 	static JFrame currentFrame = new JFrame("Rope of Hope");

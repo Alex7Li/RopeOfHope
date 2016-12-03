@@ -19,19 +19,19 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	Rope rope = new Rope();
 	Physics physics = new Physics();
 	static int level = MainMenu.getLevel();
-	static int circlex[] = { 0, 0, 100, 50,450, 300, 200, }; // 
-	static int circley[] = { 100, 100, 100, 50, 400, 400, 300,  }; //
-	static int squarex[] = { 100, 100, 200, 0, 500,400, 300,  }; //
-	static int squarey[] = { 100, 100, 100, 50, 400, 400, 300,  }; //
-	static int exitx[] = { 700, 750, 50, 800, 500, 100, 800,  }; //
-	static int exity[] = { 200, 450, 305, 200, 50, 0, 500,  };//
+	static int circlex[] = { 0, 0, 100, 50,  300, 450, 200, }; // 
+	static int circley[] = { 100, 100, 100, 50,  400, 400, 300,  }; //
+	static int squarex[] = { 100, 100, 200, 0,  250, 500, 300,  }; //
+	static int squarey[] = { 100, 100, 100, 50,  400, 400, 300,   }; //
+	static int exitx[] = { 700, 750, 50, 800,  100, 500, 800,  }; //
+	static int exity[] = { 200, 450, 305, 200,  10, 50, 500,  };//
 
 
 	static Player circle = new Player(circlex[level-1], circley[level-1]);
 	static Player square = new Player(squarex[level-1], squarey[level-1]);
 	static Exit exit = new Exit(exitx[level-1], exity[level-1]);
 
-	static int[] wallNums = { 4, 2, 3, 2, 2, 5, 9, };
+	static int[] wallNums = { 4, 2, 3, 2, 5, 2, 9 };
 	// wallNums = number of walls in level corresponding to array position.
 	public static Rectangle[] walls = new Rectangle[6];
 	//change to maximum value of wallNums.
@@ -40,11 +40,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 0, 350 },
 			{ 0, 350, -50},
 			{ 0, 700},
-			{ 450, 450},
 			{ 50, 100, 50, 50, 50},
+			{ 450, 450},
 			{ 50, 100, 50, 100, 650, 650, 50, 50, 50},
 			//
-			
 			};
 	// each 1-D array level is a level's x-block positions.
 
@@ -53,9 +52,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 250, 150 },
 			{ 250, 150, 0},
 			{ 350, 350}, 
-			{ 200, 500},
 			{ 450, 100, 350, 250, 150},
+			{ 200, 500},
 			{ 450, 100, 250, 100, 100, 450, 350, 250, 150},
+
 			 //
 			};
 
@@ -64,9 +64,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 400, 50 }, 
 			{ 400, 50, 50 }, 
 			{ 100, 200 },
-			{ 100, 100},
 			{ 350, 50, 150, 50, 50 },
+			{ 100, 100},
 			{ 350, 50, 50, 600, 50, 250, 150, 50, 50} ,
+
 			//
 			};
 
@@ -76,9 +77,10 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			{ 50, 100},
 			{ 50, 100, 300},
 			{ 50, 50},
-			{ 50, 50},
 			{ 20, 400, 20, 20, 20},
+			{ 50, 50},
 			{ 30, 400, 30, 50, 400, 50, 30, 30, 30},
+
 			//
 			};
 
