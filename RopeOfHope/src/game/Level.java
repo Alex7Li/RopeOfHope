@@ -17,7 +17,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	private Timer t; 
     // put level 6 right after level 3
 	Rope rope = new Rope();
-	Physics physics = new Physics();
+	CollisionDetection physics = new CollisionDetection();
 	static int level = MainMenu.getLevel();
 	static int circlex[] = { 0, 0, 100, 50,  300, 450, 200, }; // 
 	static int circley[] = { 100, 100, 100, 50,  400, 400, 300,  }; //

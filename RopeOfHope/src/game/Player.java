@@ -1,6 +1,6 @@
 package game;
 
-public class Player extends Physics {
+public class Player extends CollisionDetection {
 
 	public int maxJumps = 1;
 
@@ -13,7 +13,7 @@ public class Player extends Physics {
 	private boolean rightKeyPressed;
 	private boolean leftKeyPressed;
 	private boolean downKeyPressed;
-	private double frictionRate = .98;
+	private double frictionRate;
 	private int gravity = 5;
 	private final int TOPSPEED = 200;
 	private final int CHARSIZE = 30;

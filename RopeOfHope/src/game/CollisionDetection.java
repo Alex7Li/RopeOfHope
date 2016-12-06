@@ -3,9 +3,9 @@ package game;
 import java.awt.Rectangle;
 
 
-public class Physics {
+public class CollisionDetection {
 
-	public Physics() {
+	public CollisionDetection() {
 
 	}
 
