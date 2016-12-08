@@ -14,21 +14,18 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("serial")
 public class MainMenu extends JFrame {
 
-	public static final int BALLOON_SIZE = 50;
 	static boolean hasWon = false;
-	static boolean hasGenerated = false;
 	static JFrame currentFrame = new JFrame("Rope of Hope");
-	private static boolean hasTimerStarted = false; 
+	private static boolean hasTimerStarted = false;
 	private static boolean hasTimerGenerated = false;
-
+	private static boolean hasGenerated = false;
 
 	static final int LEVELS = 8;// change this when adding levels
-	static int level = 1; //keep at 1
+	static int level = 1; // keep at 1
 
-	static int highestLevelReached = 1; //change this for levels to be unlocked
+	static int highestLevelReached = 1; // change this for levels to be unlocked
 
 	static JPanel contentPane;
-
 
 	/**
 	 * Launch the application.
@@ -84,8 +81,8 @@ public class MainMenu extends JFrame {
 		});
 		contentPane.add(btnCredits, BorderLayout.EAST);
 	}
-	
-	static void restartLevel(int level){
+
+	static void restartLevel(int level) {
 		Level current = new Level();
 		currentFrame.add(current);
 		Level.circle.setCharx(Level.circlex[level - 1]);
@@ -97,28 +94,27 @@ public class MainMenu extends JFrame {
 		Level.square.setCharVx(0);
 		Level.square.setCharVy(0);
 	}
-   
+
 	static void startGame() {
 
-		if (!hasGenerated){
+		if (!hasGenerated) {
 			currentFrame.setBounds(100, 100, 900, 600);
 			currentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			currentFrame.setVisible(true);
-		    hasGenerated = true; 
+			hasGenerated = true;
 		}
-	
+
 		currentFrame.setTitle("Level " + (level));
-		if (level == LEVELS){
+		if (level == LEVELS) {
 			level = 1;
 			hasWon = true;
 			currentFrame.invalidate();
 			currentFrame.setVisible(false);
 			new Credits().setVisible(true);
-		}
-		else{
+		} else {
 
-		Level level = new Level();
-		currentFrame.getContentPane().add(level);
+			Level level = new Level();
+			currentFrame.getContentPane().add(level);
 		}
 	}
 
@@ -126,6 +122,7 @@ public class MainMenu extends JFrame {
 		this.setVisible(false);
 		new LevelSelection().setVisible(true);
 	}
+
 	private void openCredits() {
 		this.setVisible(false);
 		new Credits().setVisible(true);
