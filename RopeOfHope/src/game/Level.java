@@ -18,13 +18,13 @@ public class Level extends JPanel implements ActionListener, KeyListener {
     // put level 6 right after level 3
 	Rope rope = new Rope();
 	CollisionDetection physics = new CollisionDetection();
-	static int level = MainMenu.getLevel();
+	static int level = 1;
 	static int circlex[] = { 0, 0, 100, 50,  300,  200, 450,}; // 
 	static int circley[] = { 100, 100, 100, 50,  400,  300, 400, }; //
 	static int squarex[] = { 100, 100, 200, 0,  250,  300,500,  }; //
 	static int squarey[] = { 100, 100, 100, 50,  400,  300, 400,  }; //
 	static int exitx[] = { 700, 750, 50, 800,  100,  850, 500, }; //
-	static int exity[] = { 200, 450, 305, 200,  10,  100, 50, };//
+	static int exity[] = { 200, 450, 305, 200,  10,  400, 50, };//
 
 
 	static Player circle = new Player(circlex[level-1], circley[level-1]);
@@ -154,6 +154,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 
 	public static void nextLevel() {
 		// closes this level and starts the next one
+		level = MainMenu.getLevel();
 		circle.setCharx(circlex[level-1]);
 		circle.setChary(circley[level-1]);
 		square.setCharx(squarex[level-1]);
@@ -237,7 +238,8 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			MainMenu.setLevel(1);
 			new MainMenu().setVisible(true);
 			break;
-
+		case KeyEvent.VK_W:
+			nextLevel();
 		}
 
 		switch (k) {
