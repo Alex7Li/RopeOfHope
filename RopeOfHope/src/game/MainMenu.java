@@ -19,6 +19,7 @@ public class MainMenu extends JFrame {
 	private static boolean hasTimerStarted = false;
 	private static boolean hasTimerGenerated = false;
 	private static boolean hasGenerated = false;
+	private static boolean hasMainMenuGenerated = false;
 
 	static final int LEVELS = 8;// change this when adding levels
 	static int level = 1; // keep at 1
@@ -50,7 +51,9 @@ public class MainMenu extends JFrame {
 	public MainMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
-		contentPane = new JPanel();
+		if (!hasMainMenuGenerated){
+			contentPane = new JPanel();
+		}
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
