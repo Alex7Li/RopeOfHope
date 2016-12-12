@@ -21,10 +21,11 @@ public class MainMenu extends JFrame {
 	private static boolean hasGenerated = false;
 	private static boolean hasMainMenuGenerated = false;
 
-	static final int LEVELS = 8;// change this when adding levels
+	static final int LEVELS = 8; // change this when adding levels
+	//strangly, this needs to be 1 greater than the actual number of levels
 	static int level = 1; // keep at 1
 
-	static int highestLevelReached = 1; // change this for levels to be unlocked
+	static int highestLevelReached = 8; // change this for levels to be unlocked
 
 	static JPanel contentPane;
 
@@ -108,7 +109,7 @@ public class MainMenu extends JFrame {
 		}
 
 		currentFrame.setTitle("Level " + (level));
-		if (level == LEVELS) {
+		if (level >= LEVELS) {
 			level = 1;
 			hasWon = true;
 			currentFrame.invalidate();
@@ -132,8 +133,13 @@ public class MainMenu extends JFrame {
 	}
 
 	public static void incrementLevel() {
-		level++;
-		Level.setLevel(level);
+		if (level >= LEVELS){
+			level = 1;
+		}
+		else{
+			level++;
+		}
+			Level.setLevel(level);
 		if (highestLevelReached < level) {
 			highestLevelReached = level;
 		}

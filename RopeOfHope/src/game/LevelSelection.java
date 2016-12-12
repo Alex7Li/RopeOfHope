@@ -24,32 +24,21 @@ public class LevelSelection extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		JButton btnlevel1 = new JButton("Level 1");
-		addLevel(btnlevel1,1);
-
-		JButton btnlevel2 = new JButton("Level 2");
-		addLevel(btnlevel2,2);
-		
-		JButton btnlevel3 = new JButton("Level 3");
-		addLevel(btnlevel3,3);
-		
-		JButton btnlevel4 = new JButton("Level 4");
-		addLevel(btnlevel4,4);
-		
-		JButton btnlevel5 = new JButton("Level 5");
-		addLevel(btnlevel5,5);
-		
-		JButton btnlevel6 = new JButton("Level 6");
-		addLevel(btnlevel6,6);
+		for(int i = 1; i<MainMenu.getLevels(); i++){
+			JButton btnlevel = new JButton("Level 1");
+			addLevel(btnlevel,i);
+		}
 	}
 
 	public void addLevel(JButton btnName, int level){
+		btnName.setText("Level " + level);
 		if (level <= MainMenu.getHighestLevelReached()){
 		
 			btnName.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					MainMenu.setLevel(level);
 					MainMenu.startGame();
+					Audio.doAudioJunk("bg1");
 				}
 			});
 		}

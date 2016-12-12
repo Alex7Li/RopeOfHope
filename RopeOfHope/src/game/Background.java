@@ -17,15 +17,15 @@ public class Background {
 	public static BufferedImage getImage(int level){
 		File imageFile;
 		
-		if (level == 1)
+		if (level%5 == 1)
 			imageFile = new File("RopeOfHopeBg.jpg");
-		else if (level == 2)
+		else if (level%5 == 2)
 			imageFile = new File("RopeOfHopeBg2.jpg");
-		else if (level == 3)
+		else if (level%5 == 3)
 			imageFile = new File("Bg3.jpg");
-		else if (level == 4)
+		else if (level%5 == 4)
 			imageFile = new File("Bg4.jpg");
-		else if (level == 5)
+		else if (level%5 == 0)
 			imageFile = new File("Bg5.jpg");
 		else 
 			imageFile = new File("Error.png");
