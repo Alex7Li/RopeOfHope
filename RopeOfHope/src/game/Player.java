@@ -52,10 +52,10 @@ public class Player extends CollisionDetection {
 		// increase Friction if on the ground
 		if (!isAbleMoveDown(charx, chary + 10, CHARSIZE, CHARSIZE, (int) charVx, (int) charVy)) {
 			if (downKeyPressed) {
-				frictionRate = .15;
+				frictionRate = .1;
 				gravity = 20;
 			} else {
-				frictionRate = .9;
+				frictionRate = .6;
 				gravity = 4;
 
 			}
@@ -97,7 +97,6 @@ public class Player extends CollisionDetection {
 		}
 
 		// if thing is going, get slowed down by friction
-
 		charVx = frictionRate * charVx;
 
 		if (charVy < TOPSPEED) {
