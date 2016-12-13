@@ -238,8 +238,6 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			MainMenu.setLevel(1);
 			new MainMenu().setVisible(true);
 			break;
-		case KeyEvent.VK_W:
-			nextLevel();
 		}
 
 		switch (k) {
