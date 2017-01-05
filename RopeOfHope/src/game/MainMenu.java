@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-@SuppressWarnings("serial")
+ @SuppressWarnings("serial")
 public class MainMenu extends JFrame {
 
 	static boolean hasWon = false;
@@ -133,7 +133,7 @@ public class MainMenu extends JFrame {
 	}
 
 	public static void incrementLevel() {
-		if (level >= LEVELS){
+		if (level >= LEVELS - 1){
 			level = 1;
 		}
 		else{

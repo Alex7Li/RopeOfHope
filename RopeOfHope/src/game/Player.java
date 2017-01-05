@@ -52,7 +52,7 @@ public class Player extends CollisionDetection {
 		// increase Friction if on the ground
 		if (!isAbleMoveDown(charx, chary + 10, CHARSIZE, CHARSIZE, (int) charVx, (int) charVy)) {
 			if (downKeyPressed) {
-				frictionRate = .1;
+				frictionRate = .7;
 				gravity = 20;
 			} else {
 				frictionRate = .9;
