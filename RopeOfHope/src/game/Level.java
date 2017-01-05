@@ -33,7 +33,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 
 	static int[] wallNums = { 4, 2, 3, 2, 5, 9, 2 };
 	// wallNums = number of walls in level corresponding to array position.
-	public static Rectangle[] walls = new Rectangle[6];
+	public static Rectangle[] walls;// = new Rectangle[6];
 	//change to maximum value of wallNums.
 	static int[][] xarrs = { 
 			{ 0, 200, 300,  400}, 
@@ -256,10 +256,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 		}
 	}
 
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-	}
-
+	
 	public void keyReleased(KeyEvent e) {
 		int k = e.getKeyCode();
 
@@ -308,5 +305,11 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 
 	public static int getExity(int i) {
 		return exity[i];
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
