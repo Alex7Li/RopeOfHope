@@ -19,7 +19,8 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	Rope rope = new Rope();
 	CollisionDetection physics = new CollisionDetection();
 	static int level = 1;
-	static int circlex[] = { 0, 0, 100, 50,  300,  200, 450,}; // 
+	// Starting positions of the players and exit
+	static int circlex[] = { 0, 0, 100, 50,  300,  200, 450,}; 
 	static int circley[] = { 100, 100, 100, 50,  400,  300, 400, }; //
 	static int squarex[] = { 100, 100, 200, 0,  250,  300,500,  }; //
 	static int squarey[] = { 100, 100, 100, 50,  400,  300, 400,  }; //
@@ -31,6 +32,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 	static Player square = new Player(squarex[level-1], squarey[level-1]);
 	static Exit exit = new Exit(exitx[level-1], exity[level-1]);
 
+	
 	static int[] wallNums = { 4, 2, 3, 2, 5, 9, 2 };
 	// wallNums = number of walls in level corresponding to array position.
 	public static Rectangle[] walls = new Rectangle[6];

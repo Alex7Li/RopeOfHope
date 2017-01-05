@@ -55,13 +55,19 @@ public class Player extends CollisionDetection {
 				frictionRate = .1;
 				gravity = 20;
 			} else {
-				frictionRate = .6;
+				frictionRate = .9;
 				gravity = 4;
 
 			}
 		} else {
-			frictionRate = .98;
+			if (downKeyPressed) {
+				frictionRate = .1;
+				gravity = 20;
+			}
+			else{
+			frictionRate = .8;
 			gravity = 4;
+			}
 		}
 
 		if (rightKeyPressed && charVx < TOPSPEED) {

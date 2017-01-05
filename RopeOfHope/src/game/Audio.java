@@ -20,7 +20,6 @@ public class Audio {
 			clip = new File("JumpingSound.wav");
 		} else if (s == "bg1")
 			clip = new File("BGM1.wav");
-
 		PlaySound(clip);
 	}
 
@@ -30,8 +29,7 @@ public class Audio {
 			clip.open(AudioSystem.getAudioInputStream(sound));
 			clip.start();
 		} catch (Exception e) {
-
+			
 		}
 	}
-
 }
