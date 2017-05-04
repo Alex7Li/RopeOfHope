@@ -10,7 +10,6 @@ public class Audio {
 	static File clip;
 
 	public Audio() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public static void doAudioJunk(String s) {

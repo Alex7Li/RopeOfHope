@@ -104,10 +104,7 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 			t = new Timer(30, this);
 			MainMenu.setHasTimerGenerated(true);
 		}
-
-		addKeyListener(this);
-		
-		
+		addKeyListener(this);		
 		level = MainMenu.getLevel();
 		walls = new Rectangle[wallNums[level - 1]];
 		setFocusable(true);
@@ -311,7 +308,6 @@ public class Level extends JPanel implements ActionListener, KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 }
