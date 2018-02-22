@@ -14,10 +14,10 @@ public class Player extends CollisionDetection {
 	private boolean leftKeyPressed;
 	private boolean downKeyPressed;
 	private double frictionRate;
-	private int gravity = 5;
-	private final int TOPSPEED = 200;
+	private int gravity = 4;
+	private final int TOPSPEED = 250;
 	private final int CHARSIZE = 30;
-	private final int SPEED = 4;
+	private final int SPEED = 7;
 	private final int JUMP_POWER = 80;
 	private final double ROPE_PULL = .15;
 	private final int ROPE_LENGTH = 150; // pixels
